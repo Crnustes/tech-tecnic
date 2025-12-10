@@ -1,38 +1,38 @@
 export const servicios = [
   {
-    name: 'Desarrollo Web Profesional',
-    href: '/servicios/desarrollo-web',
+    name: "Desarrollo Web Profesional",
     description:
-      'Sitios web modernos, rápidos y optimizados para conversión. Desde landing pages hasta e-commerce personalizados.',
+      "Sitios web modernos, rápidos y optimizados para conversión.",
+    href: "/servicios/desarrollo-web",
   },
   {
-    name: 'Automatización e Inteligencia Artificial',
-    href: '/servicios/automatizaciones-ia',
+    name: "Optimización SEO + GEO",
     description:
-      'Implementamos IA y flujos automatizados que ahorran tiempo y mejoran la productividad en tu empresa.',
+      "Aumenta tu posicionamiento con estrategias locales y globales.",
+    href: "/servicios/seo-geo",
   },
   {
-    name: 'Optimización SEO + GEO',
-    href: '/servicios/seo-geo',
+    name: "Automatización e Inteligencia Artificial",
     description:
-      'Mejoramos tu posicionamiento orgánico local y global con estrategias avanzadas y herramientas de análisis.',
+      "Automatizaciones y flujos con IA para empresas.",
+    href: "/servicios/automatizacion-ia",
   },
   {
-    name: 'Integraciones y APIs',
-    href: '/servicios/integraciones',
+    name: "Integraciones y APIs",
     description:
-      'Conectamos tu web con CRM, ERP o cualquier plataforma externa para potenciar tus procesos digitales.',
+      "Conectamos tu negocio con CRM, ERP, y plataformas externas.",
+    href: "/servicios/integraciones-apis",
   },
   {
-    name: 'Marketing y Análisis de Datos',
-    href: '/servicios/marketing-analitica',
+    name: "Marketing y Analítica de Datos",
     description:
-      'Automatiza campañas, mide resultados y toma decisiones basadas en datos reales de tu negocio.',
+      "Estrategias basadas en datos y reporting inteligente.",
+    href: "/servicios/marketing-analitica",
   },
   {
-    name: 'Mantenimiento y Escalabilidad',
-    href: '/servicios/mantenimiento',
+    name: "Mantenimiento y Escalabilidad",
     description:
-      'Nos encargamos del soporte técnico, actualizaciones y optimización constante para mantener tu web segura y veloz.',
+      "Soporte técnico, seguridad y optimización constante.",
+    href: "/servicios/mantenimiento",
   },
-]
+];
