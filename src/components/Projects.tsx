@@ -1,163 +1,270 @@
-"use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ExternalLink, Sparkles, Filter } from 'lucide-react';
 
 const projects = [
   {
-    title: "Yoica.com",
-    desc: "Plataforma de productos naturales, enfocada en bienestar y salud con diseño limpio y conversión optimizada.",
-    category: "E-commerce WordPress",
-    link: "https://yoica.com",
-    image: "/images/yoica.png",
+    title: 'Yoica.com',
+    desc: 'Plataforma de productos naturales enfocada en bienestar con diseño limpio y conversión optimizada.',
+    category: 'E-commerce',
+    tags: ['WordPress', 'WooCommerce', 'SEO'],
+    link: 'https://yoica.com',
+    image: '/images/yoica.png',
+    gradient: 'from-emerald-500 to-teal-500',
   },
   {
-    title: "SembrandoConfianza.com",
-    desc: "Agricultura sostenible con enfoque comunitario. Migración completa y optimización SEO local.",
-    category: "Desarrollo Web + SEO",
-    link: "https://sembrandoconfianza.com/",
-    image: "/images/sembrando.png",
+    title: 'SembrandoConfianza.com',
+    desc: 'Agricultura sostenible con enfoque comunitario. Migración completa y optimización SEO local.',
+    category: 'Desarrollo Web',
+    tags: ['WordPress', 'SEO', 'Migración'],
+    link: 'https://sembrandoconfianza.com/',
+    image: '/images/sembrando.png',
+    gradient: 'from-green-500 to-lime-500',
   },
   {
-    title: "ConoceTusDerechos.co",
-    desc: "Plataforma informativa para asesoría jurídica con foco en accesibilidad y experiencia de usuario.",
-    category: "Informativo + UX/UI",
-    link: "https://conocetusderechos.co/",
-    image: "/images/conoce.png",
+    title: 'ConoceTusDerechos.co',
+    desc: 'Plataforma informativa para asesoría jurídica con foco en accesibilidad y experiencia de usuario.',
+    category: 'Informativo',
+    tags: ['UX/UI', 'Accesibilidad', 'WordPress'],
+    link: 'https://conocetusderechos.co/',
+    image: '/images/conoce.png',
+    gradient: 'from-blue-500 to-indigo-500',
   },
   {
-    title: "TiendaDelChocolate.com",
-    desc: "E-commerce premium para chocolates artesanales con integración WooCommerce y diseño visual de marca.",
-    category: "E-commerce",
-    link: "https://tiendadelchocolate.com/",
-    image: "/images/chocolate.png",
+    title: 'TiendaDelChocolate.com',
+    desc: 'E-commerce premium para chocolates artesanales con integración WooCommerce y diseño de marca.',
+    category: 'E-commerce',
+    tags: ['WooCommerce', 'Branding', 'Premium'],
+    link: 'https://tiendadelchocolate.com/',
+    image: '/images/chocolate.png',
+    gradient: 'from-amber-600 to-orange-600',
   },
   {
-    title: "Ananassa.co",
-    desc: "E-commerce especializado en fresas con chocolate. SEO GEO, analítica, UX moderno y automatización.",
-    category: "E-commerce + SEO + IA",
-    link: "https://ananassa.co/",
-    image: "/images/ananassa.png",
+    title: 'Ananassa.co',
+    desc: 'E-commerce de fresas con chocolate. SEO GEO, analítica, UX moderno y automatización.',
+    category: 'E-commerce',
+    tags: ['E-commerce', 'SEO GEO', 'IA'],
+    link: 'https://ananassa.co/',
+    image: '/images/ananassa.png',
+    gradient: 'from-pink-500 to-rose-500',
   },
   {
-    title: "WooCar.io",
-    desc: "Aplicación web para alquiler de vehículos eléctricos, conectada a API y backend personalizado.",
-    category: "App Web + Integraciones",
-    link: "https://woocar.io/",
-    image: "/images/woocar.png",
+    title: 'WooCar.io',
+    desc: 'Aplicación web para alquiler de vehículos eléctricos, conectada a API y backend personalizado.',
+    category: 'App Web',
+    tags: ['React', 'API', 'Backend'],
+    link: 'https://woocar.io/',
+    image: '/images/woocar.png',
+    gradient: 'from-cyan-500 to-blue-500',
   },
   {
-    title: "Florida2R.com",
-    desc: "Sitio inmobiliario con filtros avanzados y fichas dinámicas de propiedades integradas con CRM.",
-    category: "Inmobiliario",
-    link: "http://florida2r.com/",
-    image: "/images/florida.png",
+    title: 'Florida2R.com',
+    desc: 'Sitio inmobiliario con filtros avanzados y fichas dinámicas integradas con CRM.',
+    category: 'Inmobiliario',
+    tags: ['CRM', 'Filtros', 'WordPress'],
+    link: 'http://florida2r.com/',
+    image: '/images/florida.png',
+    gradient: 'from-violet-500 to-purple-500',
   },
   {
-    title: "Cristian.click",
-    desc: "Portfolio personal optimizado, animaciones con React y estructura escalable para SEO técnico.",
-    category: "Personal Portfolio",
-    link: "https://cristian.click",
-    image: "/images/portafolio.png",
+    title: 'Cristian.click',
+    desc: 'Portfolio personal optimizado con animaciones React y estructura escalable para SEO técnico.',
+    category: 'Portfolio',
+    tags: ['React', 'SEO', 'Animaciones'],
+    link: 'https://cristian.click',
+    image: '/images/portafolio.png',
+    gradient: 'from-slate-500 to-gray-600',
   },
   {
-    title: "KLDiseñoYConstrucción.com",
-    desc: "Sitio corporativo de arquitectura y construcción con enfoque en estética, velocidad y SEO.",
-    category: "Corporativo + SEO",
-    link: "https://kldisenoyconstruccion.com/",
-    image: "/images/kldiseno.png",
+    title: 'KLDiseñoYConstrucción.com',
+    desc: 'Sitio corporativo de arquitectura con enfoque en estética, velocidad y SEO.',
+    category: 'Corporativo',
+    tags: ['Corporativo', 'SEO', 'Diseño'],
+    link: 'https://kldisenoyconstruccion.com/',
+    image: '/images/kldiseno.png',
+    gradient: 'from-orange-500 to-red-500',
   },
   {
-    title: "BicicletasElectricasBogota.com.co",
-    desc: "Tienda online de movilidad eléctrica, UX enfocado en conversiones y productos dinámicos.",
-    category: "E-commerce + SEO GEO",
-    link: "https://bicicletaselectricasbogota.com.co/",
-    image: "/images/bicicletas.png",
+    title: 'BicicletasElectricasBogota.com.co',
+    desc: 'Tienda de movilidad eléctrica con UX enfocado en conversiones y productos dinámicos.',
+    category: 'E-commerce',
+    tags: ['E-commerce', 'SEO GEO', 'Conversión'],
+    link: 'https://bicicletaselectricasbogota.com.co/',
+    image: '/images/bicicletas.png',
+    gradient: 'from-green-500 to-emerald-500',
   },
   {
-    title: "ImperialDunas.com",
-    desc: "Desarrollo web para resort de lujo frente al mar, diseño premium, integración de reservas y optimización de rendimiento global.",
-    category: "Hospitality / Resort Web",
-    link: "https://imperialdunas.com/",
-    image: "/images/imperial.png",
+    title: 'ImperialDunas.com',
+    desc: 'Resort de lujo frente al mar con diseño premium, integración de reservas y optimización global.',
+    category: 'Hospitality',
+    tags: ['Premium', 'Reservas', 'Performance'],
+    link: 'https://imperialdunas.com/',
+    image: '/images/imperial.png',
+    gradient: 'from-blue-600 to-cyan-600',
   },
   {
-    title: "Hoffman-Latam.com",
-    desc: "Mantenimiento técnico y optimización de rendimiento para empresa de fotografía profesional.",
-    category: "Mantenimiento + Performance",
-    link: "https://hoffman-latam.com/",
-    image: "/images/hoffman.png",
+    title: 'Hoffman-Latam.com',
+    desc: 'Mantenimiento técnico y optimización de rendimiento para empresa de fotografía profesional.',
+    category: 'Mantenimiento',
+    tags: ['Mantenimiento', 'Performance', 'Fotografía'],
+    link: 'https://hoffman-latam.com/',
+    image: '/images/hoffman.png',
+    gradient: 'from-purple-500 to-pink-500',
   },
 ];
 
-export default function Projects() {
-  return (
-    <section id="proyectos" className="bg-white py-24 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center text-t_dark mb-12"
-        >
-          Casos de Éxito
-        </motion.h2>
+const categories = ['Todos', 'E-commerce', 'Desarrollo Web', 'App Web', 'Corporativo', 'Portfolio'];
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.03 }}
-              className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition bg-white/80 backdrop-blur-sm"
+export default function Projects() {
+  const [activeCategory, setActiveCategory] = useState('Todos');
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const filteredProjects = activeCategory === 'Todos' 
+    ? projects 
+    : projects.filter(p => p.category === activeCategory);
+
+  return (
+    <section id="proyectos" className="relative py-32 bg-white overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-100 via-white to-white" />
+      
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-t_primary/10 to-t_accent/10 border border-t_primary/20 mb-6">
+            <Sparkles className="w-4 h-4 text-t_primary" />
+            <span className="text-sm text-t_primary font-medium">Portfolio</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <span className="text-t_dark">Casos de </span>
+            <span className="bg-gradient-to-r from-t_primary to-t_accent bg-clip-text text-transparent">
+              Éxito
+            </span>
+          </h2>
+          
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Proyectos que transforman ideas en experiencias digitales exitosas
+          </p>
+        </div>
+
+        {/* Filter */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+          <div className="flex items-center gap-2 text-gray-400 mr-2">
+            <Filter className="w-4 h-4" />
+            <span className="text-sm font-medium">Filtrar:</span>
+          </div>
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                activeCategory === cat
+                  ? 'bg-gradient-to-r from-t_primary to-cyan-400 text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
             >
-              <div className="relative w-full h-56 overflow-hidden">
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
+            <div
+              key={index}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 hover:border-transparent hover:shadow-2xl transition-all duration-500"
+            >
+              {/* Gradient Border on Hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl`} />
+              
+              {/* Image Container */}
+              <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  quality={90}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 hover:scale-110 rounded-t-2xl"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-              </div>
-              <div className="p-6 text-left">
-                <h3 className="text-xl font-bold text-t_dark mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-slate-600 text-sm mb-3">{project.desc}</p>
-                <span className="text-xs bg-t_primary/10 text-t_primary px-3 py-1 rounded-full font-medium">
+                
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Visit Button */}
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:scale-110"
+                >
+                  <ExternalLink className="w-5 h-5 text-t_dark" />
+                </Link>
+
+                {/* Category Badge */}
+                <div className={`absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-to-r ${project.gradient} text-white text-xs font-medium shadow-lg`}>
                   {project.category}
-                </span>
-                <div className="mt-4">
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-t_primary text-sm font-semibold hover:underline"
-                  >
-                    Ver proyecto →
-                  </Link>
                 </div>
               </div>
-            </motion.div>
+
+              {/* Content */}
+              <div className="p-6 space-y-4">
+                <h3 className="text-xl font-bold text-t_dark group-hover:text-t_primary transition-colors">
+                  {project.title}
+                </h3>
+                
+                <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
+                  {project.desc}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Link */}
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-t_primary font-medium text-sm group-hover:gap-3 transition-all"
+                >
+                  Ver proyecto
+                  <ExternalLink className="w-4 h-4" />
+                </Link>
+              </div>
+
+              {/* Hover Line */}
+              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
+            </div>
           ))}
         </div>
-      </div>
 
-      {/* Luces decorativas */}
-      <motion.div
-        className="absolute top-10 left-0 w-[400px] h-[400px] bg-t_primary/10 rounded-full blur-3xl"
-        animate={{ y: [0, 30, 0], opacity: [0.4, 0.8, 0.4] }}
-        transition={{ duration: 10, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-t_accent/10 rounded-full blur-3xl"
-        animate={{ y: [0, -30, 0], opacity: [0.4, 0.8, 0.4] }}
-        transition={{ duration: 12, repeat: Infinity }}
-      />
+        {/* CTA */}
+        <div className="text-center mt-16">
+          <p className="text-gray-600 mb-6">¿Quieres ver tu proyecto aquí?</p>
+          <Link
+            href="#contacto"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-t_primary to-cyan-400 text-white font-semibold hover:scale-105 transition-transform shadow-lg hover:shadow-2xl"
+          >
+            Iniciar mi proyecto
+            <ExternalLink className="w-5 h-5" />
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,160 +1,202 @@
-'use client'
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
+'use client';
 
-const servicesData = {
-  web: {
-    title: 'Desarrollo Web Moderno',
-    desc: 'Diseñamos y desarrollamos sitios potentes en WordPress, Elementor o React. Desde landing pages rápidas hasta tiendas online personalizadas con WooCommerce o integraciones a medida.',
+import { useState } from 'react';
+import Image from 'next/image';
+import { Code, Bot, Shield, Search, Briefcase, Sparkles, Check } from 'lucide-react';
+
+const services = [
+  {
+    id: 'web',
+    title: 'Desarrollo Web',
+    subtitle: 'Sitios modernos y escalables',
+    description: 'Diseñamos y desarrollamos sitios web de alto rendimiento con WordPress, React o Next.js. Desde landing pages hasta e-commerce completos.',
     features: [
       'Diseño responsivo e interactivo',
-      'E-commerce, catálogos o webs corporativas',
-      'Hosting, dominio y correos empresariales',
-      'Integraciones con CRM, APIs y analítica',
+      'E-commerce con WooCommerce',
+      'Hosting, dominio y correos',
+      'Integraciones con CRM y APIs',
     ],
-    img: '/images/service-web.png',
+    icon: Code,
+    color: 'from-cyan-500 to-blue-500',
+    image: '/images/service-web.png',
   },
-  ai: {
-    title: 'Automatización & Inteligencia Artificial',
-    desc: 'Llevamos tu negocio al siguiente nivel implementando flujos inteligentes: desde bots de atención hasta integraciones entre tus herramientas con IA y automatización.',
+  {
+    id: 'ai',
+    title: 'IA & Automatización',
+    subtitle: 'Inteligencia que trabaja por ti',
+    description: 'Implementamos flujos inteligentes con IA, chatbots personalizados y automatizaciones que optimizan tu operación.',
     features: [
-      'Chatbots personalizados (WhatsApp, Web)',
+      'Chatbots con IA (WhatsApp, Web)',
       'Captura automática de leads',
-      'Conexión con CRMs (HubSpot, Zoho, Odoo)',
-      'Integraciones con APIs e IA generativa',
+      'Integración con CRMs',
+      'APIs e IA generativa',
     ],
-    img: '/images/service-ai.png',
+    icon: Bot,
+    color: 'from-purple-500 to-pink-500',
+    image: '/images/service-ai.png',
   },
-  maintenance: {
-    title: 'Mantenimiento y Soporte Web',
-    desc: 'Nos encargamos de la seguridad, velocidad y estabilidad de tu sitio. Mantén tu web actualizada, segura y lista para crecer sin interrupciones.',
+  {
+    id: 'maintenance',
+    title: 'Mantenimiento Web',
+    subtitle: 'Tu sitio siempre actualizado',
+    description: 'Nos encargamos de la seguridad, velocidad y estabilidad de tu sitio web para que puedas enfocarte en tu negocio.',
     features: [
-      'Monitoreo y actualizaciones constantes',
-      'Optimización de carga y seguridad SSL',
-      'Backups automáticos y soporte técnico',
-      'Planes mensuales flexibles',
+      'Monitoreo 24/7',
+      'Actualizaciones de seguridad',
+      'Backups automáticos',
+      'Optimización continua',
     ],
-    img: '/images/service-maintenance.png',
+    icon: Shield,
+    color: 'from-emerald-500 to-teal-500',
+    image: '/images/service-maintenance.png',
   },
-  seo: {
-    title: 'SEO Técnico y Posicionamiento GEO',
-    desc: 'Aumenta tu visibilidad local y global con estrategias SEO, contenido optimizado, y estructura técnica perfecta para Google y redes sociales.',
+  {
+    id: 'seo',
+    title: 'SEO & Posicionamiento',
+    subtitle: 'Visibilidad que convierte',
+    description: 'Estrategias SEO técnico y local para posicionar tu marca en Google y aumentar tu tráfico orgánico.',
     features: [
-      'Optimización on-page y metadatos OG',
-      'Implementación de Tag Manager y GA4',
-      'SEO Local (Google My Business / Schema)',
-      'Velocidad, Core Web Vitals y rendimiento',
+      'SEO técnico y on-page',
+      'Google Tag Manager y GA4',
+      'SEO Local (GMB)',
+      'Core Web Vitals',
     ],
-    img: '/images/service-seo.png',
+    icon: Search,
+    color: 'from-orange-500 to-red-500',
+    image: '/images/service-seo.png',
   },
-  outsourcing: {
-    title: 'Servicios para Agencias',
-    desc: 'Desarrollamos para agencias que necesitan apoyo técnico o proyectos puntuales. Ofrecemos subcontratación profesional bajo tu marca.',
+  {
+    id: 'outsourcing',
+    title: 'Para Agencias',
+    subtitle: 'Tu aliado técnico',
+    description: 'Desarrollo white-label para agencias que necesitan soporte técnico o proyectos puntuales bajo su marca.',
     features: [
-      'Proyectos white label (bajo tu marca)',
-      'Soporte remoto y puntual según demanda',
-      'Confidencialidad y calidad profesional',
-      'Escalabilidad según tus clientes',
+      'Proyectos white label',
+      'Soporte técnico remoto',
+      'Confidencialidad garantizada',
+      'Escalabilidad flexible',
     ],
-    img: '/images/service-outsourcing.png',
+    icon: Briefcase,
+    color: 'from-indigo-500 to-violet-500',
+    image: '/images/service-outsourcing.png',
   },
-}
+];
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState<'web' | 'ai' | 'maintenance' | 'seo' | 'outsourcing'>('web')
+  const [activeService, setActiveService] = useState(services[0]);
 
   return (
-    <section id="servicios" className="relative py-24 overflow-hidden bg-gradient-to-b from-t_bg via-white to-t_bg">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-12 text-t_dark"
-        >
-          Nuestros Servicios
-        </motion.h2>
+    <section id="servicios" className="relative py-32 bg-gradient-to-b from-black via-slate-900 to-black overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-t_primary/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {Object.keys(servicesData).map((key) => (
-            <button
-              key={key}
-              onClick={() => setActiveTab(key as any)}
-              className={`px-4 py-2 rounded-xl border text-sm md:text-base transition-all ${
-                activeTab === key
-                  ? 'bg-t_primary text-white shadow-md'
-                  : 'border-gray-300 text-gray-600 hover:bg-t_bg'
-              }`}
-            >
-              {servicesData[key as keyof typeof servicesData].title.split(' ')[0]}
-            </button>
-          ))}
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-t_primary/10 border border-t_primary/20 mb-6">
+            <Sparkles className="w-4 h-4 text-t_primary" />
+            <span className="text-sm text-t_primary font-medium">Nuestros Servicios</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+              Soluciones digitales
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-t_primary to-t_accent bg-clip-text text-transparent">
+              a tu medida
+            </span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Transformamos ideas en experiencias digitales que generan resultados reales
+          </p>
         </div>
 
-        {/* Contenido dinámico */}
-        <div className="relative mt-8 flex flex-col md:flex-row items-center gap-10">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-col md:flex-row items-center gap-10 w-full"
-            >
-              {/* Imagen ilustrativa */}
-              <div className="w-full md:w-1/2">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
-                  <Image
-                    src={servicesData[activeTab].img}
-                    alt={servicesData[activeTab].title}
-                    width={600}
-                    height={400}
-                    className="object-cover w-full h-full"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        {/* Service Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
+              <button
+                key={service.id}
+                onClick={() => setActiveService(service)}
+                className={`group relative px-6 py-3 rounded-xl transition-all duration-300 ${
+                  activeService.id === service.id
+                    ? 'bg-gradient-to-r ' + service.color + ' text-white shadow-lg scale-105'
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <Icon className="w-5 h-5" />
+                  <span className="font-medium">{service.title}</span>
                 </div>
-              </div>
+              </button>
+            );
+          })}
+        </div>
 
-              {/* Texto y características */}
-              <div className="w-full md:w-1/2">
-                <motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-3xl font-bold mb-3 text-t_primary"
-                >
-                  {servicesData[activeTab].title}
-                </motion.h3>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="text-slate-700 mb-4"
-                >
-                  {servicesData[activeTab].desc}
-                </motion.p>
+        {/* Active Service Content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Image */}
+          <div className="relative order-2 lg:order-1">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <div className={`absolute inset-0 bg-gradient-to-br ${activeService.color} opacity-20`} />
+              <Image
+                src={activeService.image}
+                alt={activeService.title}
+                width={600}
+                height={400}
+                className="w-full h-auto"
+                priority
+              />
+            </div>
+          </div>
 
-                <ul className="space-y-2 text-sm text-slate-600">
-                  {servicesData[activeTab].features.map((f) => (
-                    <motion.li
-                      key={f}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="flex items-start gap-2"
-                    >
-                      <span className="text-t_accent text-lg">▹</span> {f}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          {/* Content */}
+          <div className="space-y-6 order-1 lg:order-2">
+            <div className={`inline-block p-4 rounded-2xl bg-gradient-to-br ${activeService.color}`}>
+              {(() => {
+                const Icon = activeService.icon;
+                return <Icon className="w-8 h-8 text-white" />;
+              })()}
+            </div>
+
+            <div>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                {activeService.title}
+              </h3>
+              <p className="text-t_primary text-lg font-medium mb-4">
+                {activeService.subtitle}
+              </p>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                {activeService.description}
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {activeService.features.map((feature, i) => (
+                <div key={i} className="flex items-start gap-3 group">
+                  <div className={`flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br ${activeService.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <Check className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="text-gray-300 group-hover:text-white transition-colors">
+                    {feature}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <button className={`group px-8 py-4 rounded-full bg-gradient-to-r ${activeService.color} text-white font-semibold hover:scale-105 transition-all shadow-lg hover:shadow-2xl`}>
+              <span className="flex items-center gap-2">
+                Más información
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

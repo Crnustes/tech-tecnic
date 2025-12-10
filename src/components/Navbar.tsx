@@ -2,35 +2,51 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { servicios } from "@/config/servicios";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [megamenuOpen, setMegamenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setOpen(true);
+    setMegamenuOpen(true);
   };
 
   const handleLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 200);
+    timeoutRef.current = setTimeout(() => setMegamenuOpen(false), 300);
   };
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg border-b border-white/10 bg-t_dark/40">
-        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-white/10 bg-t_dark/80">
+        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
 
           {/* LOGO */}
-          <Link href="/" className="text-xl font-bold text-t_primary">
-            Tech<span className="text-white">Tecnic</span>
+          <Link href="/" className="relative z-10 flex items-center group">
+            <div className="relative w-40 h-12 transition-transform group-hover:scale-105">
+              <Image
+                src="/logo.png" // Coloca tu logo en /public/logo.png
+                alt="Tech Tecnic Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </Link>
 
           {/* DESKTOP NAV */}
-          <div className="hidden md:flex items-center gap-10">
-            <Link href="/" className="hover:text-t_accent transition">Inicio</Link>
+          <div className="hidden lg:flex items-center gap-8">
+            <Link 
+              href="/" 
+              className="text-sm font-medium hover:text-t_accent transition-colors relative group"
+            >
+              Inicio
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-t_accent transition-all group-hover:w-full"></span>
+            </Link>
 
             {/* MEGAMENU TRIGGER */}
             <div
@@ -38,48 +54,144 @@ export default function Navbar() {
               onMouseEnter={handleEnter}
               onMouseLeave={handleLeave}
             >
-              <button className="flex items-center gap-1 hover:text-t_accent transition">
-                Servicios <ChevronDown size={16} />
+              <button className="flex items-center gap-1 text-sm font-medium hover:text-t_accent transition-colors group">
+                Servicios 
+                <ChevronDown 
+                  size={16} 
+                  className={`transition-transform ${megamenuOpen ? 'rotate-180' : ''}`}
+                />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-t_accent transition-all group-hover:w-full"></span>
               </button>
 
-              {/* MEGAMENU */}
-              {open && (
-                <div
-                  className="absolute left-1/2 -translate-x-1/2 mt-4 w-[760px] rounded-2xl shadow-2xl border border-white/10 bg-t_dark/90 backdrop-blur-2xl p-8 grid grid-cols-3 gap-8 animate-fadeIn"
-                >
-                  {servicios.map((item, i) => (
-                    <Link
-                      key={i}
-                      href={item.href}
-                      className="group block"
-                      onMouseEnter={() => handleEnter()}
-                    >
-                      <h4 className="font-semibold text-white text-lg group-hover:text-t_primary transition">
-                        {item.name}
-                      </h4>
-                      <p className="text-sm text-gray-300 leading-snug group-hover:text-white transition">
-                        {item.description}
-                      </p>
-                    </Link>
-                  ))}
+              {/* MEGAMENU DROPDOWN */}
+              {megamenuOpen && (
+                <div className="absolute left-1/2 -translate-x-1/2 mt-6 w-[900px]">
+                  {/* Triangle pointer */}
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-br from-t_primary/20 to-t_accent/10 rotate-45 border-l border-t border-white/10"></div>
+                  
+                  <div className="relative rounded-2xl shadow-2xl border border-white/10 bg-gradient-to-br from-t_dark/95 via-t_dark/90 to-black/95 backdrop-blur-2xl overflow-hidden">
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-t_primary/5 via-transparent to-t_accent/5 pointer-events-none"></div>
+                    
+                    <div className="relative p-8">
+                      <div className="grid grid-cols-3 gap-6">
+                        {servicios.map((item, i) => (
+                          <Link
+                            key={i}
+                            href={item.href}
+                            className="group relative p-6 rounded-xl hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/10"
+                            onClick={() => setMegamenuOpen(false)}
+                          >
+                            {/* Icon container with gradient background */}
+                            <div className="mb-4 w-12 h-12 rounded-lg bg-gradient-to-br from-t_primary/20 to-t_accent/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                              {item.icon && <item.icon className="w-6 h-6 text-t_primary" />}
+                            </div>
+                            
+                            <h4 className="font-semibold text-white text-base mb-2 group-hover:text-t_primary transition-colors">
+                              {item.name}
+                            </h4>
+                            <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                              {item.description}
+                            </p>
+
+                            {/* Hover effect line */}
+                            <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-t_primary to-t_accent group-hover:w-full transition-all duration-300"></div>
+                          </Link>
+                        ))}
+                      </div>
+
+                      {/* CTA section at bottom */}
+                      <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+                        <p className="text-sm text-gray-400">
+                          ¿No encuentras lo que buscas?
+                        </p>
+                        <Link 
+                          href="/contacto"
+                          className="px-6 py-2 rounded-full bg-gradient-to-r from-t_primary to-t_accent text-white text-sm font-medium hover:shadow-lg hover:shadow-t_primary/50 transition-all"
+                          onClick={() => setMegamenuOpen(false)}
+                        >
+                          Contáctanos
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
 
-            <Link href="/proyectos" className="hover:text-t_accent transition">
+            <Link 
+              href="/proyectos" 
+              className="text-sm font-medium hover:text-t_accent transition-colors relative group"
+            >
               Proyectos
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-t_accent transition-all group-hover:w-full"></span>
             </Link>
-            <Link href="/contacto" className="hover:text-t_accent transition">
+            <Link 
+              href="/contacto" 
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-t_primary to-t_accent text-white text-sm font-medium hover:shadow-lg hover:shadow-t_primary/50 transition-all hover:scale-105"
+            >
               Contacto
             </Link>
           </div>
 
-          {/* MOBILE */}
-          <button className="md:hidden text-white" onClick={() => setMobile(true)}>
-            Menu
+          {/* MOBILE MENU BUTTON */}
+          <button 
+            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors" 
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
+
+        {/* MOBILE MENU */}
+        {mobileOpen && (
+          <div className="lg:hidden absolute top-20 left-0 w-full bg-t_dark/98 backdrop-blur-xl border-b border-white/10 shadow-xl">
+            <div className="max-w-7xl mx-auto px-6 py-6 space-y-4">
+              <Link 
+                href="/" 
+                className="block py-2 hover:text-t_accent transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Inicio
+              </Link>
+              
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-t_accent mb-3">Servicios</p>
+                {servicios.map((item, i) => (
+                  <Link
+                    key={i}
+                    href={item.href}
+                    className="block py-2 pl-4 hover:text-t_accent hover:pl-6 transition-all"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+
+              <Link 
+                href="/proyectos" 
+                className="block py-2 hover:text-t_accent transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Proyectos
+              </Link>
+              
+              <Link 
+                href="/contacto" 
+                className="block w-full text-center py-3 mt-4 rounded-full bg-gradient-to-r from-t_primary to-t_accent text-white font-medium"
+                onClick={() => setMobileOpen(false)}
+              >
+                Contacto
+              </Link>
+            </div>
+          </div>
+        )}
       </header>
+
+      {/* Spacer to prevent content from going under fixed navbar */}
+      <div className="h-20"></div>
     </>
   );
 }

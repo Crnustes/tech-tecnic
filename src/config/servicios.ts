@@ -1,38 +1,48 @@
-export const servicios = [
+import { Code, Search, Bot, Blocks, Smartphone, Sparkles } from "lucide-react";
+import { LucideIcon } from "lucide-react";
+
+export interface Servicio {
+  name: string;
+  description: string;
+  href: string;
+  icon?: LucideIcon;
+}
+
+export const servicios: Servicio[] = [
   {
-    name: "Desarrollo Web Profesional",
-    description:
-      "Sitios web modernos, rápidos y optimizados para conversión.",
+    name: "Desarrollo Web",
+    description: "Sitios web modernos, rápidos y optimizados con las últimas tecnologías.",
     href: "/servicios/desarrollo-web",
+    icon: Code,
   },
   {
-    name: "Optimización SEO + GEO",
-    description:
-      "Aumenta tu posicionamiento con estrategias locales y globales.",
+    name: "SEO + GEO",
+    description: "Posicionamiento local y orgánico para aumentar tu visibilidad online.",
     href: "/servicios/seo-geo",
+    icon: Search,
   },
   {
-    name: "Automatización e Inteligencia Artificial",
-    description:
-      "Automatizaciones y flujos con IA para empresas.",
+    name: "IA y Automatización",
+    description: "Soluciones inteligentes que automatizan procesos y mejoran eficiencia.",
     href: "/servicios/automatizacion-ia",
+    icon: Bot,
   },
   {
-    name: "Integraciones y APIs",
-    description:
-      "Conectamos tu negocio con CRM, ERP, y plataformas externas.",
-    href: "/servicios/integraciones-apis",
+    name: "Integraciones",
+    description: "Conectamos tus herramientas para un flujo de trabajo sin fricciones.",
+    href: "/servicios/integraciones",
+    icon: Blocks,
   },
   {
-    name: "Marketing y Analítica de Datos",
-    description:
-      "Estrategias basadas en datos y reporting inteligente.",
-    href: "/servicios/marketing-analitica",
+    name: "Apps Móviles",
+    description: "Aplicaciones nativas y multiplataforma para iOS y Android.",
+    href: "/servicios/apps-moviles",
+    icon: Smartphone,
   },
   {
-    name: "Mantenimiento y Escalabilidad",
-    description:
-      "Soporte técnico, seguridad y optimización constante.",
-    href: "/servicios/mantenimiento",
+    name: "Diseño UX/UI",
+    description: "Experiencias digitales intuitivas y visualmente impactantes.",
+    href: "/servicios/diseno",
+    icon: Sparkles,
   },
 ];

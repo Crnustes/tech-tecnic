@@ -1,90 +1,162 @@
-'use client'
-import { motion } from 'framer-motion'
-import { CheckCircle, Laptop, PenTool, Rocket, Users } from 'lucide-react'
+'use client';
+
+import { MessageSquare, Palette, Code2, TestTube, Rocket, Sparkles } from 'lucide-react';
 
 const steps = [
   {
-    icon: <Users className="w-8 h-8 text-t_primary" />,
-    title: '1. Descubrimiento y Estrategia',
-    description:
-      'Nos reunimos contigo para entender tus metas, público objetivo y el propósito de tu proyecto. Creamos un plan claro basado en resultados reales.',
+    number: '01',
+    icon: MessageSquare,
+    title: 'Descubrimiento',
+    subtitle: 'Entendemos tu visión',
+    description: 'Nos reunimos para conocer tus objetivos, público objetivo y expectativas. Analizamos tu competencia y definimos una estrategia clara.',
+    duration: '1-2 días',
+    color: 'from-blue-500 to-cyan-500',
   },
   {
-    icon: <PenTool className="w-8 h-8 text-t_accent" />,
-    title: '2. Diseño y Experiencia',
-    description:
-      'Diseñamos la experiencia visual y funcional que representará tu marca. Usamos interfaces modernas, limpias y centradas en conversión.',
+    number: '02',
+    icon: Palette,
+    title: 'Diseño',
+    subtitle: 'Creamos la experiencia',
+    description: 'Diseñamos interfaces modernas y funcionales. Priorizamos la usabilidad, conversión y experiencia de usuario.',
+    duration: '3-5 días',
+    color: 'from-purple-500 to-pink-500',
   },
   {
-    icon: <Laptop className="w-8 h-8 text-t_primary" />,
-    title: '3. Desarrollo y Optimización',
-    description:
-      'Construimos tu web con tecnología de alto rendimiento (WordPress, React o Next.js), optimizada para SEO, velocidad y escalabilidad.',
+    number: '03',
+    icon: Code2,
+    title: 'Desarrollo',
+    subtitle: 'Construimos con calidad',
+    description: 'Desarrollamos tu proyecto con tecnología de punta, código limpio y optimizado para rendimiento y SEO.',
+    duration: '1-3 semanas',
+    color: 'from-emerald-500 to-teal-500',
   },
   {
-    icon: <CheckCircle className="w-8 h-8 text-t_accent" />,
-    title: '4. Pruebas y Ajustes',
-    description:
-      'Probamos en todos los dispositivos y navegadores. Ajustamos detalles para lograr una experiencia fluida, rápida y segura.',
+    number: '04',
+    icon: TestTube,
+    title: 'Pruebas',
+    subtitle: 'Garantizamos calidad',
+    description: 'Testeamos en múltiples dispositivos y navegadores. Corregimos detalles y optimizamos cada aspecto.',
+    duration: '2-3 días',
+    color: 'from-orange-500 to-red-500',
   },
   {
-    icon: <Rocket className="w-8 h-8 text-t_primary" />,
-    title: '5. Lanzamiento y Crecimiento',
-    description:
-      'Lanzamos tu sitio al mundo y te acompañamos en la etapa de mantenimiento, análisis y mejoras constantes para seguir creciendo.',
+    number: '05',
+    icon: Rocket,
+    title: 'Lanzamiento',
+    subtitle: 'Tu proyecto en vivo',
+    description: 'Lanzamos tu sitio al mundo y te acompañamos con capacitación, soporte y mejoras continuas.',
+    duration: '1 día',
+    color: 'from-t_primary to-cyan-400',
   },
-]
+];
 
 export default function Process() {
   return (
-    <section id="proceso" className="bg-white py-24 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center text-t_dark mb-12"
-        >
-          Cómo trabajamos
-        </motion.h2>
+    <section id="proceso" className="relative py-32 bg-white overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-100 via-white to-white" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-        <div className="relative border-l-2 border-t_primary/20 pl-8 md:pl-16">
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative mb-14"
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-t_primary/10 to-t_accent/10 border border-t_primary/20 mb-6">
+            <Sparkles className="w-4 h-4 text-t_primary" />
+            <span className="text-sm text-t_primary font-medium">Nuestro Proceso</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <span className="text-t_dark">Cómo </span>
+            <span className="bg-gradient-to-r from-t_primary to-t_accent bg-clip-text text-transparent">
+              trabajamos
+            </span>
+          </h2>
+          
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Un proceso probado que garantiza resultados excepcionales en cada proyecto
+          </p>
+        </div>
+
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical Line - Desktop */}
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-t_primary via-t_accent to-t_primary transform -translate-x-1/2" />
+
+          {/* Steps */}
+          <div className="space-y-24">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              const isEven = index % 2 === 0;
+
+              return (
+                <div
+                  key={index}
+                  className={`relative flex flex-col lg:flex-row items-center gap-8 ${
+                    isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                  }`}
+                >
+                  {/* Content */}
+                  <div className={`flex-1 ${isEven ? 'lg:text-right' : 'lg:text-left'}`}>
+                    <div className="inline-block">
+                      {/* Number Badge */}
+                      <div className={`inline-flex items-center gap-3 mb-4 ${isEven ? 'lg:flex-row-reverse' : ''}`}>
+                        <span className={`text-6xl font-bold bg-gradient-to-br ${step.color} bg-clip-text text-transparent opacity-50`}>
+                          {step.number}
+                        </span>
+                        <div className={`px-3 py-1 rounded-full bg-gradient-to-r ${step.color} text-white text-xs font-semibold`}>
+                          {step.duration}
+                        </div>
+                      </div>
+
+                      <h3 className="text-3xl font-bold text-t_dark mb-2">
+                        {step.title}
+                      </h3>
+                      <p className={`text-lg font-medium bg-gradient-to-r ${step.color} bg-clip-text text-transparent mb-4`}>
+                        {step.subtitle}
+                      </p>
+                      <p className="text-gray-600 leading-relaxed max-w-md inline-block">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Center Icon */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="relative group">
+                      {/* Glow Effect */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${step.color} rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity`} />
+                      
+                      {/* Icon Container */}
+                      <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-2xl`}>
+                        <Icon className="w-10 h-10 text-white" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Spacer for alignment */}
+                  <div className="flex-1 hidden lg:block" />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-24 text-center">
+          <div className="inline-block p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 shadow-xl">
+            <p className="text-gray-600 mb-4 text-lg">
+              ¿Listo para comenzar tu proyecto?
+            </p>
+            <a
+              href="#contacto"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-t_primary to-cyan-400 text-white font-semibold hover:scale-105 transition-transform shadow-lg hover:shadow-2xl"
             >
-              {/* Punto con ícono */}
-              <div className="absolute -left-10 md:-left-16 bg-white rounded-full shadow-md p-3 border border-t_primary/20">
-                {step.icon}
-              </div>
-
-              {/* Contenido */}
-              <div className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-2xl p-6 hover:shadow-lg transition">
-                <h3 className="text-xl font-semibold text-t_dark mb-2">{step.title}</h3>
-                <p className="text-slate-600 text-sm md:text-base">{step.description}</p>
-              </div>
-            </motion.div>
-          ))}
+              Iniciar ahora
+              <Rocket className="w-5 h-5" />
+            </a>
+          </div>
         </div>
       </div>
-
-      {/* Fondo decorativo */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <motion.div
-          className="absolute top-20 -right-40 w-[400px] h-[400px] bg-t_primary/10 rounded-full blur-3xl"
-          animate={{ y: [0, 30, 0], opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 10, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-20 -left-40 w-[300px] h-[300px] bg-t_accent/10 rounded-full blur-3xl"
-          animate={{ y: [0, -20, 0], opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-      </div>
     </section>
-  )
+  );
 }

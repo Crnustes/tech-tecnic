@@ -1,173 +1,210 @@
-'use client'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import {
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Linkedin,
-  Instagram,
-  Facebook,
-  MessageCircle,
-} from 'lucide-react'
-import Link from 'next/link'
+'use client';
+
+import { useState } from 'react';
+import { Send, Mail, Phone, MapPin, CheckCircle2, Loader2 } from 'lucide-react';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [loading, setLoading] = useState(false)
-  const [sent, setSent] = useState(false)
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
-      // Envío al correo (API Resend)
+      // Envío al correo (API)
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
-      })
+      });
 
-      // Envío automático a WhatsApp con mensaje personalizado
+      // WhatsApp automático
       const whatsappMessage = encodeURIComponent(
-        `👋 ¡Hola Cristian! Soy ${form.name} y estoy interesado en crear mi proyecto con Tech Tecnic.%0A%0A📧 Correo: ${form.email}%0A💬 Mensaje: ${form.message}%0A%0AEnvío desde la web oficial 🌐 techtecnic.com`
-      )
-      const whatsappURL = `https://wa.me/573026742059?text=${whatsappMessage}`
-      window.open(whatsappURL, '_blank')
+        `👋 ¡Hola! Soy ${form.name}\n\n📧 Email: ${form.email}\n💬 Mensaje: ${form.message}\n\nEnviado desde techtecnic.com`
+      );
+      window.open(`https://wa.me/573026742059?text=${whatsappMessage}`, '_blank');
 
-      setSent(true)
-      setForm({ name: '', email: '', message: '' })
+      setSent(true);
+      setForm({ name: '', email: '', message: '' });
+      
+      setTimeout(() => setSent(false), 5000);
     } catch (error) {
-      console.error('Error al enviar mensaje:', error)
+      console.error('Error:', error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <section
-      id="contacto"
-      className="relative py-28 bg-gradient-to-br from-t_primary via-t_accent/60 to-t_primary text-white overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+    <section id="contacto" className="relative py-32 bg-gradient-to-b from-black via-slate-900 to-black overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-t_primary/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-      <div className="relative max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
-        {/* BLOQUE IZQUIERDO: TEXTO CTA */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
-          <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            ¿Listo para impulsar tu proyecto con{' '}
-            <span className="text-t_accent">Tech Tecnic</span>?
-          </h2>
-          <p className="text-white/80 text-lg">
-            Cuéntanos tu idea, negocio o proyecto. Diseñamos soluciones digitales modernas que
-            generan resultados reales. 🚀 <br /> Respondemos en menos de 24 horas.
-          </p>
-
-          <div className="flex flex-col gap-3 mt-8">
-            <div className="flex items-center gap-3 text-white/90">
-              <Mail className="w-5 h-5 text-t_accent" />
-              <span>contacto@techtecnic.com</span>
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Side - Info */}
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  ¿Listo para
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-t_primary to-t_accent bg-clip-text text-transparent">
+                  impulsar tu proyecto?
+                </span>
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                Cuéntanos tu idea y transformémosla en una experiencia digital que genera resultados reales.
+                Respondemos en menos de 24 horas.
+              </p>
             </div>
-            <div className="flex items-center gap-3 text-white/90">
-              <Phone className="w-5 h-5 text-t_accent" />
-              <span>+57 302 674 2059</span>
+
+            {/* Contact Info Cards */}
+            <div className="space-y-4">
+              <a 
+                href="mailto:contacto@techtecnic.com"
+                className="group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-t_primary/50 transition-all"
+              >
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-t_primary to-cyan-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Email</p>
+                  <p className="text-white font-medium">contacto@techtecnic.com</p>
+                </div>
+              </a>
+
+              <a 
+                href="tel:+573026742059"
+                className="group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-t_primary/50 transition-all"
+              >
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Teléfono</p>
+                  <p className="text-white font-medium">+57 302 674 2059</p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Ubicación</p>
+                  <p className="text-white font-medium">Bogotá, Colombia 🌎</p>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-3 text-white/90">
-              <MapPin className="w-5 h-5 text-t_accent" />
-              <span>Bogotá, Colombia – Atención global 🌎</span>
+
+            {/* Trust Badges */}
+            <div className="grid grid-cols-3 gap-4 pt-8">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">24h</div>
+                <div className="text-xs text-gray-400">Tiempo de respuesta</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">50+</div>
+                <div className="text-xs text-gray-400">Proyectos exitosos</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">5★</div>
+                <div className="text-xs text-gray-400">Calificación</div>
+              </div>
             </div>
           </div>
 
-          {/* REDES SOCIALES */}
-          <div className="flex gap-5 mt-8">
-            <Link href="#" className="hover:text-t_accent transition">
-              <Linkedin className="w-6 h-6" />
-            </Link>
-            <Link href="#" className="hover:text-t_accent transition">
-              <Instagram className="w-6 h-6" />
-            </Link>
-            <Link href="#" className="hover:text-t_accent transition">
-              <Facebook className="w-6 h-6" />
-            </Link>
+          {/* Right Side - Form */}
+          <div className="relative">
+            {/* Gradient Glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-t_primary to-t_accent rounded-2xl blur-xl opacity-20" />
+            
+            <form 
+              onSubmit={handleSubmit}
+              className="relative bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-2xl p-8 space-y-6"
+            >
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Nombre completo
+                </label>
+                <input
+                  type="text"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  placeholder="Tu nombre"
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-t_primary transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Correo electrónico
+                </label>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  placeholder="tu@email.com"
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-t_primary transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">
+                  Mensaje
+                </label>
+                <textarea
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  placeholder="Cuéntanos sobre tu proyecto..."
+                  rows={5}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-t_primary transition-colors resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="group relative w-full px-8 py-4 rounded-xl bg-gradient-to-r from-t_primary to-cyan-400 text-white font-semibold overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-t_primary/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : sent ? (
+                    <>
+                      <CheckCircle2 className="w-5 h-5" />
+                      ¡Mensaje enviado!
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      Enviar mensaje
+                    </>
+                  )}
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-t_accent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+
+              {sent && (
+                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm text-center">
+                  ✅ Tu mensaje fue enviado correctamente. Te responderemos pronto.
+                </div>
+              )}
+            </form>
           </div>
-        </motion.div>
-
-        {/* BLOQUE DERECHO: FORMULARIO */}
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="bg-white/90 backdrop-blur-md rounded-3xl shadow-lg p-8 text-t_dark space-y-6"
-        >
-          <div>
-            <label className="block text-sm font-medium mb-2">Nombre completo</label>
-            <input
-              type="text"
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              placeholder="Tu nombre"
-              required
-              className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-t_accent"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium mb-2">Correo electrónico</label>
-            <input
-              type="email"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="tu@email.com"
-              required
-              className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-t_accent"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium mb-2">Mensaje</label>
-            <textarea
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              placeholder="Cuéntanos sobre tu proyecto..."
-              rows={5}
-              required
-              className="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-t_accent resize-none"
-            ></textarea>
-          </div>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            disabled={loading}
-            className="w-full flex justify-center items-center gap-2 bg-t_accent text-t_dark font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all"
-          >
-            {loading ? 'Enviando...' : <><Send className="w-5 h-5" /> Enviar mensaje</>}
-          </motion.button>
-
-          {sent && (
-            <p className="text-green-600 font-medium text-center">
-              ✅ Tu mensaje fue enviado correctamente.
-            </p>
-          )}
-        </motion.form>
+        </div>
       </div>
-
-      {/* BOTÓN FLOTANTE WHATSAPP */}
-      <Link
-        href="https://wa.me/573026742059?text=👋%20Hola%20Cristian,%20quiero%20hablar%20sobre%20mi%20proyecto%20digital%20con%20Tech%20Tecnic."
-        target="_blank"
-        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-all"
-      >
-        <MessageCircle className="w-7 h-7" />
-      </Link>
     </section>
-  )
+  );
 }
