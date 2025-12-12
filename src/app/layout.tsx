@@ -83,6 +83,7 @@ export default function RootLayout({
         className={`${inter.variable} font-sans bg-t_dark text-white antialiased`}
         suppressHydrationWarning
       >
+        
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

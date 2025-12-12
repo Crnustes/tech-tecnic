@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Send, Mail, Phone, MapPin, CheckCircle2, Loader2 } from 'lucide-react';
+import NoSSR from '@/components/NoSSR';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -123,49 +124,60 @@ export default function Contact() {
           <div className="relative">
             {/* Gradient Glow */}
             <div className="absolute -inset-1 bg-gradient-to-r from-t_primary to-t_accent rounded-2xl blur-xl opacity-20" />
-            
+             <NoSSR fallback={<div>Cargando formulario...</div>}>
             <form 
               onSubmit={handleSubmit}
               className="relative bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-2xl p-8 space-y-6"
             >
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="contact-name" className="block text-sm font-medium text-gray-300 mb-2">
                   Nombre completo
                 </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Tu nombre"
                   required
+                  autoComplete="name"
+                  suppressHydrationWarning
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-t_primary transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="contact-email" className="block text-sm font-medium text-gray-300 mb-2">
                   Correo electrónico
                 </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="tu@email.com"
                   required
+                  autoComplete="email"
+                  suppressHydrationWarning
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-t_primary transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="contact-message" className="block text-sm font-medium text-gray-300 mb-2">
                   Mensaje
                 </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder="Cuéntanos sobre tu proyecto..."
                   rows={5}
                   required
+                  suppressHydrationWarning
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-t_primary transition-colors resize-none"
                 />
               </div>
@@ -202,6 +214,7 @@ export default function Contact() {
                 </div>
               )}
             </form>
+            </NoSSR>
           </div>
         </div>
       </div>

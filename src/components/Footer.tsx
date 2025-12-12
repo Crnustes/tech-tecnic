@@ -1,8 +1,19 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aquí puedes agregar la lógica del newsletter
+    console.log('Newsletter email:', email);
+    setEmail('');
+  };
   const currentYear = new Date().getFullYear();
 
   const services = [
@@ -147,10 +158,17 @@ export default function Footer() {
             <p className="text-gray-400 mb-6">
               Recibe tips, noticias y recursos sobre desarrollo web e IA
             </p>
-            <form className="flex gap-3 max-w-md mx-auto">
+            <form className="flex gap-3 max-w-md mx-auto" onSubmit={handleNewsletterSubmit}>
               <input
                 type="email"
+                name="newsletter-email"
+                id="newsletter-email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="tu@email.com"
+                autoComplete="email"
+                required
+                suppressHydrationWarning
                 className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-t_primary transition-colors"
               />
               <button 
