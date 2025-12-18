@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Code, Search, Bot, Blocks, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { Code, Search, Bot, Blocks, Shield, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 import ContactCTA from '@/components/ContactCTA';
 
 export const metadata: Metadata = {
@@ -82,6 +82,20 @@ const services = [
     ],
     color: 'from-emerald-500 to-teal-500',
     price: 'Desde $600.000 COP',
+  },
+  {
+    icon: Shield,
+    title: 'Mantenimiento Web',
+    slug: 'mantenimiento',
+    description: 'Actualizaciones, seguridad, backups y soporte técnico para tu sitio.',
+    features: [
+      'Actualizaciones constantes',
+      'Seguridad y protección',
+      'Backups automáticos diarios',
+      'Soporte técnico incluido',
+    ],
+    color: 'from-green-500 to-emerald-500',
+    price: 'Desde $150.000 COP/mes',
   },
 ];
 
