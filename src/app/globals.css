@@ -18,6 +18,21 @@
     @apply bg-t_dark text-white antialiased;
   }
 
+  /* Optimizaciones de renderizado */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Will-change para animaciones */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 10px;

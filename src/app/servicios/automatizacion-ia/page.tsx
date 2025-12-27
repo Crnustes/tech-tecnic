@@ -20,22 +20,60 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 
 export const metadata: Metadata = {
-  title: 'Automatización con IA en Bogotá | Chatbots y Procesos | Tech Tecnic',
-  description: 'Automatización empresarial con Inteligencia Artificial en Bogotá. Chatbots inteligentes, flujos automatizados, integración con CRMs y más. Ahorra tiempo y costos.',
+  title: 'Automatización con IA Latinoamérica | Mejor Agencia Chatbots LATAM 2025',
+  description: 'Top #1 en automatización con IA en Latinoamérica. Chatbots inteligentes WhatsApp, automatización de procesos, RPA. Colombia, México, Argentina, Chile, Perú. +150 empresas automatizadas. ROI garantizado. Demo gratis 24h.',
   keywords: [
-    'automatización IA bogotá',
-    'chatbot inteligente colombia',
-    'automatización empresarial',
-    'inteligencia artificial bogotá',
-    'chatbot whatsapp',
-    'automatización procesos',
-    'ia para empresas',
-    'zapier make colombia'
+    // Principal LATAM
+    'automatizacion ia latinoamerica',
+    'mejor agencia ia latam',
+    'chatbot inteligente latinoamerica',
+    'automatizacion empresarial latam',
+    // Colombia
+    'chatbot whatsapp colombia',
+    'automatizacion procesos bogota',
+    'ia empresarial medellin',
+    'rpa colombia',
+    'automatizacion medellin',
+    // México
+    'chatbot mexico',
+    'automatizacion ia cdmx',
+    'chatbot whatsapp mexico',
+    'rpa monterrey',
+    'automatizacion guadalajara',
+    // Argentina
+    'chatbot argentina',
+    'automatizacion buenos aires',
+    'ia empresarial argentina',
+    'rpa argentina',
+    // Chile
+    'chatbot chile',
+    'automatizacion santiago',
+    'ia empresarial chile',
+    'rpa chile',
+    // Perú
+    'chatbot peru',
+    'automatizacion lima',
+    'ia empresarial peru',
+    // Servicios específicos
+    'chatbot con gpt latinoamerica',
+    'automatizacion whatsapp business',
+    'rpa robotica procesos',
+    'zapier make latinoamerica',
+    'integracion crm ia',
+    'asistente virtual ia',
+    // Long-tail para IA
+    'mejor agencia chatbots latinoamerica',
+    'como automatizar procesos con ia',
+    'chatbot inteligente para empresas',
+    'automatizacion con inteligencia artificial',
+    'reducir costos con automatizacion',
+    'ia para pymes latinoamerica'
   ],
   openGraph: {
-    title: 'Automatización con IA en Bogotá | Tech Tecnic',
-    description: 'Automatiza procesos, reduce costos y aumenta productividad con IA.',
+    title: 'Automatización con IA | Líder en Latinoamérica 2025',
+    description: '+150 empresas en LATAM automatizadas. Chatbots WhatsApp, RPA, automatización de procesos. Colombia, México, Argentina, Chile, Perú.',
     type: 'website',
+    locale: 'es_419',
   },
   alternates: {
     canonical: 'https://techtecnic.com/servicios/automatizacion-ia',

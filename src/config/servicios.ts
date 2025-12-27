@@ -11,38 +11,38 @@ export interface Servicio {
 export const servicios: Servicio[] = [
   {
     name: "Desarrollo Web",
-    description: "Sitios web modernos, rápidos y optimizados con las últimas tecnologías.",
+    description: "Sitios web modernos, rápidos y optimizados para Latinoamérica con tecnologías de vanguardia.",
     href: "/servicios/desarrollo-web",
     icon: Code,
   },
   {
-    name: "SEO + GEO",
-    description: "Posicionamiento local y orgánico para aumentar tu visibilidad online.",
+    name: "SEO + GEO LATAM",
+    description: "Posicionamiento local y orgánico en toda Latinoamérica para máxima visibilidad.",
     href: "/servicios/seo-geo",
     icon: Search,
   },
   {
     name: "IA y Automatización",
-    description: "Soluciones inteligentes que automatizan procesos y mejoran eficiencia.",
+    description: "Soluciones inteligentes con IA que automatizan procesos y mejoran eficiencia operativa.",
     href: "/servicios/automatizacion-ia",
     icon: Bot,
   },
   {
+    name: "Soluciones para Agencias",
+    description: "Herramientas especializadas para agencias digitales en LATAM: CRM, automatización y analytics.",
+    href: "/servicios/para-agencias",
+    icon: Sparkles,
+  },
+  {
     name: "Integraciones",
-    description: "Conectamos tus herramientas para un flujo de trabajo sin fricciones.",
+    description: "Conectamos tus herramientas y sistemas para un flujo de trabajo sin fricciones.",
     href: "/servicios/integraciones",
     icon: Blocks,
   },
   {
     name: "Apps Móviles",
-    description: "Aplicaciones nativas y multiplataforma para iOS y Android.",
+    description: "Aplicaciones móviles nativas y multiplataforma para iOS y Android.",
     href: "/servicios/apps-moviles",
     icon: Smartphone,
-  },
-  {
-    name: "Diseño UX/UI",
-    description: "Experiencias digitales intuitivas y visualmente impactantes.",
-    href: "/servicios/diseno",
-    icon: Sparkles,
   },
 ];

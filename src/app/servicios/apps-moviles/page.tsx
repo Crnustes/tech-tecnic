@@ -20,22 +20,57 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 
 export const metadata: Metadata = {
-  title: 'Desarrollo de Apps Móviles en Bogotá | iOS y Android | Tech Tecnic',
-  description: 'Desarrollo de aplicaciones móviles nativas y multiplataforma en Bogotá. Apps para iOS, Android y React Native. Desde apps empresariales hasta e-commerce móvil.',
+  title: 'Desarrollo Apps Móviles Latinoamérica | iOS, Android, React Native LATAM',
+  description: 'Top en desarrollo de apps móviles en Latinoamérica. Apps nativas iOS/Android, React Native, Flutter. Colombia, México, Argentina, Chile, Perú. +80 apps desarrolladas. Diseño UX premium. Cotización gratis 24h.',
   keywords: [
-    'desarrollo apps móviles bogotá',
+    // LATAM Principal
+    'desarrollo apps moviles latinoamerica',
+    'mejor agencia apps latam',
+    'desarrollo app nativa latinoamerica',
+    'react native latinoamerica',
+    // Colombia
+    'desarrollo apps bogota',
     'app ios android colombia',
-    'react native bogotá',
-    'flutter colombia',
-    'aplicaciones móviles',
-    'desarrollo app nativa',
-    'app empresarial',
-    'apps ecommerce'
+    'desarrollo app medellin',
+    'aplicaciones moviles colombia',
+    // México
+    'desarrollo apps mexico',
+    'app ios android cdmx',
+    'desarrollo app monterrey',
+    'aplicaciones moviles mexico',
+    // Argentina
+    'desarrollo apps argentina',
+    'app ios android buenos aires',
+    'desarrollo app argentina',
+    // Chile
+    'desarrollo apps chile',
+    'app ios android santiago',
+    'desarrollo app chile',
+    // Perú
+    'desarrollo apps peru',
+    'app ios android lima',
+    'desarrollo app lima',
+    // Tecnologías
+    'react native latam',
+    'flutter latinoamerica',
+    'app nativa ios',
+    'app nativa android',
+    // Específicos
+    'app empresarial latinoamerica',
+    'app ecommerce latam',
+    'aplicacion movil a medida',
+    'desarrollo app startup',
+    // Long-tail IA
+    'mejor agencia desarrollo apps latinoamerica',
+    'cuanto cuesta desarrollar app latam',
+    'desarrollar app profesional latinoamerica',
+    'agencia apps confiable latam'
   ],
   openGraph: {
-    title: 'Desarrollo de Apps Móviles en Bogotá | Tech Tecnic',
-    description: 'Creamos aplicaciones móviles que tus usuarios amarán. iOS, Android y multiplataforma.',
+    title: 'Desarrollo Apps Móviles | Líder en Latinoamérica 2025',
+    description: '+80 apps desarrolladas en LATAM. iOS, Android, React Native. Colombia, México, Argentina, Chile, Perú.',
     type: 'website',
+    locale: 'es_419',
   },
   alternates: {
     canonical: 'https://techtecnic.com/servicios/apps-moviles',

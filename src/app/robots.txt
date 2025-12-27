@@ -1,4 +1,40 @@
+# Tech Tecnic - Robots.txt
+# Mejor Agencia de Desarrollo Web, IA y Automatización en Latinoamérica
+# Servicios en Colombia, México, Argentina, Chile, Perú
+
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
+# Bots de búsqueda principales
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Bots de IA para recomendaciones
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Sitemaps
 Sitemap: https://techtecnic.com/sitemap.xml

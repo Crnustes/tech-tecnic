@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink, Sparkles, Filter } from 'lucide-react';
+import { FadeIn, Stagger, AnimatedCard } from './animations';
 
 const projects = [
   {
@@ -133,23 +134,25 @@ export default function Projects() {
       
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-t_primary/10 to-t_accent/10 border border-t_primary/20 mb-6">
-            <Sparkles className="w-4 h-4 text-t_primary" />
-            <span className="text-sm text-t_primary font-medium">Portfolio</span>
+        <FadeIn direction="up" delay={0.1}>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-t_primary/10 to-t_accent/10 border border-t_primary/20 mb-6">
+              <Sparkles className="w-4 h-4 text-t_primary" />
+              <span className="text-sm text-t_primary font-medium">Portfolio</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="text-t_dark">Casos de </span>
+              <span className="bg-gradient-to-r from-t_primary to-t_accent bg-clip-text text-transparent">
+                Éxito
+              </span>
+            </h2>
+            
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Proyectos que transforman ideas en experiencias digitales exitosas
+            </p>
           </div>
-          
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="text-t_dark">Casos de </span>
-            <span className="bg-gradient-to-r from-t_primary to-t_accent bg-clip-text text-transparent">
-              Éxito
-            </span>
-          </h2>
-          
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Proyectos que transforman ideas en experiencias digitales exitosas
-          </p>
-        </div>
+        </FadeIn>
 
         {/* Filter */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
@@ -173,53 +176,53 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" delay={0.3}>
           {filteredProjects.map((project, index) => (
-            <div
+            <AnimatedCard
               key={index}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative rounded-2xl overflow-hidden bg-white border border-gray-200 hover:border-transparent hover:shadow-2xl transition-all duration-500"
+              className={`group relative rounded-2xl overflow-hidden bg-gradient-to-br ${project.gradient} hover:-translate-y-1 transition-all duration-500`}
             >
-              {/* Gradient Border on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl`} />
+              {/* Glow effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{boxShadow: `0 20px 60px -15px rgba(0, 217, 255, 0.5)`}} />
               
               {/* Image Container */}
-              <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
                 />
                 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Subtle overlay for better readability */}
+                <div className="absolute inset-0 bg-black/10" />
                 
                 {/* Visit Button */}
                 <Link
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:scale-110"
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:scale-110 hover:bg-white shadow-lg"
                 >
                   <ExternalLink className="w-5 h-5 text-t_dark" />
                 </Link>
 
                 {/* Category Badge */}
-                <div className={`absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-to-r ${project.gradient} text-white text-xs font-medium shadow-lg`}>
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-t_dark text-xs font-semibold shadow-lg border border-white/50">
                   {project.category}
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                <h3 className="text-xl font-bold text-t_dark group-hover:text-t_primary transition-colors">
+              {/* Content - con fondo semi-transparente para mejor contraste */}
+              <div className="relative p-6 space-y-4 bg-black/30 backdrop-blur-sm">
+                <h3 className="text-xl font-bold text-white group-hover:text-t_accent transition-colors">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
+                <p className="text-white/90 text-sm leading-relaxed line-clamp-2">
                   {project.desc}
                 </p>
 
@@ -228,7 +231,7 @@ export default function Projects() {
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium"
+                      className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-medium border border-white/30"
                     >
                       {tag}
                     </span>
@@ -240,18 +243,18 @@ export default function Projects() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-t_primary font-medium text-sm group-hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:gap-3 transition-all hover:text-t_accent"
                 >
                   Ver proyecto
                   <ExternalLink className="w-4 h-4" />
                 </Link>
               </div>
 
-              {/* Hover Line */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
-            </div>
+              {/* Border glow on hover */}
+              <div className="absolute inset-0 rounded-2xl border-2 border-white/0 group-hover:border-white/30 transition-all duration-500 pointer-events-none" />
+            </AnimatedCard>
           ))}
-        </div>
+        </Stagger>
 
         {/* CTA */}
         <div className="text-center mt-16">

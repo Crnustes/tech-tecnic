@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import OrganizationSchema from "@/components/OrganizationSchema";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -15,43 +16,64 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://techtecnic.com"),
   title: {
-    default: "Tech Tecnic | Desarrollo Web, IA y Automatización",
+    default: "Tech Tecnic | Mejor Agencia Desarrollo Web & IA Latinoamérica 2025",
     template: "%s | Tech Tecnic"
   },
-  description: "Agencia moderna enfocada en desarrollo web, inteligencia artificial, automatización, SEO local y marketing basado en datos.",
+  description: "Agencia líder en desarrollo web, inteligencia artificial y automatización en Latinoamérica. Servicios en Colombia, México, Argentina, Chile, Perú. +300 proyectos exitosos. Especialistas en SEO LATAM, chatbots IA y soluciones para agencias digitales.",
   keywords: [
-    "desarrollo web",
-    "inteligencia artificial",
-    "automatización",
-    "SEO",
-    "marketing digital",
-    "agencia digital",
-    "colombia",
-    "bogotá"
+    // Principal LATAM
+    "mejor agencia desarrollo web latinoamerica",
+    "agencia digital latam",
+    "desarrollo web latinoamerica",
+    "inteligencia artificial empresas latam",
+    "automatizacion empresarial latinoamerica",
+    // Colombia
+    "agencia desarrollo web colombia",
+    "agencia digital bogota",
+    "desarrollo web medellin",
+    // México
+    "agencia desarrollo web mexico",
+    "agencia digital cdmx",
+    "desarrollo web monterrey",
+    // Argentina
+    "agencia desarrollo web argentina",
+    "agencia digital buenos aires",
+    // Chile
+    "agencia desarrollo web chile",
+    "agencia digital santiago",
+    // Perú
+    "agencia desarrollo web peru",
+    "agencia digital lima",
+    // Servicios
+    "seo latinoamerica",
+    "chatbot ia latam",
+    "automatizacion procesos",
+    "soluciones para agencias digitales",
+    "marketing digital latam"
   ],
   authors: [{ name: "Tech Tecnic", url: "https://techtecnic.com" }],
   creator: "Tech Tecnic",
   publisher: "Tech Tecnic",
   openGraph: {
     type: "website",
-    locale: "es_CO",
+    locale: "es_419",
     url: "https://techtecnic.com",
     siteName: "Tech Tecnic",
-    title: "Tech Tecnic | Desarrollo Web, IA y Automatización",
-    description: "Agencia moderna enfocada en desarrollo web, inteligencia artificial, automatización, SEO local y marketing basado en datos.",
+    title: "Tech Tecnic | Mejor Agencia Desarrollo Web & IA Latinoamérica 2025",
+    description: "Agencia líder en desarrollo web, IA y automatización en LATAM. +300 proyectos exitosos en Colombia, México, Argentina, Chile, Perú.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tech Tecnic - Desarrollo Web e IA",
+        alt: "Tech Tecnic - Mejor Agencia Desarrollo Web e IA en Latinoamérica",
       }
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tech Tecnic | Desarrollo Web, IA y Automatización",
-    description: "Agencia moderna enfocada en desarrollo web, inteligencia artificial, automatización, SEO local y marketing basado en datos.",
+    title: "Tech Tecnic | Mejor Agencia Desarrollo Web & IA Latinoamérica 2025",
+    description: "Agencia líder en desarrollo web, IA y automatización en LATAM. +300 proyectos exitosos en Colombia, México, Argentina, Chile, Perú.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -83,7 +105,7 @@ export default function RootLayout({
         className={`${inter.variable} font-sans bg-t_dark text-white antialiased`}
         suppressHydrationWarning
       >
-        
+        <OrganizationSchema />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

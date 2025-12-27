@@ -1,0 +1,8 @@
+# Security Headers
+# https://nextjs.org/docs/advanced-features/security-headers
+
+# Security.txt para reportar vulnerabilidades
+Contact: mailto:security@techtecnic.com
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: es, en
+Canonical: https://techtecnic.com/.well-known/security.txt

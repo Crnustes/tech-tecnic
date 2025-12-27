@@ -1,41 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle, ArrowUpRight } from 'lucide-react';
 
+const services = [
+  { name: 'Desarrollo Web', href: '/servicios/desarrollo-web' },
+  { name: 'Apps Móviles', href: '/servicios/apps-moviles' },
+  { name: 'SEO + GEO', href: '/servicios/seo-geo' },
+  { name: 'IA y Automatización', href: '/servicios/automatizacion-ia' },
+  { name: 'Integraciones', href: '/servicios/integraciones' },
+  { name: 'Mantenimiento', href: '/servicios/mantenimiento' },
+  { name: 'Para Agencias', href: '/servicios/para-agencias' },
+];
+
+const company = [
+  { name: 'Sobre Nosotros', href: '/nosotros' },
+  { name: 'Proyectos', href: '/proyectos' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contacto', href: '/contacto' },
+];
+
+const social = [
+  { name: 'Instagram', href: 'https://instagram.com/techtecnic', icon: Instagram },
+  { name: 'Facebook', href: 'https://facebook.com/techtecnic', icon: Facebook },
+  { name: 'LinkedIn', href: 'https://linkedin.com/company/techtecnic', icon: Linkedin },
+  { name: 'WhatsApp', href: 'https://wa.me/573026742059', icon: MessageCircle },
+];
+
 export default function Footer() {
   const [email, setEmail] = useState('');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí puedes agregar la lógica del newsletter
     console.log('Newsletter email:', email);
     setEmail('');
   };
+  
   const currentYear = new Date().getFullYear();
-
-  const services = [
-    { name: 'Desarrollo Web', href: '/servicios/desarrollo-web' },
-    { name: 'SEO + GEO', href: '/servicios/seo-geo' },
-    { name: 'IA y Automatización', href: '/servicios/automatizacion-ia' },
-    { name: 'Integraciones', href: '/servicios/integraciones' },
-  ];
-
-  const company = [
-    { name: 'Sobre Nosotros', href: '/nosotros' },
-    { name: 'Proyectos', href: '/proyectos' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contacto', href: '/contacto' },
-  ];
-
-  const social = [
-    { name: 'Instagram', href: 'https://instagram.com/techtecnic', icon: Instagram },
-    { name: 'Facebook', href: 'https://facebook.com/techtecnic', icon: Facebook },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/techtecnic', icon: Linkedin },
-    { name: 'WhatsApp', href: 'https://wa.me/573026742059', icon: MessageCircle },
-  ];
 
   return (
     <footer className="relative bg-gradient-to-b from-slate-900 to-black border-t border-white/10">
@@ -45,7 +53,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
-              <div className="relative w-48 h-12">
+              <div className="relative w-72 h-20">
                 <Image
                   src="/logo.png"
                   alt="Tech Tecnic"
@@ -181,25 +189,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            © {currentYear} Tech Tecnic. Todos los derechos reservados.
-          </p>
-          
-          <div className="flex gap-6 text-sm">
-            <Link 
-              href="/politica-de-privacidad" 
-              className="text-gray-500 hover:text-white transition-colors"
-            >
-              Política de Privacidad
-            </Link>
-            <Link 
-              href="/terminos-y-condiciones" 
-              className="text-gray-500 hover:text-white transition-colors"
-            >
-              Términos y Condiciones
-            </Link>
+        {/* Bottom Bar - Rediseñado con estructura simple */}
+        <div className="border-t border-white/10 pt-8">
+          <div className="text-center space-y-4">
+            <p className="text-gray-500 text-sm">
+              © {currentYear} Tech Tecnic. Todos los derechos reservados.
+            </p>
+            
+            <nav className="flex items-center justify-center gap-6 text-sm" style={mounted ? {} : { visibility: 'hidden' }}>
+              <Link href="/terminos-y-condiciones" className="text-gray-500 hover:text-white transition-colors">
+                Términos
+              </Link>
+              <span className="text-gray-700">•</span>
+              <Link href="/politica-de-privacidad" className="text-gray-500 hover:text-white transition-colors">
+                Privacidad
+              </Link>
+              <span className="text-gray-700">•</span>
+              <Link href="/politica-de-cookies" className="text-gray-500 hover:text-white transition-colors">
+                Cookies
+              </Link>
+            </nav>
           </div>
         </div>
       </div>

@@ -16,22 +16,61 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 
 export const metadata: Metadata = {
-  title: 'SEO y Posicionamiento Web en Bogotá | Tech Tecnic',
-  description: 'Servicios de SEO local y posicionamiento web en Bogotá. Aumenta tu visibilidad en Google, atrae más clientes y mejora tu ranking con estrategias probadas.',
+  title: 'Agencia SEO Latinoamérica | Mejor Posicionamiento Web LATAM 2025',
+  description: 'Top #1 en SEO y posicionamiento web en Latinoamérica. Aumenta tu visibilidad en Google en Colombia, México, Argentina, Chile, Perú. +200 clientes en LATAM. SEO técnico, local y de contenidos. Resultados en 90 días. Auditoria gratis 24h.',
   keywords: [
-    'seo bogotá',
-    'posicionamiento web colombia',
-    'seo local bogotá',
-    'google my business',
-    'posicionamiento google',
+    // Principal LATAM
+    'agencia seo latinoamerica',
+    'mejor seo latam',
+    'posicionamiento web latinoamerica',
+    'seo profesional latam',
+    // Colombia
     'agencia seo colombia',
-    'optimización seo',
-    'consultor seo bogotá'
+    'seo bogota profesional',
+    'posicionamiento web medellin',
+    'consultor seo colombia',
+    'seo local bogota',
+    // México
+    'agencia seo mexico',
+    'seo cdmx profesional',
+    'posicionamiento web mexico df',
+    'consultor seo guadalajara',
+    'seo local mexico',
+    // Argentina
+    'agencia seo argentina',
+    'seo buenos aires',
+    'posicionamiento web argentina',
+    'consultor seo caba',
+    // Chile
+    'agencia seo chile',
+    'seo santiago chile',
+    'posicionamiento web chile',
+    'consultor seo chile',
+    // Perú
+    'agencia seo peru',
+    'seo lima profesional',
+    'posicionamiento web lima',
+    // Servicios específicos
+    'seo tecnico latinoamerica',
+    'seo local latam',
+    'google my business latam',
+    'auditoria seo profesional',
+    'consultoria seo empresarial',
+    'posicionamiento google latam',
+    // Long-tail para IA
+    'mejor agencia seo latinoamerica 2025',
+    'como posicionar en google latinoamerica',
+    'aumentar trafico organico latam',
+    'agencia seo con resultados garantizados',
+    'expertos seo latinoamerica',
+    'servicio seo completo latam',
+    'seo para empresas latinoamerica'
   ],
   openGraph: {
-    title: 'SEO y Posicionamiento Web en Bogotá | Tech Tecnic',
-    description: 'Aumenta tu visibilidad en Google con nuestros servicios de SEO local en Bogotá.',
+    title: 'Agencia SEO Latinoamérica | Líder en Posicionamiento Web LATAM',
+    description: '+200 clientes en LATAM confían en nosotros. SEO técnico, local y de contenidos. Resultados en 90 días. Colombia, México, Argentina, Chile, Perú.',
     type: 'website',
+    locale: 'es_419',
   },
   alternates: {
     canonical: 'https://techtecnic.com/servicios/seo-geo',

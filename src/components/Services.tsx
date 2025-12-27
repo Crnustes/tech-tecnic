@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Code, Bot, Shield, Search, Blocks, Sparkles, Check, Smartphone } from 'lucide-react';
+import { Code, Bot, Shield, Search, Blocks, Sparkles, Check, Smartphone, Building2 } from 'lucide-react';
+import { FadeIn, Stagger, GlitchText, MagneticButton } from './animations';
 
 const services = [
   {
@@ -25,11 +26,11 @@ const services = [
   },
   {
     id: 'seo',
-    title: 'SEO & Posicionamiento',
-    subtitle: 'Visibilidad que convierte',
+    title: 'SEO & Posicionamiento LATAM',
+    subtitle: 'Visibilidad en toda Latinoamérica',
     description:
-      'Estrategias SEO técnico y local para posicionar tu marca en Google y aumentar tu tráfico orgánico.',
-    features: ['SEO técnico y on-page', 'Google Tag Manager y GA4', 'SEO Local (GMB)', 'Core Web Vitals'],
+      'Estrategias SEO técnico y local para posicionar tu marca en Google en toda Latinoamérica y aumentar tu tráfico orgánico.',
+    features: ['SEO técnico y on-page', 'Google Tag Manager y GA4', 'SEO Local multi-país LATAM', 'Core Web Vitals'],
     icon: Search,
     color: 'from-orange-500 to-red-500',
     image: '/images/service-seo.png',
@@ -88,6 +89,18 @@ const services = [
     image: '/images/service-ai.png',
     link: '/servicios/apps-moviles',
   },
+  {
+    id: 'agencias',
+    title: 'Soluciones para Agencias',
+    subtitle: 'Plataforma completa para agencias LATAM',
+    description:
+      'Herramientas especializadas para agencias digitales en Latinoamérica: CRM personalizado, automatización avanzada, gestión de proyectos y analytics en tiempo real.',
+    features: ['CRM + Facturación automática', 'Gestión multi-proyecto', 'Automatización de procesos', 'Dashboard analytics avanzado'],
+    icon: Building2,
+    color: 'from-violet-500 to-purple-500',
+    image: '/images/service-ai.png',
+    link: '/servicios/para-agencias',
+  },
 ];
 
 export default function Services() {
@@ -104,31 +117,33 @@ export default function Services() {
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-t_primary/10 border border-t_primary/20 mb-6">
-            <Sparkles className="w-4 h-4 text-t_primary" />
-            <span className="text-sm text-t_primary font-medium">Nuestros Servicios</span>
+        <FadeIn direction="up" delay={0.1}>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-t_primary/10 border border-t_primary/20 mb-6">
+              <Sparkles className="w-4 h-4 text-t_primary" />
+              <span className="text-sm text-t_primary font-medium">Nuestros Servicios</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                Soluciones digitales
+              </span>
+              <br />
+              <GlitchText className="bg-gradient-to-r from-t_primary to-t_accent bg-clip-text text-transparent text-4xl md:text-6xl font-bold">
+                a tu medida
+              </GlitchText>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Transformamos ideas en experiencias digitales que generan resultados reales
+            </p>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-              Soluciones digitales
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-t_primary to-t_accent bg-clip-text text-transparent">
-              a tu medida
-            </span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Transformamos ideas en experiencias digitales que generan resultados reales
-          </p>
-        </div>
+        </FadeIn>
 
         {/* Service Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        <Stagger className="flex flex-wrap justify-center gap-3 mb-16" delay={0.3}>
           {services.map((service) => {
             const Icon = service.icon;
             return (
-              <button
+              <MagneticButton
                 key={service.id}
                 onClick={() => setActiveService(service)}
                 className={`group relative px-6 py-3 rounded-xl transition-all duration-300 ${
@@ -142,81 +157,87 @@ export default function Services() {
                   <span className="font-medium hidden sm:inline">{service.title}</span>
                   <span className="font-medium sm:hidden">{service.title.split(' ')[0]}</span>
                 </div>
-              </button>
+              </MagneticButton>
             );
           })}
-        </div>
+        </Stagger>
 
         {/* Active Service Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <div className={`absolute inset-0 bg-gradient-to-br ${activeService.color} opacity-20`} />
-              <Image
-                src={activeService.image}
-                alt={activeService.title}
-                width={600}
-                height={400}
-                className="w-full h-auto"
-                priority
-              />
+          <FadeIn direction="left" delay={0.5}>
+            <div className="relative order-2 lg:order-1">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                <div className={`absolute inset-0 bg-gradient-to-br ${activeService.color} opacity-20`} />
+                <Image
+                  src={activeService.image}
+                  alt={activeService.title}
+                  width={600}
+                  height={400}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Content */}
-          <div className="space-y-6 order-1 lg:order-2">
-            <div className={`inline-block p-4 rounded-2xl bg-gradient-to-br ${activeService.color}`}>
-              {(() => {
-                const Icon = activeService.icon;
-                return <Icon className="w-8 h-8 text-white" />;
-              })()}
-            </div>
+          <FadeIn direction="right" delay={0.5}>
+            <div className="space-y-6 order-1 lg:order-2">
+              <div className={`inline-block p-4 rounded-2xl bg-gradient-to-br ${activeService.color}`}>
+                {(() => {
+                  const Icon = activeService.icon;
+                  return <Icon className="w-8 h-8 text-white" />;
+                })()}
+              </div>
 
-            <div>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{activeService.title}</h3>
-              <p className="text-t_primary text-lg font-medium mb-4">{activeService.subtitle}</p>
-              <p className="text-gray-400 text-lg leading-relaxed">{activeService.description}</p>
-            </div>
+              <div>
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{activeService.title}</h3>
+                <p className="text-t_primary text-lg font-medium mb-4">{activeService.subtitle}</p>
+                <p className="text-gray-400 text-lg leading-relaxed">{activeService.description}</p>
+              </div>
 
-            <div className="space-y-3">
-              {activeService.features.map((feature, i) => (
-                <div key={i} className="flex items-start gap-3 group">
-                  <div
-                    className={`flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br ${activeService.color} flex items-center justify-center group-hover:scale-110 transition-transform`}
-                  >
-                    <Check className="w-4 h-4 text-white" />
+              <div className="space-y-3">
+                {activeService.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-3 group">
+                    <div
+                      className={`flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br ${activeService.color} flex items-center justify-center group-hover:scale-110 transition-transform`}
+                    >
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-gray-300 group-hover:text-white transition-colors">{feature}</span>
                   </div>
-                  <span className="text-gray-300 group-hover:text-white transition-colors">{feature}</span>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            <Link
-              href={activeService.link}
-              className={`group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r ${activeService.color} text-white font-semibold hover:scale-105 transition-all shadow-lg hover:shadow-2xl`}
-            >
-              <span>Más información</span>
-              <svg
-                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              <Link
+                href={activeService.link}
+                className={`group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r ${activeService.color} text-white font-semibold hover:scale-105 transition-all shadow-lg hover:shadow-2xl`}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
+                <span>Más información</span>
+                <svg
+                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          </FadeIn>
         </div>
 
         {/* Quick Links */}
         <div className="mt-20">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-2">Todos nuestros servicios</h3>
-            <p className="text-gray-400">Explora cada uno en detalle</p>
-          </div>
+          <FadeIn direction="up" delay={0.2}>
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-white mb-2">Todos nuestros servicios</h3>
+              <p className="text-gray-400">Explora cada uno en detalle</p>
+            </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" delay={0.4}>
             {services.map((service) => {
               const Icon = service.icon;
               return (
@@ -237,7 +258,7 @@ export default function Services() {
                 </Link>
               );
             })}
-          </div>
+          </Stagger>
         </div>
       </div>
     </section>

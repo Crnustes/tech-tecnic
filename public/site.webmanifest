@@ -1,0 +1,45 @@
+{
+  "name": "Tech Tecnic | Desarrollo Web e IA",
+  "short_name": "Tech Tecnic",
+  "description": "Agencia de desarrollo web, IA y automatización en Latinoamérica",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0b1e",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["business", "technology"],
+  "shortcuts": [
+    {
+      "name": "Servicios",
+      "short_name": "Servicios",
+      "url": "/servicios",
+      "icons": [{ "src": "/icon-services.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "url": "/blog",
+      "icons": [{ "src": "/icon-blog.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contacto",
+      "short_name": "Contacto",
+      "url": "/contacto",
+      "icons": [{ "src": "/icon-contact.png", "sizes": "96x96" }]
+    }
+  ]
+}

@@ -1,10 +1,19 @@
 'use client';
 
 import { MessageCircle, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Evitar hidratación inmediata, renderizar después
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <>

@@ -3,14 +3,78 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, message } = body;
+    const { name, email, phone, company, service, budget, message, newsletter } = body;
 
     // Validación básica
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !service) {
       return NextResponse.json(
-        { error: 'Todos los campos son requeridos' },
+        { error: 'Nombre, email, servicio y mensaje son requeridos' },
         { status: 400 }
       );
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Email inválido' },
+        { status: 400 }
+      );
+    }
+
+    // Log detallado del contacto (en producción esto se guarda en DB o se envía por email)
+    const contactData = {
+      timestamp: new Date().toISOString(),
+      name,
+      email,
+      phone: phone || 'No proporcionado',
+      company: company || 'No proporcionado',
+      service,
+      budget: budget || 'No especificado',
+      message,
+      newsletter: newsletter ? 'Sí' : 'No',
+    };
+
+    console.log('═══════════════════════════════════════');
+    console.log('📧 NUEVO CONTACTO RECIBIDO');
+    console.log('═══════════════════════════════════════');
+    console.log('📅 Fecha:', contactData.timestamp);
+    console.log('👤 Nombre:', contactData.name);
+    console.log('📧 Email:', contactData.email);
+    console.log('📱 Teléfono:', contactData.phone);
+    console.log('🏢 Empresa:', contactData.company);
+    console.log('🎯 Servicio:', contactData.service);
+    console.log('💰 Presupuesto:', contactData.budget);
+    console.log('💌 Mensaje:', contactData.message);
+    console.log('📬 Newsletter:', contactData.newsletter);
+    console.log('═══════════════════════════════════════');
+
+    // Guardar en el sistema de leads
+    try {
+      const leadResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'}/api/leads`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          company,
+          service,
+          budget,
+          message,
+          newsletter,
+        }),
+      });
+
+      if (leadResponse.ok) {
+        const leadData = await leadResponse.json();
+        console.log('✅ Lead guardado con ID:', leadData.leadId);
+      } else {
+        console.warn('⚠️ No se pudo guardar el lead, pero el contacto fue registrado');
+      }
+    } catch (leadError) {
+      console.error('⚠️ Error al guardar lead:', leadError);
+      // No fallar el proceso si hay error con leads
     }
 
     // Aquí puedes integrar con servicios de email:
@@ -58,17 +122,22 @@ export async function POST(request: Request) {
     //   html: `...`,
     // });
 
-    // Por ahora solo logging (para desarrollo)
-    console.log('Nuevo contacto recibido:', { name, email, message });
-
     return NextResponse.json(
-      { success: true, message: 'Mensaje enviado correctamente' },
+      { 
+        success: true, 
+        message: 'Mensaje enviado correctamente. Te contactaremos pronto.',
+        data: {
+          name,
+          email,
+          service
+        }
+      },
       { status: 200 }
     );
   } catch (error) {
-    console.error('Error al procesar el contacto:', error);
+    console.error('❌ Error al procesar el contacto:', error);
     return NextResponse.json(
-      { error: 'Error al procesar la solicitud' },
+      { error: 'Error al procesar la solicitud. Por favor intenta nuevamente.' },
       { status: 500 }
     );
   }

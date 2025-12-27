@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Code, Search, Bot, Blocks, Shield, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { Code, Search, Bot, Blocks, Shield, ArrowRight, CheckCircle2, Sparkles, Building2, Smartphone } from 'lucide-react';
 import ContactCTA from '@/components/ContactCTA';
 
 export const metadata: Metadata = {
@@ -40,6 +40,20 @@ const services = [
     ],
     color: 'from-cyan-500 to-blue-500',
     price: 'Desde $400.000 COP',
+  },
+  {
+    icon: Smartphone,
+    title: 'Apps Móviles',
+    slug: 'apps-moviles',
+    description: 'Aplicaciones móviles nativas y multiplataforma para iOS y Android.',
+    features: [
+      'Apps nativas iOS/Android',
+      'Apps híbridas multiplataforma',
+      'UI/UX diseño personalizado',
+      'Publicación en stores',
+    ],
+    color: 'from-blue-500 to-indigo-500',
+    price: 'Desde $1.200.000 COP',
   },
   {
     icon: Search,
@@ -96,6 +110,20 @@ const services = [
     ],
     color: 'from-green-500 to-emerald-500',
     price: 'Desde $150.000 COP/mes',
+  },
+  {
+    icon: Building2,
+    title: 'Para Agencias',
+    slug: 'para-agencias',
+    description: 'Soluciones especializadas para agencias digitales y consultoras.',
+    features: [
+      'Sistemas de gestión de proyectos',
+      'Automatización de procesos',
+      'Integraciones con herramientas',
+      'Reportes y analytics avanzados',
+    ],
+    color: 'from-violet-500 to-purple-500',
+    price: 'Cotización personalizada',
   },
 ];
 
