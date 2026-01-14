@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import PricingButton from '@/components/PricingButton';
 import { 
   Shield, 
   Zap, 
@@ -247,11 +249,11 @@ export default function MantenimientoPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-500/10 via-transparent to-transparent" />
         
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-6">
@@ -259,7 +261,7 @@ export default function MantenimientoPage() {
                 <span className="text-sm text-green-400 font-medium">Mantenimiento y Soporte Web</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-6 leading-tight">
                 <span className="text-white">Tu sitio web</span>
                 <br />
                 <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
@@ -291,14 +293,15 @@ export default function MantenimientoPage() {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="https://wa.me/573026742059?text=Hola,%20quiero%20información%20sobre%20mantenimiento%20web"
-                  target="_blank"
+                <WhatsAppButton
+                  message="Hola, quiero información sobre mantenimiento web para mi sitio"
+                  service="mantenimiento"
+                  action="click_cta_hero"
+                  label="Mantenimiento"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-lg"
                 >
-                  <Shield className="w-5 h-5" />
                   Ver planes
-                </Link>
+                </WhatsAppButton>
                 <Link
                   href="#problemas"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 text-white rounded-full font-semibold border border-white/10 hover:bg-white/10 transition-all"
@@ -494,17 +497,14 @@ export default function MantenimientoPage() {
                   <p className="text-xs text-gray-400">{pkg.ideal}</p>
                 </div>
 
-                <Link
-                  href={`https://wa.me/573026742059?text=Hola,%20quiero%20contratar%20el%20${pkg.name}`}
-                  target="_blank"
-                  className={`block w-full text-center px-6 py-4 rounded-xl font-semibold transition-all ${
-                    pkg.popular
-                      ? `bg-gradient-to-r ${pkg.color} text-white hover:scale-105`
-                      : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
-                  }`}
+                <PricingButton
+                  planName={pkg.name}
+                  service="mantenimiento"
+                  message={`Hola, quiero contratar el ${pkg.name} de Mantenimiento`}
+                  color={pkg.popular ? pkg.color : ''}
                 >
                   Contratar ahora
-                </Link>
+                </PricingButton>
               </div>
             ))}
           </div>

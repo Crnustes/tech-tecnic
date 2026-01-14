@@ -34,7 +34,7 @@ export default function Footer() {
     { name: 'Instagram', href: 'https://instagram.com/techtecnic', icon: Instagram },
     { name: 'Facebook', href: 'https://facebook.com/techtecnic', icon: Facebook },
     { name: 'LinkedIn', href: 'https://linkedin.com/company/techtecnic', icon: Linkedin },
-    { name: 'WhatsApp', href: 'https://wa.me/573026742059', icon: MessageCircle },
+    { name: 'WhatsApp', href: 'https://wa.me/573337151064', icon: MessageCircle },
   ];
 
   return (
@@ -187,19 +187,12 @@ export default function Footer() {
             © {currentYear} Tech Tecnic. Todos los derechos reservados.
           </p>
           
-          <div className="flex gap-6 text-sm">
-            <Link 
-              href="/politica-de-privacidad" 
-              className="text-gray-500 hover:text-white transition-colors"
-            >
-              Política de Privacidad
-            </Link>
-            <Link 
-              href="/terminos-y-condiciones" 
-              className="text-gray-500 hover:text-white transition-colors"
-            >
-              Términos y Condiciones
-            </Link>
+          <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6 text-sm">
+            <Link href="/politica-de-privacidad" className="text-gray-500 hover:text-white transition-colors">Política de Privacidad</Link>
+            <Link href="/terminos-y-condiciones" className="text-gray-500 hover:text-white transition-colors">Términos y Condiciones</Link>
+            <Link href="/politica-de-cookies" className="text-gray-500 hover:text-white transition-colors">Política de Cookies</Link>
+            <Link href="/aviso-legal" className="text-gray-500 hover:text-white transition-colors">Aviso Legal</Link>
+            <Link href="/politica-de-tratamiento-de-datos" className="text-gray-500 hover:text-white transition-colors">Tratamiento de Datos</Link>
           </div>
         </div>
       </div>

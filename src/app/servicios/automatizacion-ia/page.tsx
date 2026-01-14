@@ -18,6 +18,8 @@ import {
   BarChart3
 } from 'lucide-react';
 import ContactCTA from '@/components/ContactCTA';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import PricingButton from '@/components/PricingButton';
 
 export const metadata: Metadata = {
   title: 'Automatización con IA en Bogotá | Chatbots y Procesos | Tech Tecnic',
@@ -201,11 +203,11 @@ export default function AutomatizacionIAPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
         
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
@@ -213,7 +215,7 @@ export default function AutomatizacionIAPage() {
                 <span className="text-sm text-purple-400 font-medium">Automatización e Inteligencia Artificial</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-6 leading-tight">
                 <span className="text-white">Automatiza con</span>
                 <br />
                 <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
@@ -246,14 +248,16 @@ export default function AutomatizacionIAPage() {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="https://wa.me/573026742059?text=Hola,%20quiero%20automatizar%20mi%20negocio%20con%20IA"
-                  target="_blank"
+                <WhatsAppButton
+                  message="Hola, quiero automatizar mi negocio con IA"
+                  service="automatizacion-ia"
+                  action="click_cta_hero"
+                  label="Automatización IA"
+
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-lg"
                 >
-                  <Brain className="w-5 h-5" />
                   Consultoría gratuita
-                </Link>
+                </WhatsAppButton>
                 <Link
                   href="#casos-uso"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 text-white rounded-full font-semibold border border-white/10 hover:bg-white/10 transition-all"
@@ -449,17 +453,14 @@ export default function AutomatizacionIAPage() {
                   ))}
                 </ul>
 
-                <Link
-                  href={`https://wa.me/573026742059?text=Hola,%20quiero%20información%20sobre%20${pkg.name}`}
-                  target="_blank"
-                  className={`block w-full text-center px-6 py-4 rounded-xl font-semibold transition-all ${
-                    pkg.popular
-                      ? `bg-gradient-to-r ${pkg.color} text-white hover:scale-105`
-                      : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
-                  }`}
+                <PricingButton
+                  planName={pkg.name}
+                  service="automatizacion-ia"
+                  message={`Hola, quiero información sobre ${pkg.name}`}
+                  color={pkg.popular ? pkg.color : ''}
                 >
                   {pkg.price === 'Personalizado' ? 'Contactar' : 'Comenzar ahora'}
-                </Link>
+                </PricingButton>
               </div>
             ))}
           </div>

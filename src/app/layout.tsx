@@ -5,6 +5,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import CookieBanner from "@/components/CookieBanner";
+import GTMConsent from "@/components/GTMConsent";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -80,12 +82,15 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body 
-        className={`${inter.variable} font-sans bg-t_dark text-white antialiased`}
+        className={`${inter.variable} font-sans bg-t_dark text-white antialiased overflow-x-hidden`}
         suppressHydrationWarning
       >
         
         <Navbar />
+        {/* Load GTM only when consent allows */}
+        <GTMConsent />
         <main className="min-h-screen">{children}</main>
+        <CookieBanner />
         <Footer />
         <FloatingWhatsApp />
       </body>

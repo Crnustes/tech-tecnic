@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import PricingButton from '@/components/PricingButton';
 import { 
   Code, 
   CheckCircle2, 
@@ -119,11 +121,11 @@ export default function DesarrolloWebPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-500/10 via-transparent to-transparent" />
         
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left - Content */}
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6">
@@ -131,7 +133,7 @@ export default function DesarrolloWebPage() {
                 <span className="text-sm text-cyan-400 font-medium">Desarrollo Web Profesional</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-6 leading-tight">
                 <span className="text-white">Sitios Web que</span>
                 <br />
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -141,16 +143,16 @@ export default function DesarrolloWebPage() {
                 <span className="text-white">en Clientes</span>
               </h1>
 
-              <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
                 Desarrollo web profesional en <strong className="text-white">Bogotá</strong>. 
                 Desde landing pages hasta e-commerce completos con tecnología de vanguardia.
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mb-8">
                 <div>
-                  <div className="text-3xl font-bold text-cyan-400 mb-1">50+</div>
-                  <div className="text-sm text-gray-400">Sitios creados</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-cyan-400 mb-1">50+</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Sitios creados</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-cyan-400 mb-1">15</div>
@@ -164,13 +166,15 @@ export default function DesarrolloWebPage() {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="https://wa.me/573026742059?text=Hola,%20quiero%20cotizar%20desarrollo%20web"
-                  target="_blank"
+                <WhatsAppButton
+                  message="Hola, quiero cotizar desarrollo web para mi proyecto"
+                  service="desarrollo-web"
+                  action="click_cta_hero"
+                  label="Desarrollo Web"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-lg"
                 >
                   Cotizar mi proyecto
-                </Link>
+                </WhatsAppButton>
                 <Link
                   href="#paquetes"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 text-white rounded-full font-semibold border border-white/10 hover:bg-white/10 transition-all"
@@ -194,7 +198,7 @@ export default function DesarrolloWebPage() {
       </section>
 
       {/* Features Section */}
-      <section className="relative py-20">
+      <section className="relative py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">
@@ -205,7 +209,7 @@ export default function DesarrolloWebPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
             {features.map((feature, i) => {
               const Icon = feature.icon;
               return (
@@ -226,7 +230,7 @@ export default function DesarrolloWebPage() {
       </section>
 
       {/* Packages Section */}
-      <section id="paquetes" className="relative py-20">
+      <section id="paquetes" className="relative py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-t_primary/10 border border-t_primary/20 mb-6">
@@ -241,13 +245,13 @@ export default function DesarrolloWebPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {packages.map((pkg, i) => (
               <div
                 key={i}
-                className={`relative p-8 rounded-2xl bg-slate-900/50 border transition-all duration-500 ${
+                className={`relative p-5 sm:p-6 md:p-8 rounded-2xl bg-slate-900/50 border transition-all duration-500 ${
                   pkg.popular 
-                    ? 'border-purple-500 scale-105 shadow-2xl shadow-purple-500/20' 
+                    ? 'border-purple-500 lg:scale-105 shadow-2xl shadow-purple-500/20' 
                     : 'border-white/10 hover:border-white/20'
                 }`}
               >
@@ -282,17 +286,14 @@ export default function DesarrolloWebPage() {
                   ))}
                 </ul>
 
-                <Link
-                  href={`https://wa.me/573026742059?text=Hola,%20quiero%20cotizar%20el%20plan%20${pkg.name}`}
-                  target="_blank"
-                  className={`block w-full text-center px-6 py-4 rounded-xl font-semibold transition-all ${
-                    pkg.popular
-                      ? `bg-gradient-to-r ${pkg.color} text-white hover:scale-105`
-                      : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
-                  }`}
+                <PricingButton
+                  planName={pkg.name}
+                  service="desarrollo-web"
+                  message={`Hola, quiero cotizar el plan ${pkg.name} de Desarrollo Web`}
+                  color={pkg.popular ? pkg.color : ''}
                 >
                   Solicitar cotización
-                </Link>
+                </PricingButton>
               </div>
             ))}
           </div>
@@ -300,7 +301,7 @@ export default function DesarrolloWebPage() {
       </section>
 
       {/* Technologies */}
-      <section className="relative py-20">
+      <section className="relative py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
@@ -311,7 +312,7 @@ export default function DesarrolloWebPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
             {technologies.map((tech, i) => (
               <div
                 key={i}

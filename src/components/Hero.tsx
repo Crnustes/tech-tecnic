@@ -83,7 +83,7 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-24 max-w-4xl mx-auto">
           {[
             { value: '50+', label: 'Proyectos Completados' },
             { value: '98%', label: 'Satisfacción Cliente' },

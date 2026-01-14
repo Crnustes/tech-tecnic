@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Code, Search, Bot, Blocks, Shield, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { enabledServices } from '@/config/servicesCatalog';
 import ContactCTA from '@/components/ContactCTA';
 
 export const metadata: Metadata = {
@@ -26,78 +27,15 @@ export const metadata: Metadata = {
   },
 };
 
-const services = [
-  {
-    icon: Code,
-    title: 'Desarrollo Web',
-    slug: 'desarrollo-web',
-    description: 'Sitios web modernos, rápidos y optimizados con WordPress, React o Next.js.',
-    features: [
-      'Landing pages de alto impacto',
-      'E-commerce con WooCommerce',
-      'Aplicaciones web personalizadas',
-      'Diseño responsive y moderno',
-    ],
-    color: 'from-cyan-500 to-blue-500',
-    price: 'Desde $400.000 COP',
-  },
-  {
-    icon: Search,
-    title: 'SEO + Posicionamiento Local',
-    slug: 'seo-geo',
-    description: 'Posicionamiento orgánico y local para aumentar tu visibilidad en Google.',
-    features: [
-      'SEO técnico y on-page',
-      'Google My Business optimizado',
-      'Keywords locales (Bogotá)',
-      'Reportes mensuales de ranking',
-    ],
-    color: 'from-orange-500 to-red-500',
-    price: 'Desde $500.000 COP/mes',
-  },
-  {
-    icon: Bot,
-    title: 'IA y Automatización',
-    slug: 'automatizacion-ia',
-    description: 'Automatiza procesos con IA, chatbots inteligentes y flujos personalizados.',
-    features: [
-      'Chatbots con IA (WhatsApp, Web)',
-      'Automatización de tareas',
-      'Integración con CRMs',
-      'Análisis predictivo con IA',
-    ],
-    color: 'from-purple-500 to-pink-500',
-    price: 'Desde $800.000 COP',
-  },
-  {
-    icon: Blocks,
-    title: 'Integraciones',
-    slug: 'integraciones',
-    description: 'Conecta tus herramientas favoritas para un flujo de trabajo sin fricciones.',
-    features: [
-      'APIs personalizadas',
-      'Zapier y Make (Integromat)',
-      'Conexión con Zoho, HubSpot',
-      'Sincronización de datos',
-    ],
-    color: 'from-emerald-500 to-teal-500',
-    price: 'Desde $600.000 COP',
-  },
-  {
-    icon: Shield,
-    title: 'Mantenimiento Web',
-    slug: 'mantenimiento',
-    description: 'Actualizaciones, seguridad, backups y soporte técnico para tu sitio.',
-    features: [
-      'Actualizaciones constantes',
-      'Seguridad y protección',
-      'Backups automáticos diarios',
-      'Soporte técnico incluido',
-    ],
-    color: 'from-green-500 to-emerald-500',
-    price: 'Desde $150.000 COP/mes',
-  },
-];
+const services = enabledServices.map((s) => ({
+  icon: s.icon,
+  title: s.title,
+  slug: s.slug,
+  description: s.description,
+  features: s.features,
+  color: s.color,
+  price: s.price ?? undefined,
+}));
 
 export default function ServiciosPage() {
   return (

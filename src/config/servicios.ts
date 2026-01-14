@@ -1,5 +1,6 @@
-import { Code, Search, Bot, Blocks, Smartphone, Sparkles } from "lucide-react";
+import { Code, Search, Bot, Blocks, Smartphone, Sparkles, MessageSquare } from "lucide-react";
 import { LucideIcon } from "lucide-react";
+import { servicesCatalog } from './servicesCatalog';
 
 export interface Servicio {
   name: string;
@@ -8,41 +9,12 @@ export interface Servicio {
   icon?: LucideIcon;
 }
 
-export const servicios: Servicio[] = [
-  {
-    name: "Desarrollo Web",
-    description: "Sitios web modernos, rápidos y optimizados con las últimas tecnologías.",
-    href: "/servicios/desarrollo-web",
-    icon: Code,
-  },
-  {
-    name: "SEO + GEO",
-    description: "Posicionamiento local y orgánico para aumentar tu visibilidad online.",
-    href: "/servicios/seo-geo",
-    icon: Search,
-  },
-  {
-    name: "IA y Automatización",
-    description: "Soluciones inteligentes que automatizan procesos y mejoran eficiencia.",
-    href: "/servicios/automatizacion-ia",
-    icon: Bot,
-  },
-  {
-    name: "Integraciones",
-    description: "Conectamos tus herramientas para un flujo de trabajo sin fricciones.",
-    href: "/servicios/integraciones",
-    icon: Blocks,
-  },
-  {
-    name: "Apps Móviles",
-    description: "Aplicaciones nativas y multiplataforma para iOS y Android.",
-    href: "/servicios/apps-moviles",
-    icon: Smartphone,
-  },
-  {
-    name: "Diseño UX/UI",
-    description: "Experiencias digitales intuitivas y visualmente impactantes.",
-    href: "/servicios/diseno",
-    icon: Sparkles,
-  },
-];
+// Build menu from catalog (only enabled and flagged for menu)
+export const servicios: Servicio[] = servicesCatalog
+  .filter((s) => s.enabled !== false && s.showInMenu !== false)
+  .map((s) => ({
+    name: s.title,
+    description: s.description,
+    href: `/servicios/${s.slug}`,
+    icon: s.icon,
+  }));

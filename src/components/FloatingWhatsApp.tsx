@@ -55,7 +55,7 @@ export default function FloatingWhatsApp() {
               </div>
 
               <a
-                href="https://wa.me/573026742059?text=👋%20Hola%20Tech%20Tecnic,%20quiero%20más%20información%20sobre%20sus%20servicios"
+                href="https://wa.me/573337151064?text=👋%20Hola%20Tech%20Tecnic,%20quiero%20más%20información%20sobre%20sus%20servicios"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-semibold text-center hover:scale-105 transition-transform"
@@ -65,7 +65,7 @@ export default function FloatingWhatsApp() {
               </a>
 
               <p className="text-xs text-gray-500 text-center">
-                +57 302 674 2059
+                +57 333 715 1064
               </p>
             </div>
           </div>

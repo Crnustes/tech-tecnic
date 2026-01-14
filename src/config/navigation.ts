@@ -13,7 +13,7 @@ export const navigation = {
     { name: 'Contacto', href: '/contacto' },
   ],
   socials: [
-    { name: 'WhatsApp', href: 'https://wa.me/573026742059', icon: 'whatsapp' },
+    { name: 'WhatsApp', href: 'https://wa.me/573337151064', icon: 'whatsapp' },
     { name: 'LinkedIn', href: 'https://linkedin.com/company/techtecnic', icon: 'linkedin' },
     { name: 'Instagram', href: 'https://instagram.com/techtecnic', icon: 'instagram' },
     { name: 'Facebook', href: 'https://facebook.com/techtecnic', icon: 'facebook' },

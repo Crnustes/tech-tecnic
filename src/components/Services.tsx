@@ -3,95 +3,11 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Code, Bot, Shield, Search, Blocks, Sparkles, Check, Smartphone } from 'lucide-react';
-
-const services = [
-  {
-    id: 'web',
-    title: 'Desarrollo Web',
-    subtitle: 'Sitios modernos y escalables',
-    description:
-      'Diseñamos y desarrollamos sitios web de alto rendimiento con WordPress, React o Next.js. Desde landing pages hasta e-commerce completos.',
-    features: [
-      'Diseño responsivo e interactivo',
-      'E-commerce con WooCommerce',
-      'Hosting, dominio y correos',
-      'Integraciones con CRM y APIs',
-    ],
-    icon: Code,
-    color: 'from-cyan-500 to-blue-500',
-    image: '/images/service-web.png',
-    link: '/servicios/desarrollo-web',
-  },
-  {
-    id: 'seo',
-    title: 'SEO & Posicionamiento',
-    subtitle: 'Visibilidad que convierte',
-    description:
-      'Estrategias SEO técnico y local para posicionar tu marca en Google y aumentar tu tráfico orgánico.',
-    features: ['SEO técnico y on-page', 'Google Tag Manager y GA4', 'SEO Local (GMB)', 'Core Web Vitals'],
-    icon: Search,
-    color: 'from-orange-500 to-red-500',
-    image: '/images/service-seo.png',
-    link: '/servicios/seo-geo',
-  },
-  {
-    id: 'ai',
-    title: 'IA & Automatización',
-    subtitle: 'Inteligencia que trabaja por ti',
-    description:
-      'Implementamos flujos inteligentes con IA, chatbots personalizados y automatizaciones que optimizan tu operación.',
-    features: [
-      'Chatbots con IA (WhatsApp, Web)',
-      'Captura automática de leads',
-      'Integración con CRMs',
-      'APIs e IA generativa',
-    ],
-    icon: Bot,
-    color: 'from-purple-500 to-pink-500',
-    image: '/images/service-ai.png',
-    link: '/servicios/automatizacion-ia',
-  },
-  {
-    id: 'integraciones',
-    title: 'Integraciones',
-    subtitle: 'Todo conectado',
-    description:
-      'Conectamos tus herramientas con Zapier, Make, APIs personalizadas y más para un flujo de trabajo sin fricciones.',
-    features: ['Zapier y Make', 'APIs personalizadas', 'Integración con CRMs', 'Sincronización de datos'],
-    icon: Blocks,
-    color: 'from-emerald-500 to-teal-500',
-    image: '/images/service-maintenance.png',
-    link: '/servicios/integraciones',
-  },
-  {
-    id: 'maintenance',
-    title: 'Mantenimiento Web',
-    subtitle: 'Tu sitio siempre actualizado',
-    description:
-      'Nos encargamos de la seguridad, velocidad y estabilidad de tu sitio web para que puedas enfocarte en tu negocio.',
-    features: ['Monitoreo 24/7', 'Actualizaciones de seguridad', 'Backups automáticos', 'Optimización continua'],
-    icon: Shield,
-    color: 'from-green-500 to-emerald-500',
-    image: '/images/service-maintenance.png',
-    link: '/servicios/mantenimiento',
-  },
-  {
-    id: 'apps',
-    title: 'Apps Móviles',
-    subtitle: 'Experiencias móviles premium',
-    description:
-      'Desarrollo de aplicaciones nativas para iOS y Android, o multiplataforma con React Native y Flutter.',
-    features: ['Apps nativas (iOS/Android)', 'React Native y Flutter', 'Diseño UI/UX premium', 'Publicación en tiendas'],
-    icon: Smartphone,
-    color: 'from-purple-500 to-pink-500',
-    image: '/images/service-ai.png',
-    link: '/servicios/apps-moviles',
-  },
-];
+import { Sparkles, Check } from 'lucide-react';
+import { enabledServices } from '@/config/servicesCatalog';
 
 export default function Services() {
-  const [activeService, setActiveService] = useState(services[0]);
+  const [activeService, setActiveService] = useState(enabledServices[0]);
 
   return (
     <section
@@ -125,14 +41,14 @@ export default function Services() {
 
         {/* Service Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {services.map((service) => {
+          {enabledServices.map((service) => {
             const Icon = service.icon;
             return (
               <button
                 key={service.id}
                 onClick={() => setActiveService(service)}
                 className={`group relative px-6 py-3 rounded-xl transition-all duration-300 ${
-                  activeService.id === service.id
+                  activeService?.id === service.id
                     ? 'bg-gradient-to-r ' + service.color + ' text-white shadow-lg scale-105'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
                 }`}
@@ -148,14 +64,14 @@ export default function Services() {
         </div>
 
         {/* Active Service Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Image */}
           <div className="relative order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <div className={`absolute inset-0 bg-gradient-to-br ${activeService.color} opacity-20`} />
               <Image
-                src={activeService.image}
-                alt={activeService.title}
+                src={activeService.image ?? '/images/service-web.png'}
+                alt={activeService.imageAlt ?? activeService.title}
                 width={600}
                 height={400}
                 className="w-full h-auto"
@@ -193,7 +109,7 @@ export default function Services() {
             </div>
 
             <Link
-              href={activeService.link}
+              href={`/servicios/${activeService.slug}`}
               className={`group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r ${activeService.color} text-white font-semibold hover:scale-105 transition-all shadow-lg hover:shadow-2xl`}
             >
               <span>Más información</span>
@@ -216,13 +132,13 @@ export default function Services() {
             <p className="text-gray-400">Explora cada uno en detalle</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {enabledServices.map((service) => {
               const Icon = service.icon;
               return (
                 <Link
                   key={service.id}
-                  href={service.link}
+                  href={`/servicios/${service.slug}`}
                   className="group p-6 rounded-xl bg-white/5 border border-white/10 hover:border-t_primary/50 hover:bg-white/10 transition-all duration-300"
                 >
                   <div

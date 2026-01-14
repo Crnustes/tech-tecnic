@@ -1,5 +1,5 @@
 export const contact = {
-  phone: '+57 302 674 2059',
+  phone: '+57 333 715 1064',
   email: 'contacto@techtecnic.com',
   address: 'Carrera 7',
   city: 'Bogotá',
@@ -10,7 +10,7 @@ export const contact = {
     sunday: 'Dom: Cerrado',
   },
   socials: {
-    whatsapp: 'https://wa.me/573026742059',
+    whatsapp: 'https://wa.me/573337151064',
     instagram: 'https://instagram.com/techtecnic',
     facebook: 'https://facebook.com/techtecnic',
     linkedin: 'https://linkedin.com/company/techtecnic',
