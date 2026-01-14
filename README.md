@@ -1,36 +1,99 @@
-# Tech Tecnic 
+﻿#  Tech Tecnic - Web Agency Site
 
-## Servicios modulares y escalables
+Plataforma moderna y escalable de agencia web construida con **Next.js 16**, **TypeScript 5** y **Tailwind CSS**. Diseñada para presentar servicios profesionales con enfoque en rendimiento, accesibilidad y cumplimiento legal.
 
-Este proyecto ahora usa un catálogo centralizado de servicios con banderas de activación.
+![Next.js](https://img.shields.io/badge/Next.js-16.0.8-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?logo=tailwindcss)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-- Catálogo: `src/config/servicesCatalog.ts`
-- Banderas (feature toggles): `src/config/features.ts`
-- Menú dinámico: `src/config/servicios.ts` (deriva del catálogo)
-- Home/Servicios: `src/components/Services.tsx` y `src/app/servicios/page.tsx` consumen el catálogo
-- Landing de ejemplo: `src/app/servicios/chatbot-wp-ia/page.tsx`
+---
 
-### Activar/Desactivar servicios
+##  Tabla de Contenidos
 
-Usa variables de entorno públicas (`.env.local`) para controlar disponibilidad:
+- [Características](#características)
+- [Arquitectura](#arquitectura)
+- [Instalación](#instalación)
+- [Configuración](#configuración)
+- [Servicios Modulares](#servicios-modulares)
+- [Compliance](#compliance-y-seguridad)
+- [Deployment](#deployment)
 
-```
+---
+
+##  Características
+
+###  Core Features
+- **8 Servicios Landing Pages** - Responsivas y SEO optimizadas
+- **Cookie Consent Manager** - Gestión completa de consentimiento
+- **GTM Integration** - Google Tag Manager con bloqueo condicional
+- **Legal Compliance** - 5 páginas de conformidad legal
+- **Responsive Design** - Mobile-first con todos los breakpoints
+- **Dark UI** - Tema moderno con gradientes
+
+###  Seguridad & Compliance
+-  Ley 1581/2012 (Protección de Datos - Colombia)
+-  Decreto 1377/2013 (Habeas Data)
+-  GDPR principles
+-  Consentimiento explícito para analytics
+-  Cookies HttpOnly + SameSite=Lax
+
+---
+
+##  Instalación
+
+\\\ash
+git clone https://github.com/tu-org/webtechtecnic.git
+cd webtechtecnic
+npm install
+npm run dev
+\\\
+
+---
+
+##  Configuración
+
+\\\env
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+NEXT_PUBLIC_ENABLE_DESARROLLO_WEB=true
+NEXT_PUBLIC_ENABLE_SEO_GEO=true
+NEXT_PUBLIC_ENABLE_AUTOMATIZACIONES=true
+NEXT_PUBLIC_ENABLE_INTEGRACIONES=true
+NEXT_PUBLIC_ENABLE_MANTENIMIENTO=true
+NEXT_PUBLIC_ENABLE_APPS_MOVILES=true
+NEXT_PUBLIC_ENABLE_AUTOMATIZACION_IA=true
 NEXT_PUBLIC_ENABLE_CHATBOT_WP_IA=true
-NEXT_PUBLIC_ENABLE_DASHBOARD=false
-NEXT_PUBLIC_ENABLE_TRIAL=true
-```
+NEXT_PUBLIC_CONTACT_EMAIL=contacto@webtechtecnic.com
+\\\
 
-### Flujo para agregar un nuevo servicio
+---
 
-1. Agrega un objeto en `servicesCatalog.ts` con `id`, `title`, `slug`, `features`, `icon`, `color`, `enabled`, `showInMenu`.
-2. Crea o reutiliza una landing en `src/app/servicios/<slug>/page.tsx`.
-3. (Opcional) imágenes en `public/images` y precio en `servicesCatalog.ts`.
-4. Ajusta `.env.local` para activar o desactivar.
+##  Servicios Modulares
 
-### Comandos
+Sistema de feature toggles para activar/desactivar servicios dinámicamente desde \.env.local\
 
-```powershell
-npm.cmd run dev
-npm.cmd run build
-npm.cmd run start
-```
+---
+
+##  Compliance
+
+5 páginas legales completamente implementadas con cumplimiento colombiano y GDPR
+
+---
+
+##  Scripts
+
+\\\ash
+npm run dev      # Desarrollo
+npm run build    # Build
+npm run start    # Producción
+\\\
+
+---
+
+##  Deployment
+
+Optimizado para Vercel o Docker
+
+---
+
+**Hecho con  por Tech Tecnic**
