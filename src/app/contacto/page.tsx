@@ -33,14 +33,17 @@ export default function ContactoPage() {
     setIsSubmitting(true)
 
     // GTM tracking
-    if (typeof window !== 'undefined' && (window as Window & { dataLayer?: unknown[] }).dataLayer) {
-      ((window as Window & { dataLayer: unknown[] }).dataLayer).push({
-        event: 'form_submit',
-        eventCategory: 'Contact',
-        eventAction: 'submit_contact_form',
-        eventLabel: formData.service || 'General',
-        formName: 'contact_page',
-      })
+    if (typeof window !== 'undefined' && 'dataLayer' in window) {
+      const dataLayer = (window as any).dataLayer;
+      if (Array.isArray(dataLayer)) {
+        dataLayer.push({
+          event: 'form_submit',
+          eventCategory: 'Contact',
+          eventAction: 'submit_contact_form',
+          eventLabel: formData.service || 'General',
+          formName: 'contact_page',
+        });
+      }
     }
 
     // Simular envío (aquí conectarías tu backend o servicio de email)

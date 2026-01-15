@@ -1,8 +1,6 @@
-'use client'
+import type { Metadata } from 'next'
 
-import { motion } from 'framer-motion'
-
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Automatización e Inteligencia Artificial | Tech Tecnic',
   description:
     'Implementamos soluciones de automatización inteligente e IA para optimizar procesos empresariales, reducir costos y escalar con eficiencia.',
@@ -12,23 +10,17 @@ export default function AutomatizacionesIA() {
   return (
     <main className="bg-gradient-to-b from-t_dark via-t_primary/10 to-black text-white">
       <section className="text-center py-32 max-w-5xl mx-auto px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-5xl font-extrabold mb-6"
+        <h1
+          className="text-5xl font-extrabold mb-6 animate-fade-in"
         >
           Automatización & Inteligencia Artificial
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-lg text-gray-300 max-w-3xl mx-auto"
+        <p
+          className="text-lg text-gray-300 max-w-3xl mx-auto animate-fade-in-delay"
         >
           Acelera tu negocio con flujos inteligentes, bots, integraciones de IA y analítica avanzada. Nosotros lo diseñamos e implementamos, para que tú te centres en crecer.
-        </motion.p>
+        </p>
 
         <div className="mt-10 flex justify-center gap-6">
           <a

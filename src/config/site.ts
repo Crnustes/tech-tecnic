@@ -1,3 +1,5 @@
+import { socials } from './socials'
+
 export interface SiteConfig {
   name: string
   tagline: string
@@ -5,7 +7,7 @@ export interface SiteConfig {
   phone: string
   email: string
   address: string
-  socials: typeof import('./socials').socials
+  socials: typeof socials
 }
 
 export const siteConfig: SiteConfig = {
@@ -16,7 +18,5 @@ export const siteConfig: SiteConfig = {
   phone: "+57 302 674 2059",
   email: "contacto@techtecnic.com",
   address: "Bogotá, Colombia",
-  socials: {
-    ...import('./socials').socials,
-  },
+  socials,
 }
