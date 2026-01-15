@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import CookieBanner from "@/components/CookieBanner";
-import GTMConsent from "@/components/GTMConsent";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -81,14 +81,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
+      {/* Google Tag Manager - Head */}
+      <head>
+        <Script id="gtm-head" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NG86LWF');`}
+        </Script>
+      </head>
       <body 
         className={`${inter.variable} font-sans bg-t_dark text-white antialiased overflow-x-hidden`}
         suppressHydrationWarning
       >
+        {/* Google Tag Manager (noscript) - Body */}
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NG86LWF" height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe>
+        </noscript>
         
         <Navbar />
-        {/* Load GTM only when consent allows */}
-        <GTMConsent />
         <main className="min-h-screen">{children}</main>
         <CookieBanner />
         <Footer />
