@@ -21,10 +21,6 @@ export const metadata: Metadata = {
     template: "%s | Tech Tecnic"
   },
   description: "Agencia moderna enfocada en desarrollo web, inteligencia artificial, automatización, SEO local y marketing basado en datos.",
-  icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
-  },
   keywords: [
     "desarrollo web",
     "inteligencia artificial",
@@ -72,8 +68,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
   manifest: "/site.webmanifest",
 };
