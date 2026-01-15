@@ -36,7 +36,7 @@ export default function GTMConsent() {
     return () => window.removeEventListener("storage", listener);
   }, []);
 
-  const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+  const GTM_ID = "GTM-NG86LWF";
   if (!GTM_ID || !canLoadGTM) return null;
 
   return (
