@@ -131,7 +131,7 @@ Con automatización e IA bien implementadas:
       "búsquedas locales",
       "negocios Bogotá",
     ],
-    featured: true,
+    featured: false,
     image: "seo-local-colombia",
     imageAlt: "Estrategia SEO local para negocios en Colombia",
     content: `
@@ -271,7 +271,7 @@ Un negocio local optimizado en SEO:
       "UX web",
       "sitio web profesional",
     ],
-    featured: true,
+    featured: false,
     image: "desarrollo-web-moderno",
     imageAlt: "Desarrollo web moderno con React y Next.js",
     content: `

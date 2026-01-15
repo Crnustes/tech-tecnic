@@ -7,8 +7,16 @@ export const metadata = {
 };
 
 export default function BlogPage() {
-  const featuredPost = blogPosts.find((post) => post.featured);
-  const otherPosts = blogPosts.filter((post) => !post.featured);
+  // Get all posts sorted by date (most recent first)
+  const sortedPosts = [...blogPosts].sort((a, b) => 
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  
+  // Featured post is the first one marked as featured
+  const featuredPost = sortedPosts.find((post) => post.featured);
+  
+  // Other posts are all posts that are not the featured one
+  const otherPosts = sortedPosts.filter((post) => post.id !== featuredPost?.id);
 
   return (
     <main className="bg-gradient-to-b from-t_dark via-t_primary/10 to-black text-white">

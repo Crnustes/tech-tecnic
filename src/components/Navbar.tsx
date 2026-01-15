@@ -141,6 +141,13 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-t_accent transition-all group-hover:w-full"></span>
             </Link>
             <Link 
+              href="/blog" 
+              className="text-sm font-medium hover:text-t_accent transition-colors relative group"
+            >
+              Blog
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-t_accent transition-all group-hover:w-full"></span>
+            </Link>
+            <Link 
               href="/contacto" 
               className="px-6 py-2.5 rounded-full bg-gradient-to-r from-t_primary to-t_accent text-white text-sm font-medium hover:shadow-lg hover:shadow-t_primary/50 transition-all hover:scale-105"
             >
@@ -190,6 +197,14 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
               >
                 Proyectos
+              </Link>
+              
+              <Link 
+                href="/blog" 
+                className="block py-2 hover:text-t_accent transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Blog
               </Link>
               
               <Link 

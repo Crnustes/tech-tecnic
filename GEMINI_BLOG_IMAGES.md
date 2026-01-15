@@ -16,22 +16,40 @@
 ### Prompt para Gemini:
 
 ```
-Professional illustration of AI automation dashboard for Colombian businesses. 
-Show a modern, sleek interface with charts, automation workflows, and AI indicators. 
-Include elements representing: 
-- Chatbots, automated processes, data analytics
-- Modern office environment in Bogotá/Medellín style
-- Dark theme with accent colors (cyan/turquoise and gold)
-- Professional, corporate aesthetic
-- Scale: suitable for blog header
-- Resolution: 1200x630px or larger
-- Style: Modern, tech-forward, inspirational
-- Languages: Include Spanish elements if possible (optional)
+PROFESSIONAL ILLUSTRATION - AI Automation Dashboard for Latin American Businesses
 
-Color scheme:
-- Background: Dark navy/black (#0a0e27)
-- Accents: Cyan (#00d4ff) and Gold (#ffc107)
-- Professional, clean, modern
+COMPOSITION:
+- Split screen: Left side showing a sleek automation dashboard with real-time metrics
+- Right side: Business environment with modern professionals at work
+- Center: Glowing connections between AI nodes showing data flow
+
+DASHBOARD ELEMENTS (Dark theme):
+- Charts with upward trending graphs (green lines)
+- Automation workflow diagram with connected nodes
+- Real-time metrics and KPIs
+- AI chatbot interface window
+- Processing indicators and completion percentages
+- Color scheme: Dark navy/black (#0a0e27) with cyan (#00d4ff) and gold (#ffc107) accents
+
+VISUAL DETAILS:
+- Multiple screens showing: sales pipeline, customer service automation, lead tracking
+- Bot icons interacting with customer messages
+- Flowing data streams between systems
+- Modern isometric perspective
+- Professional, corporate atmosphere
+- Include subtle Colombian/Latin American design elements (not text)
+
+STYLE:
+- Modern tech illustration (not photorealistic)
+- Clean lines, minimal clutter
+- Professional gradient background
+- Glowing effects on key elements
+- High-tech, inspirational mood
+- Resolution: 1200x630px minimum
+- No text or watermarks
+- Dark mode with bright accents
+
+MOOD: Futuristic yet accessible, showing growth and efficiency
 ```
 
 **Nombre de archivo:** `ia-automation-colombia.jpg`
@@ -43,22 +61,51 @@ Color scheme:
 ### Prompt para Gemini:
 
 ```
-Google Maps interface illustration showing local SEO optimization for Colombian cities.
-Display:
-- Google Maps with top 3 local business rankings highlighted
-- Location pins on map showing cities (Bogotá, Medellín, Cali)
-- Business listings with high ratings and reviews
-- Search bar showing local SEO keywords
-- Modern, professional interface
-- Dark theme with Google Maps colors (blue, red, yellow)
-- Include elements of growth/success indicators
-- Resolution: 1200x630px or larger
-- Style: Professional, data-driven, motivational
+PROFESSIONAL ILLUSTRATION - Local SEO Domination Map
 
-Include visual metaphors for:
-- Local dominance (#1 position)
-- Customer reviews/ratings
-- Geographic reach in Colombia
+COMPOSITION:
+- Centered: Large interactive Google Maps view showing Latin American cities
+- Top 3 local business listings in prominent positions (#1, #2, #3 medals/badges)
+- Location pins radiating from major cities (Bogotá, Medellín, Cali highlighted)
+- Rising trend lines showing business growth
+
+MAIN ELEMENTS:
+- Google Maps interface with:
+  * Multiple location pins with star ratings (4.8★, 4.9★, 5.0★)
+  * Business cards showing: Name, Rating, Review Count, Phone
+  * #1 position highlighted with gold/crown icon
+  * Search bar at top showing keywords: "Agencia SEO Bogotá", "Marketing Digital Medellín"
+  
+- LATAM Geography:
+  * Colombia prominently featured
+  * Cities with glowing highlights
+  * Connection lines showing reach/coverage
+  * Growth indicators (up arrows, percentage gains)
+
+VISUAL EFFECTS:
+- Dark theme (dark navy background #0a0e27)
+- Google Maps standard colors (blue, red, yellow, green)
+- Gold accents for #1 position
+- Cyan (#00d4ff) highlights for key metrics
+- Glowing effect on top-rated businesses
+- Heat map showing high-density business areas
+
+SUPPORTING ELEMENTS:
+- Review bubbles with positive testimonials (generic, no specific names)
+- Rating progression showing improvement over time
+- Geographic reach indicators (expanding circles)
+- Success metrics/numbers displayed subtly
+
+STYLE:
+- Modern, data-driven aesthetic
+- Professional infographic style
+- Isometric/3D perspective elements
+- Clean and organized layout
+- High-tech business illustration
+- Resolution: 1200x630px minimum
+- No text or watermarks
+
+MOOD: Authoritative, successful, achievable results
 ```
 
 **Nombre de archivo:** `seo-local-colombia.jpg`
@@ -70,24 +117,74 @@ Include visual metaphors for:
 ### Prompt para Gemini:
 
 ```
-Modern web development illustration featuring React and Next.js technologies.
-Show:
-- Computer screen with beautiful, modern website UI
-- Code editor with React/JavaScript components visible
-- Modern design elements (minimalist, dark mode)
-- Responsive design indicators (mobile, tablet, desktop)
-- Performance metrics and speed indicators
-- Dark theme with vibrant accent colors (cyan and purple)
-- Modern tech workspace aesthetic
-- Include: React logo/icon, Next.js concept
-- Resolution: 1200x630px or larger
-- Style: Tech-forward, professional, inspiring
+PROFESSIONAL ILLUSTRATION - Modern Web Development Tech Stack
 
-Visual elements:
-- Smooth animations/transitions
-- Clean code snippets
-- Modern UI components
-- Performance indicators (speed, optimization)
+COMPOSITION:
+- Split view showing:
+  * Left: Beautiful modern website UI on desktop screen
+  * Right: Code editor with React/JavaScript components
+  * Bottom: Responsive design indicators (mobile, tablet, desktop views)
+  * Top: Performance metrics dashboard
+
+MAIN ELEMENTS:
+
+LEFT SCREEN (Website UI):
+- Modern, minimalist website design
+- Dark theme with accent colors (cyan #00d4ff, purple #9c27b0)
+- Clean typography hierarchy
+- Modern sections: Hero, Features, CTA buttons
+- Smooth animations (indicated by motion lines)
+- Responsive design adapting to screen size
+- High conversion design elements
+
+RIGHT PANEL (Code Editor):
+- Visual Studio Code or modern code editor interface
+- React component code visible (JSX syntax highlighting)
+- Color-coded syntax highlighting (blue, green, orange)
+- Multiple file tabs showing component structure
+- Smooth transitions and animations in code
+
+TECHNICAL ELEMENTS:
+- React logo (subtle, not prominent)
+- Next.js concept indicator (server-side rendering visual)
+- Performance metrics shown:
+  * Page Load Speed: <1s
+  * Lighthouse Score: 98/100
+  * Core Web Vitals: Green checkmarks
+  * Optimization indicators
+
+RESPONSIVE DESIGN VIEW:
+- Mobile view showing perfect mobile design
+- Tablet view showing responsiveness
+- Desktop view showing full experience
+- All views connected showing universal design
+
+VISUAL EFFECTS:
+- Dark navy/black background (#0a0e27)
+- Cyan (#00d4ff) and purple (#9c27b0) accent colors
+- Glowing effects on code highlights
+- Smooth gradient transitions
+- Floating UI elements showing interaction states
+- Connection lines showing component relationships
+
+SUPPORTING DETAILS:
+- Design system indicators
+- Component library visualization
+- CSS-in-JS or Tailwind indicators (visual, not text)
+- API connection visual
+- Deployment indicators
+- Server rendering visualization
+
+STYLE:
+- Modern tech illustration
+- Professional, contemporary aesthetic
+- Clean isometric perspective
+- Inspiring and aspirational
+- Not photorealistic, stylized
+- Resolution: 1200x630px minimum
+- No text or watermarks
+
+MOOD: Innovative, professional, cutting-edge, achievable technology
 ```
 
 **Nombre de archivo:** `desarrollo-web-moderno.jpg`
