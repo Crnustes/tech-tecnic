@@ -17,12 +17,12 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: "1",
-    slug: "ia-automatizacion-transformar-negocio-2025",
-    title: "IA y Automatización: Cómo Transformar tu Negocio en 2025",
+    slug: "ia-automatizacion-transformar-negocio-2026",
+    title: "IA y Automatización: Cómo Transformar tu Negocio en 2026",
     excerpt: "Descubre cómo las empresas colombianas están multiplicando su productividad con automatización e IA. Casos reales y estrategias probadas.",
     category: "Tecnología",
     author: "Tech Tecnic",
-    date: "2025-01-14",
+    date: "2026-01-14",
     readTime: 8,
     keywords: [
       "IA Colombia",
@@ -35,13 +35,13 @@ export const blogPosts: BlogPost[] = [
     image: "ia-automation-colombia",
     imageAlt: "Automatización e IA para empresas colombianas",
     content: `
-# IA y Automatización: Transforma tu Negocio en 2025
+# IA y Automatización: Transforma tu Negocio en 2026
 
 En Colombia, las empresas están descubriendo el poder transformador de la inteligencia artificial y la automatización. Ya no es un lujo futurista: es una necesidad competitiva.
 
 ## ¿Por Qué Ahora?
 
-En 2025, las empresas que invierten en automatización e IA reducen costos operativos hasta un **40%** mientras escalan su capacidad sin contratar más personal.
+En 2026, las empresas que invierten en automatización e IA reducen costos operativos hasta un **40%** mientras escalan su capacidad sin contratar más personal.
 
 ### Los Números Hablan
 
@@ -118,11 +118,11 @@ Con automatización e IA bien implementadas:
   {
     id: "2",
     slug: "seo-local-domina-google-zona-bogota-medellin",
-    title: "SEO Local 2025: Cómo Dominar Google en tu Ciudad",
+    title: "SEO Local 2026: Cómo Dominar Google en tu Ciudad",
     excerpt: "Guía práctica de SEO local para negocios en Colombia. Aparece en el top 3 de búsquedas locales y atrae clientes de tu zona.",
     category: "Marketing Digital",
     author: "Tech Tecnic",
-    date: "2025-01-13",
+    date: "2026-01-13",
     readTime: 10,
     keywords: [
       "SEO local Colombia",
@@ -135,7 +135,7 @@ Con automatización e IA bien implementadas:
     image: "seo-local-colombia",
     imageAlt: "Estrategia SEO local para negocios en Colombia",
     content: `
-# SEO Local 2025: Domina Google en Tu Ciudad
+# SEO Local 2026: Domina Google en Tu Ciudad
 
 El 76% de búsquedas en móvil buscan algo local. Si tu negocio no aparece en las primeras 3 posiciones de Google para tu ciudad, pierdes clientes todos los días.
 
@@ -256,9 +256,9 @@ Un negocio local optimizado en SEO:
   },
   {
     id: "3",
-    slug: "desarrollo-web-moderno-react-nextjs-2025",
-    title: "Desarrollo Web Moderno 2025: React, Next.js y Tendencias",
-    excerpt: "Qué hace que un sitio web moderno en 2025 venda más. Tecnología, diseño y UX que generan resultados comprobados.",
+    slug: "desarrollo-web-moderno-react-nextjs-2026",
+    title: "Desarrollo Web Moderno 2026: React, Next.js y Tendencias",
+    excerpt: "Qué hace que un sitio web moderno en 2026 venda más. Tecnología, diseño y UX que generan resultados comprobados.",
     category: "Desarrollo Web",
     author: "Tech Tecnic",
     date: "2025-01-12",
