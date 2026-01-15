@@ -92,7 +92,42 @@ npm run start    # Producción
 
 ##  Deployment
 
-Optimizado para Vercel o Docker
+### Deploy en Vercel (Recomendado)
+
+1. **Sube tu código a GitHub:**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin https://github.com/tu-usuario/webtechtecnic.git
+   git push -u origin main
+   ```
+
+2. **Conecta con Vercel:**
+   - Ve a [vercel.com](https://vercel.com) y haz login con GitHub
+   - Click en **"Add New Project"**
+   - Selecciona tu repositorio `webtechtecnic`
+   - Vercel detecta Next.js automáticamente
+
+3. **Configura variables de entorno en Vercel:**
+   - En el dashboard del proyecto → **Settings** → **Environment Variables**
+   - Añade:
+     ```
+     RESEND_API_KEY=tu_clave_resend
+     CONTACT_EMAIL=info@tudominio.com
+     NEXT_PUBLIC_SITE_URL=https://tudominio.com
+     NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+     ```
+
+4. **Deploy:**
+   - Click **"Deploy"**
+   - ¡Listo! Tu sitio estará en línea en ~2 minutos
+
+5. **Dominio personalizado:**
+   - En Vercel: **Settings** → **Domains**
+   - Añade tu dominio de Hostinger
+   - Configura los DNS en Hostinger según las instrucciones
 
 ---
 
