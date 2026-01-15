@@ -1,26 +1,20 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí puedes agregar la lógica del newsletter
-    console.log('Newsletter email:', email);
-    setEmail('');
-  };
   const currentYear = new Date().getFullYear();
 
   const services = [
     { name: 'Desarrollo Web', href: '/servicios/desarrollo-web' },
-    { name: 'SEO + GEO', href: '/servicios/seo-geo' },
-    { name: 'IA y Automatización', href: '/servicios/automatizacion-ia' },
+    { name: 'SEO & Posicionamiento', href: '/servicios/seo-geo' },
+    { name: 'IA & Automatización', href: '/servicios/automatizacion-ia' },
+    { name: 'Chatbot WhatsApp IA', href: '/servicios/chatbot-wp-ia' },
     { name: 'Integraciones', href: '/servicios/integraciones' },
+    { name: 'Apps Móviles', href: '/servicios/apps-moviles' },
+    { name: 'Mantenimiento Web', href: '/servicios/mantenimiento' },
   ];
 
   const company = [
@@ -72,13 +66,13 @@ export default function Footer() {
               </a>
               
               <a 
-                href="tel:+573026742059"
+                href="tel:+573337151064"
                 className="flex items-center gap-3 text-gray-400 hover:text-t_primary transition-colors group"
               >
                 <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-t_primary/10 transition-colors">
                   <Phone className="w-5 h-5" />
                 </div>
-                <span>+57 302 674 2059</span>
+                <span>+57 333 715 1064</span>
               </a>
               
               <div className="flex items-center gap-3 text-gray-400">
@@ -146,38 +140,6 @@ export default function Footer() {
                 })}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <div className="border-t border-white/10 pt-12 mb-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold text-white mb-3">
-              Mantente Actualizado
-            </h3>
-            <p className="text-gray-400 mb-6">
-              Recibe tips, noticias y recursos sobre desarrollo web e IA
-            </p>
-            <form className="flex gap-3 max-w-md mx-auto" onSubmit={handleNewsletterSubmit}>
-              <input
-                type="email"
-                name="newsletter-email"
-                id="newsletter-email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="tu@email.com"
-                autoComplete="email"
-                required
-                suppressHydrationWarning
-                className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none focus:border-t_primary transition-colors"
-              />
-              <button 
-                type="submit"
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-t_primary to-cyan-400 text-white font-semibold hover:scale-105 transition-transform"
-              >
-                Suscribirse
-              </button>
-            </form>
           </div>
         </div>
 
