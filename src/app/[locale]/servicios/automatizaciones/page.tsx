@@ -48,9 +48,9 @@ const pageCopy = {
     ],
   },
   en: {
-    metaTitle: 'Automation and Artificial Intelligence | Tech Tecnic',
+    metaTitle: 'Business Automation and AI | Tech Tecnic',
     metaDescription:
-      'We implement intelligent automation and AI solutions to optimize business processes, reduce costs, and scale efficiently.',
+      'We implement intelligent automation and AI solutions to optimize processes, reduce costs, and scale across Colombia, Latam, and USA.',
     title: 'Automation and Artificial Intelligence',
     intro:
       'Accelerate your business with intelligent workflows, bots, AI integrations, and advanced analytics. We design and implement it so you can focus on growth.',

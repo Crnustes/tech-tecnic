@@ -151,17 +151,17 @@ const pageCopy = {
     popularLabel: 'Mas Popular',
   },
   en: {
-    metaTitle: 'Web Development in Bogota | WordPress, React, Next.js | Tech Tecnic',
+    metaTitle: 'Web Development Agency in Bogota | WordPress, React, Next.js | Tech Tecnic',
     metaDescription:
-      'Professional web development in Bogota. Landing pages, e-commerce and web apps with WordPress, React and Next.js. Modern, SEO-ready design.',
+      'Professional web development in Bogota for Colombia, Latam, and USA. Landing pages, e-commerce, and web apps with WordPress, React, and Next.js.',
     metaKeywords: [
+      'web development agency',
       'web development bogota',
       'wordpress development colombia',
       'woocommerce ecommerce',
       'react nextjs bogota',
-      'professional web design',
-      'landing page bogota',
-      'online store colombia',
+      'nextjs agency',
+      'latin america web agency',
     ],
     heroBadge: 'Professional Web Development',
     heroTitleTop: 'Websites that',

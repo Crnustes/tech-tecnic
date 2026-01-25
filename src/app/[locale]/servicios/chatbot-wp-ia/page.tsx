@@ -121,15 +121,16 @@ const pageCopy = {
       'Bot de WhatsApp con inteligencia artificial para automatizacion de atencion, captura de leads y soporte 24/7. Integracion con web, apps y CRM.',
   },
   en: {
-    metaTitle: 'WhatsApp AI Chatbot | 24/7 Automation | Tech Tecnic',
+    metaTitle: 'WhatsApp AI Chatbot | 24/7 Automation and Sales | Tech Tecnic',
     metaDescription:
-      'WhatsApp AI bot for automated support, lead capture, and 24/7 service. Integrated with web, apps, and CRM.',
+      'WhatsApp AI chatbot for support, lead capture, and sales automation. Integrates with web, apps, and CRM.',
     metaKeywords: [
       'whatsapp ai chatbot',
-      'whatsapp bot business',
       'whatsapp automation',
       'whatsapp business api',
-      'ai chatbot colombia',
+      'lead capture chatbot',
+      'sales automation chatbot',
+      'ai chatbot for business',
     ],
     badge: 'WhatsApp AI Bot',
     heroTitleTop: 'WhatsApp Bot',

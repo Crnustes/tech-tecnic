@@ -76,15 +76,15 @@ const pageCopy = {
   en: {
     metaTitle: 'Web Development and AI Services | Tech Tecnic Bogota',
     metaDescription:
-      'Professional web development, SEO, AI automation and integrations in Bogota, Colombia. Boost your business with modern technology.',
+      'Web development, SEO, AI automation, and integrations in Bogota. Serving Colombia, Latam, and the USA.',
     metaKeywords: [
-      'web development bogota',
-      'SEO colombia',
-      'AI automation',
+      'web development agency bogota',
+      'seo agency colombia',
+      'ai automation services',
       'digital agency bogota',
       'wordpress development',
       'ecommerce colombia',
-      'search positioning',
+      'latin america web agency',
     ],
     badge: 'Professional Services',
     titleTop: 'Digital',

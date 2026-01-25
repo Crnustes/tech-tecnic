@@ -17,13 +17,13 @@ const pageCopy = {
   en: {
     metaTitle: 'Blog | Tech Tecnic - AI, SEO, and Web Development Trends',
     metaDescription:
-      'Articles about artificial intelligence, automation, local SEO, and modern web development. Strategies and real cases for businesses in Colombia.',
+      'Articles about AI, automation, local SEO, and modern web development. Strategies for Colombia, Latam, and the USA.',
     metaKeywords: [
       'technology blog',
-      'AI and automation',
-      'local SEO',
+      'ai automation',
+      'local seo',
       'web development',
-      'digital marketing',
+      'latin america marketing',
     ],
   },
 }

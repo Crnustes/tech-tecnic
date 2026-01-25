@@ -19,9 +19,9 @@ const pageCopy = {
     viewProject: 'Ver proyecto',
   },
   en: {
-    metaTitle: 'Projects | Tech Tecnic',
+    metaTitle: 'Projects | Tech Tecnic - Web, AI, and Automation',
     metaDescription:
-      'Portfolio of web projects, e-commerce, apps, and automation delivered by Tech Tecnic.',
+      'Portfolio of web projects, e-commerce, apps, and automation delivered in Colombia, Latam, and the USA.',
     badge: 'Portfolio',
     title: 'Our projects',
     subtitle:

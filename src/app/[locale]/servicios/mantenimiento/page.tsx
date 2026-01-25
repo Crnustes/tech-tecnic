@@ -261,16 +261,15 @@ const pageCopy = {
   en: {
     metaTitle: 'Web Maintenance in Bogota | 24/7 Support and Security | Tech Tecnic',
     metaDescription:
-      'Professional web maintenance in Bogota. Updates, security, backups, optimization, and technical support for your WordPress or web site. Plans from $150.000/month COP.',
+      'Professional web maintenance in Bogota for Colombia, Latam, and USA. Updates, backups, security, and performance optimization.',
     metaKeywords: [
+      'web maintenance agency',
       'web maintenance bogota',
-      'wordpress support colombia',
-      'website maintenance',
-      'web security colombia',
-      'website backup',
-      'wordpress updates',
-      'web optimization',
-      'web support',
+      'wordpress maintenance',
+      'website security',
+      'website backups',
+      'performance optimization',
+      'website monitoring',
     ],
     badge: 'Web Maintenance and Support',
     heroTitleTop: 'Your website',

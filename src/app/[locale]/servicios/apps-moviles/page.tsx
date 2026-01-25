@@ -231,16 +231,16 @@ const pageCopy = {
   en: {
     metaTitle: 'Mobile App Development in Bogota | iOS and Android | Tech Tecnic',
     metaDescription:
-      'Native and cross-platform mobile app development in Bogota. Apps for iOS, Android, and React Native. From business apps to mobile e-commerce.',
+      'Mobile app development in Bogota for Colombia, Latam, and USA. iOS, Android, and cross-platform apps.',
     metaKeywords: [
+      'mobile app development agency',
       'mobile app development bogota',
       'ios android app colombia',
-      'react native bogota',
-      'flutter colombia',
-      'mobile applications',
-      'native app development',
+      'react native development',
+      'flutter development',
       'business app',
-      'ecommerce apps',
+      'mobile ecommerce',
+      'latin america app development',
     ],
     badge: 'Mobile App Development',
     heroTitleTop: 'Mobile apps that',
