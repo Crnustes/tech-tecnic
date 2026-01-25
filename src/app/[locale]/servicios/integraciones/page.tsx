@@ -456,9 +456,6 @@ export async function generateMetadata({
   const { locale } = await params;
   const copy = pageCopy[locale];
   const path = '/servicios/integraciones';
-  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
-  const faqSchema = getFaqSchema(copy.faq, locale);
-  const path = '/servicios/integraciones';
   const canonicalUrl = buildLocalizedUrl(path, locale);
 
   return {
@@ -486,6 +483,9 @@ export default async function IntegracionesPage({
 }) {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const path = '/servicios/integraciones';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
 
   const formatPrice = (priceCOP: number) => {
     const amount = locale === 'es' ? priceCOP : convertCOPtoUSD(priceCOP);

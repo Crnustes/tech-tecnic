@@ -290,9 +290,6 @@ export async function generateMetadata({
   const { locale } = await params;
   const copy = pageCopy[locale];
   const path = '/servicios/desarrollo-web';
-  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
-  const faqSchema = getFaqSchema(copy.faq, locale);
-  const path = '/servicios/desarrollo-web';
   const canonicalUrl = buildLocalizedUrl(path, locale);
 
   return {
@@ -320,6 +317,9 @@ export default async function DesarrolloWebPage({
 }) {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const path = '/servicios/desarrollo-web';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
 
   const getPrice = (priceCOP: number) => {
     const amount = locale === 'es' ? priceCOP : convertCOPtoUSD(priceCOP);
