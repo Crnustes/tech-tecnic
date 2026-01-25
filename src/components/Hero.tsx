@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function Hero() {
+  const t = useTranslations('hero');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -40,24 +42,23 @@ export default function Hero() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8 animate-fade-in">
           <Sparkles className="w-4 h-4 text-t_primary" />
-          <span className="text-sm text-gray-300">Transformando Ideas en Experiencias Digitales</span>
+          <span className="text-sm text-gray-300">{t('badge')}</span>
         </div>
 
         {/* Main Heading */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight tracking-tight">
           <span className="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-            Impulsamos tu
+            {t('title1')}
           </span>
           <br />
           <span className="bg-gradient-to-r from-t_primary via-cyan-400 to-t_accent bg-clip-text text-transparent animate-gradient">
-            Presencia Digital
+            {t('title2')}
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-          Desarrollo web de última generación, inteligencia artificial y automatización 
-          para marcas que buscan destacar en el mundo digital.
+          {t('subtitle')}
         </p>
 
         {/* CTA Buttons */}
@@ -67,7 +68,7 @@ export default function Hero() {
             className="group relative px-8 py-4 bg-gradient-to-r from-t_primary to-cyan-400 rounded-full font-semibold text-white overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-t_primary/50"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Iniciar Proyecto
+              {t('startProject')}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-t_accent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -78,17 +79,17 @@ export default function Hero() {
             className="group px-8 py-4 rounded-full font-semibold text-white border-2 border-white/20 hover:border-white/40 backdrop-blur-sm hover:bg-white/5 transition-all flex items-center gap-2"
           >
             <Zap className="w-5 h-5 text-t_accent" />
-            Explorar Servicios
+            {t('exploreServices')}
           </Link>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-24 max-w-4xl mx-auto">
           {[
-            { value: '50+', label: 'Proyectos Completados' },
-            { value: '98%', label: 'Satisfacción Cliente' },
-            { value: '5⭐', label: 'Calificación Promedio' },
-            { value: '24/7', label: 'Soporte Técnico' },
+            { value: '50+', label: t('stats.projectsCompleted') },
+            { value: '98%', label: t('stats.clientSatisfaction') },
+            { value: '5-star', label: t('stats.averageRating') },
+            { value: '24/7', label: t('stats.technicalSupport') },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-white mb-2">

@@ -1,0 +1,173 @@
+{
+  "common": {
+    "language": "Español",
+    "currency": "COP",
+    "contactUs": "Contáctanos",
+    "learnMore": "Saber más",
+    "getStarted": "Comenzar",
+    "readMore": "Leer más",
+    "viewAll": "Ver todo",
+    "backTo": "Volver a",
+    "loading": "Cargando...",
+    "error": "Error"
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "aboutUs": "Nosotros",
+    "cantFindService": "¿No encuentras lo que buscas?",
+    "tellUsProject": "Cuéntanos tu proyecto y te ayudamos"
+  },
+  "footer": {
+    "description": "Creamos experiencias digitales impulsadas por tecnología, diseño y automatización. Tu éxito digital es nuestra misión.",
+    "services": "Servicios",
+    "company": "Empresa",
+    "followUs": "Síguenos",
+    "allRightsReserved": "Todos los derechos reservados",
+    "privacyPolicy": "Política de Privacidad",
+    "termsConditions": "Términos y Condiciones",
+    "cookiePolicy": "Política de Cookies",
+    "legalNotice": "Aviso Legal",
+    "dataProcessing": "Tratamiento de Datos",
+    "aboutUs": "Sobre Nosotros",
+    "location": "Bogotá, Colombia"
+  },
+  "hero": {
+    "badge": "Transformando Ideas en Experiencias Digitales",
+    "title1": "Impulsamos tu",
+    "title2": "Presencia Digital",
+    "subtitle": "Desarrollo web de última generación, inteligencia artificial y automatización para marcas que buscan destacar en el mundo digital.",
+    "startProject": "Iniciar Proyecto",
+    "exploreServices": "Explorar Servicios",
+    "stats": {
+      "projectsCompleted": "Proyectos Completados",
+      "clientSatisfaction": "Satisfacción Cliente",
+      "averageRating": "Calificación Promedio",
+      "technicalSupport": "Soporte Técnico"
+    }
+  },
+  "services": {
+    "developmentWeb": "Desarrollo Web",
+    "seoPositioning": "SEO & Posicionamiento",
+    "iaAutomation": "IA & Automatización",
+    "chatbotWhatsApp": "Chatbot WhatsApp IA",
+    "integrations": "Integraciones",
+    "mobileApps": "Apps Móviles",
+    "maintenance": "Mantenimiento Web",
+    "catalog": {
+      "desarrolloWeb": {
+        "title": "Desarrollo Web",
+        "subtitle": "Sitios modernos y escalables",
+        "description": "Diseño y desarrollo de sitios de alto rendimiento con WordPress, React y Next.js. Desde landing pages hasta e-commerce.",
+        "features": ["Diseño responsivo", "E-commerce con WooCommerce", "Hosting y dominio", "Integraciones con CRM y APIs"],
+        "price": "Desde $400.000 COP",
+        "priceUSD": "Desde $98 USD"
+      },
+      "seoGeo": {
+        "title": "SEO & Posicionamiento",
+        "subtitle": "Visibilidad que convierte",
+        "description": "SEO técnico y local para posicionarte en Google y aumentar tu tráfico orgánico.",
+        "features": ["SEO técnico/on-page", "Google Tag Manager y GA4", "SEO Local (GMB)", "Core Web Vitals"],
+        "price": "Desde $500.000 COP/mes",
+        "priceUSD": "Desde $122 USD/mes"
+      },
+      "automatizacionIa": {
+        "title": "IA & Automatización",
+        "subtitle": "Inteligencia que trabaja por ti",
+        "description": "Flujos inteligentes con IA, chatbots y automatizaciones para optimizar tu operación.",
+        "features": ["Chatbots con IA", "Captura automática de leads", "Integración con CRMs", "APIs e IA generativa"],
+        "price": "Desde $800.000 COP",
+        "priceUSD": "Desde $195 USD"
+      },
+      "integraciones": {
+        "title": "Integraciones",
+        "subtitle": "Todo conectado",
+        "description": "Zapier, Make y APIs personalizadas para flujos sin fricciones.",
+        "features": ["Zapier y Make", "APIs personalizadas", "Integración con CRMs", "Sincronización de datos"],
+        "price": "Desde $600.000 COP",
+        "priceUSD": "Desde $146 USD"
+      },
+      "mantenimiento": {
+        "title": "Mantenimiento Web",
+        "subtitle": "Tu sitio siempre actualizado",
+        "description": "Seguridad, velocidad y estabilidad para tu sitio web.",
+        "features": ["Monitoreo 24/7", "Actualizaciones de seguridad", "Backups automáticos", "Optimización continua"],
+        "price": "Desde $150.000 COP/mes",
+        "priceUSD": "Desde $37 USD/mes"
+      },
+      "appMoviles": {
+        "title": "Apps Móviles",
+        "subtitle": "Conecta con tus clientes",
+        "description": "Desarrollo de aplicaciones nativas para iOS y Android con experiencia de usuario excepcional.",
+        "features": ["Desarrollo nativo", "Diseño UI/UX", "Integración con APIs", "Publicación en stores"],
+        "price": "Desde $1.500.000 COP",
+        "priceUSD": "Desde $366 USD"
+      },
+      "chatbotWhatsApp": {
+        "title": "Chatbot WhatsApp IA",
+        "subtitle": "Ventas automatizadas 24/7",
+        "description": "Chatbots inteligentes para WhatsApp Business que capturan leads y automatizan atención al cliente.",
+        "features": ["IA generativa", "Captura de leads", "Respuestas automáticas", "Integración con CRM"],
+        "price": "Desde $600.000 COP",
+        "priceUSD": "Desde $146 USD"
+      },
+      "automatizaciones": {
+        "title": "Automatizaciones",
+        "subtitle": "Procesos sin fricción",
+        "description": "Automatización de procesos operacionales con herramientas como Zapier, Make y RPA.",
+        "features": ["Workflows complejos", "Sincronización de datos", "Alertas inteligentes", "Reportes automáticos"],
+        "price": "Desde $400.000 COP",
+        "priceUSD": "Desde $98 USD"
+      }
+    }
+  },
+  "cta": {
+    "readyToTransform": "¿Listo para Transformar tu Negocio?",
+    "applyStrategies": "Aplica las estrategias de nuestro blog. Contáctanos para una consultoría personalizada y convierte el conocimiento en resultados.",
+    "requestConsultation": "Solicitar Consultoría",
+    "whatsappContact": "Hablar por WhatsApp",
+    "needImplementation": "¿Necesitas Implementar Esto en tu Negocio?",
+    "weImplement": "En Tech Tecnic implementamos las estrategias que lees aquí. Convertimos teoría en resultados reales para tu marca.",
+    "scheduleFreeConsultation": "Agendar Consultoría Gratuita",
+    "readMoreArticles": "Leer Más Artículos"
+  },
+  "blog": {
+    "title": "Blog Tech Tecnic",
+    "subtitle": "Estrategias, tendencias y casos reales sobre IA, automatización, SEO y desarrollo web moderno que transforman negocios",
+    "badge": "Conocimiento y Estrategia Digital",
+    "featured": "Artículo Destacado",
+    "latestArticles": "Últimos Artículos",
+    "stayUpdated": "Mantente actualizado con nuestras últimas publicaciones",
+    "minRead": "min lectura",
+    "readArticle": "Leer artículo",
+    "backToBlog": "Volver al Blog",
+    "keywords": "Palabras Clave",
+    "relatedArticles": "Artículos Relacionados",
+    "continueReading": "Continúa leyendo sobre temas similares"
+  },
+  "contact": {
+    "title": "Contacto",
+    "getInTouch": "Ponte en contacto",
+    "name": "Nombre",
+    "email": "Email",
+    "phone": "Teléfono",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "success": "Mensaje enviado correctamente",
+    "error": "Error al enviar el mensaje"
+  },
+  "serviceDetails": {
+    "whyChoose": "¿Por qué elegir nuestro servicio?",
+    "plans": "Planes y Precios",
+    "startingFrom": "Desde",
+    "perfectFor": "Ideal para",
+    "includes": "Incluye",
+    "schedule": "Agendar Consultoría",
+    "requestQuote": "Solicitar Cotización",
+    "contactUs": "Contáctanos"
+  }
+}

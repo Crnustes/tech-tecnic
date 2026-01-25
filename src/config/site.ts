@@ -12,11 +12,11 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "Tech Tecnic",
-  tagline: "Innovación digital con propósito",
+  tagline: "Innovacion digital con proposito",
   description:
-    "Agencia de desarrollo web, IA y automatización. Diseñamos experiencias digitales modernas y eficientes.",
+    "Agencia de desarrollo web, IA y automatizacion. Disenamos experiencias digitales modernas y eficientes.",
   phone: "+57 302 674 2059",
   email: "contacto@techtecnic.com",
-  address: "Bogotá, Colombia",
+  address: "Bogota, Colombia",
   socials,
 }

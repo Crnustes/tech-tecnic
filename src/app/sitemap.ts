@@ -1,138 +1,52 @@
-import { MetadataRoute } from "next"
-import { blogPosts } from "@/config/blog-posts"
+import { MetadataRoute } from "next";
+import { blogPosts } from "@/config/blog-posts";
+import { buildAlternates, buildLocalizedUrl, SUPPORTED_LOCALES } from "@/utils/seo";
 
-const baseUrl = "https://www.techtecnic.com"
+type ChangeFrequency = "daily" | "weekly" | "monthly" | "yearly";
+
+const createLocalizedEntries = (
+  path: string,
+  lastModified: Date | string,
+  changeFrequency: ChangeFrequency,
+  priority: number
+) =>
+  SUPPORTED_LOCALES.map((locale) => ({
+    url: buildLocalizedUrl(path, locale),
+    lastModified,
+    changeFrequency,
+    priority,
+    alternates: buildAlternates(path),
+  }));
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const currentDate = new Date()
+  const currentDate = new Date();
 
-  const blogEntries = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.date,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }))
+  const staticEntries = [
+    { path: "/", changeFrequency: "weekly" as const, priority: 1 },
+    { path: "/blog", changeFrequency: "weekly" as const, priority: 0.9 },
+    { path: "/contacto", changeFrequency: "monthly" as const, priority: 0.9 },
+    { path: "/proyectos", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/servicios", changeFrequency: "monthly" as const, priority: 0.9 },
+    { path: "/servicios/desarrollo-web", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/servicios/seo-geo", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/servicios/automatizaciones", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/servicios/automatizacion-ia", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/servicios/integraciones", changeFrequency: "monthly" as const, priority: 0.7 },
+    { path: "/servicios/mantenimiento", changeFrequency: "monthly" as const, priority: 0.7 },
+    { path: "/servicios/apps-moviles", changeFrequency: "monthly" as const, priority: 0.7 },
+    { path: "/servicios/chatbot-wp-ia", changeFrequency: "monthly" as const, priority: 0.7 },
+    { path: "/aviso-legal", changeFrequency: "yearly" as const, priority: 0.3 },
+    { path: "/politica-de-privacidad", changeFrequency: "yearly" as const, priority: 0.3 },
+    { path: "/politica-de-cookies", changeFrequency: "yearly" as const, priority: 0.3 },
+    { path: "/politica-de-tratamiento-de-datos", changeFrequency: "yearly" as const, priority: 0.3 },
+    { path: "/terminos-y-condiciones", changeFrequency: "yearly" as const, priority: 0.3 },
+  ].flatMap((entry) =>
+    createLocalizedEntries(entry.path, currentDate, entry.changeFrequency, entry.priority)
+  );
 
-  return [
-    // Homepage
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    
-    // Blog main page
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
+  const blogEntries = blogPosts.flatMap((post) =>
+    createLocalizedEntries(`/blog/${post.slug}`, post.date, "monthly", 0.7)
+  );
 
-    // Blog posts
-    ...blogEntries,
-    
-    // Main Pages
-    {
-      url: `${baseUrl}/contacto`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/proyectos`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/servicios`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    
-    // Services Pages
-    {
-      url: `${baseUrl}/servicios/desarrollo-web`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/servicios/seo-geo`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/servicios/automatizaciones`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/servicios/automatizacion-ia`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/servicios/integraciones`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/servicios/mantenimiento`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/servicios/apps-moviles`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/servicios/chatbot-wp-ia`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    
-    // Legal Pages
-    {
-      url: `${baseUrl}/aviso-legal`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/politica-de-privacidad`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/politica-de-cookies`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/politica-de-tratamiento-de-datos`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terminos-y-condiciones`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-  ]
+  return [...staticEntries, ...blogEntries];
 }

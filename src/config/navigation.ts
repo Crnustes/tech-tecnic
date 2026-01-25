@@ -5,8 +5,8 @@ export const navigation = {
       name: 'Servicios',
       sublinks: [
         { name: 'Desarrollo Web', href: '/servicios/desarrollo-web' },
-        { name: 'Automatizaciones e IA', href: '/servicios/automatizaciones-ia' },
-        { name: 'Optimización SEO + GEO', href: '/servicios/seo-geo' },
+        { name: 'Automatizacion e IA', href: '/servicios/automatizacion-ia' },
+        { name: 'Optimizacion SEO + GEO', href: '/servicios/seo-geo' },
       ],
     },
     { name: 'Proyectos', href: '/proyectos' },
