@@ -9,6 +9,7 @@ import { buildLocalizedUrl } from '@/utils/seo';
 export default function Footer() {
   const t = useTranslations();
   const locale = useLocale();
+  const safeLocale = locale === "en" ? "en" : "es";
   const currentYear = new Date().getFullYear();
 
   const services = [
@@ -40,7 +41,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-2">
-            <Link href={buildLocalizedUrl('/', locale)} className="inline-block mb-6">
+            <Link href={buildLocalizedUrl('/', safeLocale)} className="inline-block mb-6">
               <div className="relative w-48 h-12">
                 <Image
                   src="/logo.png"
@@ -90,7 +91,7 @@ export default function Footer() {
               {services.map((item) => (
                 <li key={item.name}>
                   <Link
-                    href={buildLocalizedUrl(item.href, locale)}
+                    href={buildLocalizedUrl(item.href, safeLocale)}
                     className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group"
                   >
                     <span>{item.name}</span>
@@ -107,7 +108,7 @@ export default function Footer() {
               {company.map((item) => (
                 <li key={item.name}>
                   <Link
-                    href={buildLocalizedUrl(item.href, locale)}
+                    href={buildLocalizedUrl(item.href, safeLocale)}
                     className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group"
                   >
                     <span>{item.name}</span>
@@ -146,11 +147,11 @@ export default function Footer() {
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6 text-sm">
-            <Link href={buildLocalizedUrl('/politica-de-privacidad', locale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.privacyPolicy')}</Link>
-            <Link href={buildLocalizedUrl('/terminos-y-condiciones', locale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.termsConditions')}</Link>
-            <Link href={buildLocalizedUrl('/politica-de-cookies', locale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.cookiePolicy')}</Link>
-            <Link href={buildLocalizedUrl('/aviso-legal', locale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.legalNotice')}</Link>
-            <Link href={buildLocalizedUrl('/politica-de-tratamiento-de-datos', locale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.dataProcessing')}</Link>
+            <Link href={buildLocalizedUrl('/politica-de-privacidad', safeLocale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.privacyPolicy')}</Link>
+            <Link href={buildLocalizedUrl('/terminos-y-condiciones', safeLocale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.termsConditions')}</Link>
+            <Link href={buildLocalizedUrl('/politica-de-cookies', safeLocale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.cookiePolicy')}</Link>
+            <Link href={buildLocalizedUrl('/aviso-legal', safeLocale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.legalNotice')}</Link>
+            <Link href={buildLocalizedUrl('/politica-de-tratamiento-de-datos', safeLocale)} className="text-gray-500 hover:text-white transition-colors">{t('footer.dataProcessing')}</Link>
           </div>
         </div>
       </div>
