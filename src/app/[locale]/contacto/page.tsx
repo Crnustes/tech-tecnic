@@ -44,13 +44,12 @@ const pageCopy = {
     formSubtitle: 'Completa el formulario y te contactaremos pronto',
     successTitle: 'Mensaje enviado exitosamente!',
     successText: 'Te contactaremos muy pronto.',
+    errorTitle: 'No pudimos enviar el mensaje',
+    errorText: 'Intenta de nuevo o escribenos por WhatsApp.',
     form: {
       nameLabel: 'Nombre completo *',
       namePlaceholder: 'Juan Perez',
       emailLabel: 'Email *',
-      phoneLabel: 'Telefono',
-      serviceLabel: 'Servicio de interes',
-      servicePlaceholder: 'Selecciona un servicio',
       messageLabel: 'Cuentanos sobre tu proyecto *',
       messagePlaceholder:
         'Describe tu idea, objetivos, presupuesto aproximado y cualquier detalle relevante...',
@@ -59,16 +58,6 @@ const pageCopy = {
       privacyText:
         'Al enviar este formulario aceptas nuestra politica de privacidad y tratamiento de datos.',
     },
-    services: [
-      { value: 'desarrollo-web', label: 'Desarrollo Web' },
-      { value: 'seo-geo', label: 'SEO y Posicionamiento' },
-      { value: 'automatizacion-ia', label: 'IA y Automatizacion' },
-      { value: 'integraciones', label: 'Integraciones' },
-      { value: 'mantenimiento', label: 'Mantenimiento Web' },
-      { value: 'apps-moviles', label: 'Apps Moviles' },
-      { value: 'chatbot-wp-ia', label: 'Chatbot WhatsApp con IA' },
-      { value: 'otro', label: 'Otro' },
-    ],
     faqTitle: 'Preguntas frecuentes',
     faqSubtitle: 'Respuestas rapidas a las dudas mas comunes',
     faqs: [
@@ -115,13 +104,12 @@ const pageCopy = {
     formSubtitle: 'Complete the form and we will get back to you soon',
     successTitle: 'Message sent successfully!',
     successText: 'We will contact you soon.',
+    errorTitle: 'We could not send your message',
+    errorText: 'Please try again or message us on WhatsApp.',
     form: {
       nameLabel: 'Full name *',
       namePlaceholder: 'Juan Perez',
       emailLabel: 'Email *',
-      phoneLabel: 'Phone',
-      serviceLabel: 'Service of interest',
-      servicePlaceholder: 'Select a service',
       messageLabel: 'Tell us about your project *',
       messagePlaceholder:
         'Describe your idea, goals, estimated budget, and any relevant details...',
@@ -130,16 +118,6 @@ const pageCopy = {
       privacyText:
         'By sending this form you accept our privacy policy and data processing terms.',
     },
-    services: [
-      { value: 'desarrollo-web', label: 'Web Development' },
-      { value: 'seo-geo', label: 'SEO and Positioning' },
-      { value: 'automatizacion-ia', label: 'AI and Automation' },
-      { value: 'integraciones', label: 'Integrations' },
-      { value: 'mantenimiento', label: 'Website Maintenance' },
-      { value: 'apps-moviles', label: 'Mobile Apps' },
-      { value: 'chatbot-wp-ia', label: 'WhatsApp AI Chatbot' },
-      { value: 'otro', label: 'Other' },
-    ],
     faqTitle: 'Frequently asked questions',
     faqSubtitle: 'Quick answers to the most common questions',
     faqs: [
@@ -172,9 +150,8 @@ export default function ContactoPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    service: '',
     message: '',
+    company: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -182,6 +159,7 @@ export default function ContactoPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
 
     if (typeof window !== 'undefined' && 'dataLayer' in window) {
       const dataLayer = (window as any).dataLayer
@@ -190,22 +168,41 @@ export default function ContactoPage() {
           event: 'form_submit',
           eventCategory: 'Contact',
           eventAction: 'submit_contact_form',
-          eventLabel: formData.service || 'General',
+          eventLabel: 'contact_page',
           formName: 'contact_page',
         })
       }
     }
 
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          company: formData.company,
+          locale,
+        }),
+      })
 
-    setIsSubmitting(false)
-    setSubmitStatus('success')
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' })
+      if (!response.ok) {
+        throw new Error('Request failed')
+      }
 
-    setTimeout(() => setSubmitStatus('idle'), 5000)
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', message: '', company: '' })
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
@@ -378,8 +375,24 @@ export default function ContactoPage() {
                     </div>
                   </div>
                 )}
+                {submitStatus === 'error' && (
+                  <div className="mb-6 p-5 rounded-2xl bg-gradient-to-r from-red-500/20 to-rose-500/20 border-2 border-red-400/50 shadow-lg shadow-red-500/20">
+                    <p className="text-red-300 font-semibold">{copy.errorTitle}</p>
+                    <p className="text-red-200 text-sm">{copy.errorText}</p>
+                  </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="hidden"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
@@ -392,6 +405,7 @@ export default function ContactoPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        autoComplete="name"
                         className="w-full px-5 py-4 rounded-xl bg-white/5 border-2 border-white/10 text-white placeholder-gray-500 focus:border-t_primary focus:outline-none focus:ring-4 focus:ring-t_primary/20 transition-all hover:border-white/20"
                         placeholder={copy.form.namePlaceholder}
                       />
@@ -408,46 +422,10 @@ export default function ContactoPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        autoComplete="email"
                         className="w-full px-5 py-4 rounded-xl bg-white/5 border-2 border-white/10 text-white placeholder-gray-500 focus:border-t_primary focus:outline-none focus:ring-4 focus:ring-t_primary/20 transition-all hover:border-white/20"
                         placeholder="juan@empresa.com"
                       />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-semibold text-white mb-2">
-                        {copy.form.phoneLabel}
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-5 py-4 rounded-xl bg-white/5 border-2 border-white/10 text-white placeholder-gray-500 focus:border-t_primary focus:outline-none focus:ring-4 focus:ring-t_primary/20 transition-all hover:border-white/20"
-                        placeholder="+57 300 123 4567"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="service" className="block text-sm font-semibold text-white mb-2">
-                        {copy.form.serviceLabel}
-                      </label>
-                      <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="w-full px-5 py-4 rounded-xl bg-white/5 border-2 border-white/10 text-white focus:border-t_primary focus:outline-none focus:ring-4 focus:ring-t_primary/20 transition-all hover:border-white/20 cursor-pointer"
-                      >
-                        <option value="" className="bg-slate-900">{copy.form.servicePlaceholder}</option>
-                        {copy.services.map(service => (
-                          <option key={service.value} value={service.value} className="bg-slate-900">
-                            {service.label}
-                          </option>
-                        ))}
-                      </select>
                     </div>
                   </div>
 
@@ -462,6 +440,7 @@ export default function ContactoPage() {
                       onChange={handleChange}
                       required
                       rows={6}
+                      maxLength={2000}
                       className="w-full px-5 py-4 rounded-xl bg-white/5 border-2 border-white/10 text-white placeholder-gray-500 focus:border-t_primary focus:outline-none focus:ring-4 focus:ring-t_primary/20 transition-all resize-none hover:border-white/20"
                       placeholder={copy.form.messagePlaceholder}
                     />
