@@ -116,3 +116,18 @@ export const getFaqSchema = (
     },
   })),
 });
+
+export const getBreadcrumbSchema = (
+  items: { name: string; url: string }[],
+  locale: SupportedLocale
+) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  inLanguage: locale === 'es' ? 'es-CO' : 'en-US',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+});

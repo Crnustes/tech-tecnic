@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from "@/utils/seo";
+import { getBreadcrumbSchema } from "@/utils/schema";
 
 const pageCopy = {
   es: {
@@ -49,10 +50,26 @@ export async function generateMetadata({
   };
 }
 
-export default function ContactLayout({
+export default async function ContactLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: SupportedLocale }>;
 }) {
-  return children;
+  const { locale } = await params;
+  const breadcrumbSchema = getBreadcrumbSchema(
+    [
+      { name: locale === "es" ? "Inicio" : "Home", url: buildLocalizedUrl("/", locale) },
+      { name: locale === "es" ? "Contacto" : "Contact", url: buildLocalizedUrl("/contacto", locale) },
+    ],
+    locale
+  );
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {children}
+    </>
+  );
 }

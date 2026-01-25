@@ -4,6 +4,7 @@ import Image from 'next/image'
 import type { Metadata } from 'next'
 import { getBlogPosts } from '@/config/blog-posts'
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo'
+import { getBreadcrumbSchema } from '@/utils/schema'
 
 interface PageProps {
   params: Promise<{
@@ -122,12 +123,21 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const canonicalUrl = buildLocalizedUrl(`/blog/${post.slug}`, locale)
+  const breadcrumbSchema = getBreadcrumbSchema(
+    [
+      { name: locale === 'es' ? 'Inicio' : 'Home', url: buildLocalizedUrl('/', locale) },
+      { name: 'Blog', url: buildLocalizedUrl('/blog', locale) },
+      { name: post.title, url: canonicalUrl },
+    ],
+    locale
+  )
   const relatedPosts = blogPosts
     .filter(p => p.id !== post.id && p.category === post.category)
     .slice(0, 3)
 
   return (
     <main className="bg-gradient-to-b from-t_dark via-slate-900/20 to-black text-white min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-t_primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-t_accent/10 rounded-full blur-3xl" />

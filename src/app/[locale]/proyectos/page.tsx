@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ExternalLink, Sparkles, Filter } from 'lucide-react'
 import { projects } from '@/config/projects'
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo'
+import { getBreadcrumbSchema } from '@/utils/schema'
 
 const pageCopy = {
   es: {
@@ -257,6 +258,13 @@ export default async function ProyectosPage({
 }) {
   const { locale } = await params
   const copy = pageCopy[locale]
+  const breadcrumbSchema = getBreadcrumbSchema(
+    [
+      { name: locale === 'es' ? 'Inicio' : 'Home', url: buildLocalizedUrl('/', locale) },
+      { name: locale === 'es' ? 'Proyectos' : 'Projects', url: buildLocalizedUrl('/proyectos', locale) },
+    ],
+    locale
+  )
 
   const localizedProjects = projects.map(project => {
     const overrides = projectCopy[locale]?.[project.link]
@@ -279,6 +287,7 @@ export default async function ProyectosPage({
 
   return (
     <main className="relative min-h-screen bg-gradient-to-b from-black via-slate-950 to-black py-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-t_primary/10 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 

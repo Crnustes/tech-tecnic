@@ -19,7 +19,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import PricingButton from '@/components/PricingButton';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
-import { getFaqSchema } from '@/utils/schema';
+import { getBreadcrumbSchema, getFaqSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -282,6 +282,17 @@ export default async function ChatbotWpIaPage({
   const { locale } = await params;
   const copy = pageCopy[locale];
   const faqSchema = getFaqSchema(copy.faq, locale);
+  const path = '/servicios/chatbot-wp-ia';
+  const breadcrumbSchema = getBreadcrumbSchema(
+    [
+      { name: locale === 'es' ? 'Inicio' : 'Home', url: buildLocalizedUrl('/', locale) },
+      { name: locale === 'es' ? 'Servicios' : 'Services', url: buildLocalizedUrl('/servicios', locale) },
+      { name: locale === 'es' ? 'Chatbot WhatsApp con IA' : 'WhatsApp AI Chatbot', url: buildLocalizedUrl(path, locale) },
+    ],
+    locale
+  );
+  const allServicesLabel = locale === 'es' ? 'Ver todos los servicios' : 'View all services';
+  const allServicesUrl = buildLocalizedUrl('/servicios', locale);
 
   const formatPrice = (priceCOP: number) => {
     const amount = locale === 'es' ? priceCOP : convertCOPtoUSD(priceCOP);
@@ -301,6 +312,7 @@ export default async function ChatbotWpIaPage({
         }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {/* Hero */}
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent" />
@@ -508,6 +520,14 @@ export default async function ChatbotWpIaPage({
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="relative py-6">
+        <div className="text-center">
+          <Link href={allServicesUrl} className="text-t_primary hover:text-t_accent transition-colors">
+            {allServicesLabel}
+          </Link>
         </div>
       </section>
 

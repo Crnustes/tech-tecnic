@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
-import { getFaqSchema, getServiceSchema } from '@/utils/schema';
+import { getBreadcrumbSchema, getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -130,11 +131,22 @@ export default async function AutomatizacionesIA({
   const path = '/servicios/automatizaciones';
   const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
   const faqSchema = getFaqSchema(copy.faq, locale);
+  const breadcrumbSchema = getBreadcrumbSchema(
+    [
+      { name: locale === 'es' ? 'Inicio' : 'Home', url: buildLocalizedUrl('/', locale) },
+      { name: locale === 'es' ? 'Servicios' : 'Services', url: buildLocalizedUrl('/servicios', locale) },
+      { name: locale === 'es' ? 'Automatizaciones' : 'Automation', url: buildLocalizedUrl(path, locale) },
+    ],
+    locale
+  );
+  const allServicesLabel = locale === 'es' ? 'Ver todos los servicios' : 'View all services';
+  const allServicesUrl = buildLocalizedUrl('/servicios', locale);
 
   return (
     <main className="bg-gradient-to-b from-t_dark via-t_primary/10 to-black text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <section className="text-center py-32 max-w-5xl mx-auto px-6">
         <h1 className="text-5xl font-extrabold mb-6 animate-fade-in">{copy.title}</h1>
 
@@ -198,6 +210,12 @@ export default async function AutomatizacionesIA({
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="py-6 text-center">
+        <Link href={allServicesUrl} className="text-t_primary hover:text-t_accent transition-colors">
+          {allServicesLabel}
+        </Link>
       </section>
 
       <section className="py-24 bg-black/40">

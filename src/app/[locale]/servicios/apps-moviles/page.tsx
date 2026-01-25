@@ -22,7 +22,7 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
-import { getFaqSchema, getServiceSchema } from '@/utils/schema';
+import { getBreadcrumbSchema, getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -471,6 +471,16 @@ export default async function AppsMovilesPage({
   const path = '/servicios/apps-moviles';
   const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
   const faqSchema = getFaqSchema(copy.faq, locale);
+  const breadcrumbSchema = getBreadcrumbSchema(
+    [
+      { name: locale === 'es' ? 'Inicio' : 'Home', url: buildLocalizedUrl('/', locale) },
+      { name: locale === 'es' ? 'Servicios' : 'Services', url: buildLocalizedUrl('/servicios', locale) },
+      { name: locale === 'es' ? 'Apps Moviles' : 'Mobile Apps', url: buildLocalizedUrl(path, locale) },
+    ],
+    locale
+  );
+  const allServicesLabel = locale === 'es' ? 'Ver todos los servicios' : 'View all services';
+  const allServicesUrl = buildLocalizedUrl('/servicios', locale);
 
   const formatPrice = (priceCOP: number) => {
     const amount = locale === 'es' ? priceCOP : convertCOPtoUSD(priceCOP);
@@ -485,6 +495,7 @@ export default async function AppsMovilesPage({
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
 
@@ -761,6 +772,14 @@ export default async function AppsMovilesPage({
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="relative py-6">
+        <div className="text-center">
+          <Link href={allServicesUrl} className="text-t_primary hover:text-t_accent transition-colors">
+            {allServicesLabel}
+          </Link>
         </div>
       </section>
 
