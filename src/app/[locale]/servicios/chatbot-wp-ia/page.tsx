@@ -230,7 +230,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = pageCopy[locale];
-  const faqSchema = getFaqSchema(copy.faq, locale);
   const path = '/servicios/chatbot-wp-ia';
   const canonicalUrl = buildLocalizedUrl(path, locale);
 
@@ -281,6 +280,7 @@ export default async function ChatbotWpIaPage({
 }) {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const faqSchema = getFaqSchema(copy.faq, locale);
 
   const formatPrice = (priceCOP: number) => {
     const amount = locale === 'es' ? priceCOP : convertCOPtoUSD(priceCOP);
