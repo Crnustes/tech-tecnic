@@ -18,6 +18,7 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -128,6 +129,21 @@ const pageCopy = {
     localText:
       'Somos una agencia local en Bogota, Colombia. Conocemos el mercado y creamos sitios web optimizados para tu audiencia colombiana.',
     localHighlights: ['Atencion personalizada', 'Entrega en 15 dias', 'Precios justos'],
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      {
+        q: 'Cuanto tarda el desarrollo de un sitio web?',
+        a: 'Depende del alcance. En promedio entregamos sitios estandar en 15 dias.',
+      },
+      {
+        q: 'El servicio incluye SEO y seguridad?',
+        a: 'Si. Incluimos configuracion SEO basica, SSL y buenas practicas de rendimiento.',
+      },
+      {
+        q: 'Puedo escalar a e-commerce despues?',
+        a: 'Si. Podemos ampliar el sitio a tienda online o integrar nuevas funcionalidades.',
+      },
+    ],
     ctaTitle: 'Listo para crear tu sitio web?',
     ctaDescription:
       'Contactanos hoy y recibe una cotizacion personalizada para tu proyecto de desarrollo web en Bogota.',
@@ -242,6 +258,21 @@ const pageCopy = {
     localText:
       'We are a local agency in Bogota, Colombia. We know the market and build websites optimized for Colombian audiences.',
     localHighlights: ['Personalized support', 'Delivery in 15 days', 'Fair pricing'],
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'How long does a website take?',
+        a: 'It depends on scope. Standard websites are delivered in about 15 days on average.',
+      },
+      {
+        q: 'Does it include SEO and security?',
+        a: 'Yes. We include basic SEO setup, SSL, and performance best practices.',
+      },
+      {
+        q: 'Can I scale to e-commerce later?',
+        a: 'Yes. We can expand the site into a store or add new features.',
+      },
+    ],
     ctaTitle: 'Ready to build your website?',
     ctaDescription: 'Contact us today and get a custom quote for your web project in Bogota.',
     ctaButton: 'Request my website quote',
@@ -258,6 +289,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const path = '/servicios/desarrollo-web';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
   const path = '/servicios/desarrollo-web';
   const canonicalUrl = buildLocalizedUrl(path, locale);
 
@@ -298,6 +332,8 @@ export default async function DesarrolloWebPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero Section */}
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-500/10 via-transparent to-transparent" />
@@ -513,6 +549,20 @@ export default async function DesarrolloWebPage({
               <DollarSign className="w-5 h-5 text-cyan-400" />
               <span className="text-gray-300">{copy.localHighlights[2]}</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.faqTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.faq.map((item) => (
+              <details key={item.q} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
+                <p className="mt-2 text-gray-300">{item.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

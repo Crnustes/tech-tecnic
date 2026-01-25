@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -30,6 +31,21 @@ const pageCopy = {
     finalText:
       'Lleva tus procesos al siguiente nivel y adquiere ventaja competitiva con IA y automatizacion. Agenda tu consultoria hoy.',
     finalButton: 'Cotizar proyecto',
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      {
+        q: 'Que procesos se pueden automatizar?',
+        a: 'Desde atencion al cliente y marketing hasta flujos operativos y sincronizacion de datos.',
+      },
+      {
+        q: 'Necesito herramientas especificas?',
+        a: 'No. Nos adaptamos a tus plataformas y definimos la mejor arquitectura.',
+      },
+      {
+        q: 'Pueden integrarse con mi CRM?',
+        a: 'Si. Integramos CRMs y sistemas internos via APIs y automatizaciones.',
+      },
+    ],
   },
   en: {
     metaTitle: 'Automation and Artificial Intelligence | Tech Tecnic',
@@ -59,6 +75,21 @@ const pageCopy = {
     finalText:
       'Take your processes to the next level and gain a competitive advantage with AI and automation. Book your consultation today.',
     finalButton: 'Request a quote',
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'What processes can be automated?',
+        a: 'From customer support and marketing to operational flows and data sync.',
+      },
+      {
+        q: 'Do I need specific tools?',
+        a: 'No. We adapt to your stack and define the best architecture.',
+      },
+      {
+        q: 'Can you integrate with my CRM?',
+        a: 'Yes. We integrate CRMs and internal systems via APIs and automations.',
+      },
+    ],
   },
 };
 
@@ -96,9 +127,14 @@ export default async function AutomatizacionesIA({
 }) {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const path = '/servicios/automatizaciones';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
 
   return (
     <main className="bg-gradient-to-b from-t_dark via-t_primary/10 to-black text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="text-center py-32 max-w-5xl mx-auto px-6">
         <h1 className="text-5xl font-extrabold mb-6 animate-fade-in">{copy.title}</h1>
 
@@ -147,6 +183,20 @@ export default async function AutomatizacionesIA({
               <li key={item}>{item}</li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl text-white text-center mb-8">{copy.faqTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.faq.map((item) => (
+              <details key={item.q} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
+                <p className="mt-2 text-gray-300">{item.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 

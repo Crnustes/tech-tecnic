@@ -26,5 +26,6 @@ export const buildAlternates = (path: string) => ({
   languages: {
     es: buildLocalizedUrl(path, "es"),
     en: buildLocalizedUrl(path, "en"),
+    "x-default": buildLocalizedUrl(path, "es"),
   },
 });

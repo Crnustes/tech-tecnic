@@ -18,6 +18,7 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -186,6 +187,21 @@ const pageCopy = {
     localCardText:
       'Solicita una auditoria SEO gratuita y descubre como mejorar tu posicionamiento.',
     localCardButton: 'Solicitar auditoria gratis',
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      {
+        q: 'Cuando se ven resultados de SEO?',
+        a: 'Los resultados suelen verse entre 3 y 6 meses, segun competencia y estado actual.',
+      },
+      {
+        q: 'Incluye SEO local y Google My Business?',
+        a: 'Si. Optimizamos tu ficha, citas locales y presencia en Google Maps.',
+      },
+      {
+        q: 'Hay permanencia minima?',
+        a: 'Recomendamos un minimo de 6 meses para resultados significativos.',
+      },
+    ],
     ctaTitle: 'Listo para posicionar tu negocio en Google?',
     ctaDescription: 'Solicita una auditoria SEO gratuita y descubre el potencial de tu sitio web.',
     ctaButton: 'Auditoria SEO Gratis',
@@ -355,6 +371,21 @@ const pageCopy = {
     localCardTitle: 'Does your business show up on Google?',
     localCardText: 'Request a free SEO audit and discover how to improve your ranking.',
     localCardButton: 'Request free audit',
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'When do SEO results show?',
+        a: 'Results typically appear in 3 to 6 months, depending on competition and current state.',
+      },
+      {
+        q: 'Do you include local SEO and Google Business?',
+        a: 'Yes. We optimize your listing, local citations, and Google Maps presence.',
+      },
+      {
+        q: 'Is there a minimum commitment?',
+        a: 'We recommend at least 6 months to see meaningful results.',
+      },
+    ],
     ctaTitle: 'Ready to rank your business on Google?',
     ctaDescription: 'Request a free SEO audit and unlock your website potential.',
     ctaButton: 'Free SEO Audit',
@@ -403,6 +434,9 @@ export default async function SEOGeoPage({
 }) {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const path = '/servicios/seo-geo';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
 
   const formatPrice = (priceCOP: number) => {
     const amount = locale === 'es' ? priceCOP : convertCOPtoUSD(priceCOP);
@@ -415,6 +449,8 @@ export default async function SEOGeoPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero Section */}
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent" />
@@ -679,6 +715,20 @@ export default async function SEOGeoPage({
       </section>
 
       {/* CTA */}
+      <section className="relative py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.faqTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.faq.map((item) => (
+              <details key={item.q} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
+                <p className="mt-2 text-gray-300">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ContactCTA title={copy.ctaTitle} description={copy.ctaDescription} primaryText={copy.ctaButton} />
     </div>
   );

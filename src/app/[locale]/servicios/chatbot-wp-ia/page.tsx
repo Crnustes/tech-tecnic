@@ -19,6 +19,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import PricingButton from '@/components/PricingButton';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -229,6 +230,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const faqSchema = getFaqSchema(copy.faq, locale);
   const path = '/servicios/chatbot-wp-ia';
   const canonicalUrl = buildLocalizedUrl(path, locale);
 
@@ -297,6 +299,7 @@ export default async function ChatbotWpIaPage({
           __html: JSON.stringify(buildStructuredData(locale)),
         }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero */}
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent" />

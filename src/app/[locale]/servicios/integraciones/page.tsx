@@ -21,6 +21,7 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -199,6 +200,21 @@ const pageCopy = {
     apiCardText:
       'Te ayudamos a disenar la arquitectura de integracion perfecta para tu negocio.',
     apiCardButton: 'Hablar con un experto',
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      {
+        q: 'Que tipo de integraciones realizan?',
+        a: 'Integramos CRMs, ERPs, marketing, pagos y sistemas internos con APIs y automatizaciones.',
+      },
+      {
+        q: 'Usan Zapier o Make?',
+        a: 'Si. Implementamos flujos con Zapier o Make segun el caso y la complejidad.',
+      },
+      {
+        q: 'Se puede sincronizar datos en tiempo real?',
+        a: 'Si. Configuramos sincronizacion y webhooks para mantener datos alineados.',
+      },
+    ],
     ctaTitle: 'Listo para conectar tus sistemas?',
     ctaDescription:
       'Agenda una consultoria tecnica gratuita y descubre como podemos integrar tus herramientas.',
@@ -379,6 +395,21 @@ const pageCopy = {
     apiCardTitle: 'Technical consulting included',
     apiCardText: 'We help design the right integration architecture for your business.',
     apiCardButton: 'Talk to an expert',
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'What type of integrations do you build?',
+        a: 'We integrate CRMs, ERPs, marketing, payments, and internal systems using APIs and automations.',
+      },
+      {
+        q: 'Do you use Zapier or Make?',
+        a: 'Yes. We build flows with Zapier or Make depending on complexity and needs.',
+      },
+      {
+        q: 'Can you sync data in real time?',
+        a: 'Yes. We set up synchronization and webhooks to keep data aligned.',
+      },
+    ],
     ctaTitle: 'Ready to connect your systems?',
     ctaDescription:
       'Book a free technical consultation and discover how we can integrate your tools.',
@@ -425,6 +456,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const copy = pageCopy[locale];
   const path = '/servicios/integraciones';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
+  const path = '/servicios/integraciones';
   const canonicalUrl = buildLocalizedUrl(path, locale);
 
   return {
@@ -464,6 +498,8 @@ export default async function IntegracionesPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero Section */}
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
@@ -820,6 +856,20 @@ export default async function IntegracionesPage({
                 {copy.apiCardButton}
               </WhatsAppButton>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.faqTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.faq.map((item) => (
+              <details key={item.q} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
+                <p className="mt-2 text-gray-300">{item.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

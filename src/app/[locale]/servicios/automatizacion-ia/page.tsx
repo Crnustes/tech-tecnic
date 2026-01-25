@@ -21,6 +21,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import PricingButton from '@/components/PricingButton';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -216,6 +217,21 @@ const pageCopy = {
     ctaTitle: 'Listo para automatizar tu negocio?',
     ctaDescription: 'Agenda una consultoria gratuita y descubre como la IA puede transformar tu operacion.',
     ctaButton: 'Consultoria gratuita',
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      {
+        q: 'Que podemos automatizar?',
+        a: 'Desde chatbots y atencion al cliente hasta flujos con Zapier/Make, emails y sincronizacion de datos.',
+      },
+      {
+        q: 'Incluye integracion con CRM?',
+        a: 'Si. Integramos con HubSpot, Zoho, Odoo u otros CRMs via APIs.',
+      },
+      {
+        q: 'Como iniciamos el proyecto?',
+        a: 'Agendamos una consultoria gratuita para definir objetivos, procesos y herramientas.',
+      },
+    ],
   },
   en: {
     metaTitle: 'AI Automation in Bogota | Chatbots and Processes | Tech Tecnic',
@@ -410,6 +426,21 @@ const pageCopy = {
     ctaTitle: 'Ready to automate your business?',
     ctaDescription: 'Schedule a free consultation and see how AI can transform your operations.',
     ctaButton: 'Free consultation',
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'What can we automate?',
+        a: 'From chatbots and customer support to Zapier/Make flows, emails, and data sync.',
+      },
+      {
+        q: 'Do you integrate with CRMs?',
+        a: 'Yes. We integrate HubSpot, Zoho, Odoo, and other CRMs via APIs.',
+      },
+      {
+        q: 'How do we start?',
+        a: 'We book a free consultation to define goals, processes, and tools.',
+      },
+    ],
   },
 };
 
@@ -425,6 +456,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const path = '/servicios/automatizacion-ia';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
   const path = '/servicios/automatizacion-ia';
   const canonicalUrl = buildLocalizedUrl(path, locale);
 
@@ -465,6 +499,8 @@ export default async function AutomatizacionIAPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero Section */}
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
@@ -714,6 +750,20 @@ export default async function AutomatizacionIAPage({
       </section>
 
       {/* CTA */}
+      <section className="relative py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.faqTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.faq.map((item) => (
+              <details key={item.q} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
+                <p className="mt-2 text-gray-300">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ContactCTA title={copy.ctaTitle} description={copy.ctaDescription} primaryText={copy.ctaButton} />
     </div>
   );

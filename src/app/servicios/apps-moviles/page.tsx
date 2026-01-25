@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import PricingButton from '@/components/PricingButton';
-import { 
-  Smartphone, 
-  Apple, 
+import {
+  Smartphone,
+  Apple,
   Chrome,
   Zap,
   Users,
@@ -22,21 +22,21 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 
 export const metadata: Metadata = {
-  title: 'Desarrollo de Apps Móviles en Bogotá | iOS y Android | Tech Tecnic',
-  description: 'Desarrollo de aplicaciones móviles nativas y multiplataforma en Bogotá. Apps para iOS, Android y React Native. Desde apps empresariales hasta e-commerce móvil.',
+  title: 'Desarrollo de Apps Moviles en Bogota | iOS y Android | Tech Tecnic',
+  description: 'Desarrollo de aplicaciones moviles nativas y multiplataforma en Bogota. Apps para iOS, Android y React Native. Desde apps empresariales hasta e-commerce movil.',
   keywords: [
-    'desarrollo apps móviles bogotá',
+    'desarrollo apps moviles bogota',
     'app ios android colombia',
-    'react native bogotá',
+    'react native bogota',
     'flutter colombia',
-    'aplicaciones móviles',
+    'aplicaciones moviles',
     'desarrollo app nativa',
     'app empresarial',
     'apps ecommerce'
   ],
   openGraph: {
-    title: 'Desarrollo de Apps Móviles en Bogotá | Tech Tecnic',
-    description: 'Creamos aplicaciones móviles que tus usuarios amarán. iOS, Android y multiplataforma.',
+    title: 'Desarrollo de Apps Moviles en Bogota | Tech Tecnic',
+    description: 'Creamos aplicaciones moviles que tus usuarios aman. iOS, Android y multiplataforma.',
     type: 'website',
   },
   alternates: {
@@ -47,26 +47,26 @@ export const metadata: Metadata = {
 const stats = [
   {
     value: '85%',
-    label: 'del tiempo en apps móviles',
-    description: 'Los usuarios pasan más tiempo en apps que en web',
+    label: 'del tiempo en apps moviles',
+    description: 'Los usuarios pasan mas tiempo en apps que en web',
     icon: Smartphone,
   },
   {
     value: '3.8B',
     label: 'usuarios de smartphones',
-    description: 'El mercado móvil sigue creciendo globalmente',
+    description: 'El mercado movil sigue creciendo globalmente',
     icon: Users,
   },
   {
     value: '2x',
-    label: 'más conversiones',
+    label: 'mas conversiones',
     description: 'Las apps convierten mejor que sitios web',
     icon: TrendingUp,
   },
   {
     value: '70%',
-    label: 'retención mejorada',
-    description: 'Los usuarios regresan más a las apps',
+    label: 'retencion mejorada',
+    description: 'Los usuarios regresan mas a las apps',
     icon: Zap,
   },
 ];
@@ -75,22 +75,22 @@ const appTypes = [
   {
     icon: Layers,
     title: 'Apps Empresariales',
-    description: 'Soluciones para gestión interna, productividad y equipos remotos.',
+    description: 'Soluciones para gestion interna, productividad y equipos remotos.',
     features: [
-      'Gestión de inventario',
-      'CRM móvil',
-      'Facturación y reportes',
-      'Comunicación de equipos',
+      'Gestion de inventario',
+      'CRM movil',
+      'Facturacion y reportes',
+      'Comunicacion de equipos',
       'Dashboard analytics',
     ],
     color: 'from-blue-500 to-cyan-500',
   },
   {
     icon: CreditCard,
-    title: 'E-commerce Móvil',
-    description: 'Tiendas móviles con pasarelas de pago y experiencia premium.',
+    title: 'E-commerce Movil',
+    description: 'Tiendas moviles con pasarelas de pago y experiencia premium.',
     features: [
-      'Catálogo de productos',
+      'Catalogo de productos',
       'Pasarelas de pago',
       'Carrito de compras',
       'Push notifications',
@@ -101,9 +101,9 @@ const appTypes = [
   {
     icon: MapPin,
     title: 'Apps de Servicios',
-    description: 'Aplicaciones para servicios a domicilio, delivery y logística.',
+    description: 'Aplicaciones para servicios a domicilio, delivery y logistica.',
     features: [
-      'Geolocalización en tiempo real',
+      'Geolocalizacion en tiempo real',
       'Reservas y agendamiento',
       'Sistema de ratings',
       'Chat integrado',
@@ -118,7 +118,7 @@ const appTypes = [
     features: [
       'Perfiles de usuario',
       'Feed de contenido',
-      'Chat y mensajería',
+      'Chat y mensajeria',
       'Compartir multimedia',
       'Sistema de notificaciones',
     ],
@@ -129,26 +129,26 @@ const appTypes = [
 const technologies = [
   {
     name: 'React Native',
-    description: 'Apps multiplataforma con código compartido',
-    logo: '⚛️',
-    pros: ['Un código para iOS y Android', 'Rápido desarrollo', 'Gran comunidad'],
+    description: 'Apps multiplataforma con codigo compartido',
+    logo: 'RN',
+    pros: ['Un codigo para iOS y Android', 'Rapido desarrollo', 'Gran comunidad'],
   },
   {
     name: 'Flutter',
     description: 'Framework de Google para apps hermosas',
-    logo: '🎯',
+    logo: 'FL',
     pros: ['UI nativa hermosa', 'Alto rendimiento', 'Hot reload'],
   },
   {
     name: 'Swift (iOS)',
     description: 'Apps nativas para iPhone y iPad',
-    logo: '🍎',
-    pros: ['Rendimiento óptimo', 'Acceso completo iOS', 'App Store'],
+    logo: 'SW',
+    pros: ['Rendimiento optimo', 'Acceso completo iOS', 'App Store'],
   },
   {
     name: 'Kotlin (Android)',
     description: 'Apps nativas para Android',
-    logo: '🤖',
+    logo: 'KT',
     pros: ['Performance nativa', 'Todas las APIs Android', 'Play Store'],
   },
 ];
@@ -157,27 +157,27 @@ const features = [
   {
     icon: Bell,
     title: 'Push Notifications',
-    description: 'Mantén a tus usuarios comprometidos con notificaciones personalizadas.',
+    description: 'Manten a tus usuarios comprometidos con notificaciones personalizadas.',
   },
   {
     icon: MapPin,
-    title: 'Geolocalización',
-    description: 'GPS, mapas y servicios basados en ubicación.',
+    title: 'Geolocalizacion',
+    description: 'GPS, mapas y servicios basados en ubicacion.',
   },
   {
     icon: Camera,
-    title: 'Cámara & Multimedia',
-    description: 'Captura fotos, videos y procesamiento de imágenes.',
+    title: 'Camara y Multimedia',
+    description: 'Captura fotos, videos y procesamiento de imagenes.',
   },
   {
     icon: CreditCard,
     title: 'Pagos In-App',
-    description: 'Integración con Stripe, PayPal, PSE y más.',
+    description: 'Integracion con Stripe, PayPal, PSE y mas.',
   },
   {
     icon: Share2,
     title: 'Compartir Social',
-    description: 'Integración con redes sociales y compartir contenido.',
+    description: 'Integracion con redes sociales y compartir contenido.',
   },
   {
     icon: Code2,
@@ -188,11 +188,11 @@ const features = [
 
 const packages = [
   {
-    name: 'App Básica',
+    name: 'App Basica',
     price: '$3.500.000',
     description: 'App simple con funcionalidades core',
     features: [
-      'Diseño UI/UX básico',
+      'Diseno UI/UX basico',
       '3-5 pantallas',
       'Backend simple',
       'Login de usuarios',
@@ -208,13 +208,13 @@ const packages = [
     price: '$7.000.000',
     description: 'App completa con funcionalidades avanzadas',
     features: [
-      'Diseño UI/UX profesional',
+      'Diseno UI/UX profesional',
       '8-12 pantallas',
       'Backend robusto con API',
-      'Autenticación completa',
+      'Autenticacion completa',
       'Push notifications',
       'Multiplataforma (iOS + Android)',
-      'Publicación en tiendas',
+      'Publicacion en tiendas',
       '3 meses de soporte',
     ],
     deliveryTime: '8-12 semanas',
@@ -224,14 +224,14 @@ const packages = [
   {
     name: 'App Enterprise',
     price: 'Personalizado',
-    description: 'Solución completa para empresas',
+    description: 'Solucion completa para empresas',
     features: [
-      'Diseño UI/UX premium',
+      'Diseno UI/UX premium',
       'Pantallas ilimitadas',
       'Arquitectura enterprise',
       'Integraciones complejas',
       'Analytics avanzado',
-      'Panel de administración web',
+      'Panel de administracion web',
       'Seguridad enterprise',
       'Soporte dedicado 6 meses',
     ],
@@ -242,10 +242,10 @@ const packages = [
 
 const process = [
   { step: '1', title: 'Descubrimiento', description: 'Definimos objetivos, funcionalidades y alcance del proyecto.' },
-  { step: '2', title: 'Diseño UX/UI', description: 'Creamos wireframes y diseños visuales de la app.' },
+  { step: '2', title: 'Diseno UX/UI', description: 'Creamos wireframes y disenos visuales de la app.' },
   { step: '3', title: 'Desarrollo', description: 'Programamos frontend, backend y integraciones.' },
-  { step: '4', title: 'Testing', description: 'Pruebas exhaustivas en múltiples dispositivos.' },
-  { step: '5', title: 'Lanzamiento', description: 'Publicación en App Store y Google Play.' },
+  { step: '4', title: 'Testing', description: 'Pruebas exhaustivas en multiples dispositivos.' },
+  { step: '5', title: 'Lanzamiento', description: 'Publicacion en App Store y Google Play.' },
   { step: '6', title: 'Soporte', description: 'Actualizaciones, mantenimiento y mejoras continuas.' },
 ];
 
@@ -255,18 +255,18 @@ export default function AppsMovilesPage() {
       {/* Hero Section */}
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
-        
+
         <div className="relative max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
                 <Smartphone className="w-4 h-4 text-purple-400" />
-                <span className="text-sm text-purple-400 font-medium">Desarrollo de Apps Móviles</span>
+                <span className="text-sm text-purple-400 font-medium">Desarrollo de Apps Moviles</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                <span className="text-white">Apps móviles que</span>
+                <span className="text-white">Apps moviles que</span>
                 <br />
                 <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
                   enamoran
@@ -276,7 +276,7 @@ export default function AppsMovilesPage() {
               </h1>
 
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-                Desarrollo de aplicaciones móviles en <strong className="text-white">Bogotá</strong>. 
+                Desarrollo de aplicaciones moviles en <strong className="text-white">Bogota</strong>.
                 Apps nativas para iOS, Android y multiplataforma con React Native y Flutter.
               </p>
 
@@ -299,10 +299,10 @@ export default function AppsMovilesPage() {
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <WhatsAppButton
-                  message="Hola, quiero desarrollar una app móvil para mi negocio"
+                  message="Hola, quiero desarrollar una app movil para mi negocio"
                   service="apps-moviles"
                   action="click_cta_hero"
-                  label="Apps Móviles"
+                  label="Apps Moviles"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-lg"
                 >
                   Cotizar mi app
@@ -327,10 +327,14 @@ export default function AppsMovilesPage() {
                     </div>
                     <Bell className="w-6 h-6 text-white/40" />
                   </div>
-                  
+
                   <div className="space-y-4 flex-grow">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}>
+                      <div
+                        key={i}
+                        className="p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 animate-pulse"
+                        style={{ animationDelay: `${i * 0.2}s` }}
+                      >
                         <div className="h-3 bg-white/30 rounded w-3/4 mb-2"></div>
                         <div className="h-2 bg-white/20 rounded w-1/2"></div>
                       </div>
@@ -348,10 +352,10 @@ export default function AppsMovilesPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              ¿Por qué desarrollar una app móvil?
+              Por que desarrollar una app movil?
             </h2>
             <p className="text-gray-400">
-              El futuro es móvil, y tus usuarios lo saben
+              El futuro es movil, y tus usuarios lo saben
             </p>
           </div>
 
@@ -383,7 +387,7 @@ export default function AppsMovilesPage() {
               <span className="text-sm text-purple-400 font-medium">Tipos de Apps</span>
             </div>
             <h2 className="text-4xl font-bold text-white mb-4">
-              ¿Qué tipo de app necesitas?
+              Que tipo de app necesitas?
             </h2>
             <p className="text-gray-400 text-lg">
               Desarrollamos apps para cada necesidad de negocio
@@ -398,13 +402,15 @@ export default function AppsMovilesPage() {
                   key={i}
                   className="group p-8 rounded-2xl bg-slate-900/50 border border-white/10 hover:border-purple-500/50 transition-all duration-500"
                 >
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${type.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                  <div
+                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${type.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
+                  >
                     <Icon className="w-7 h-7 text-white" />
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-white mb-3">{type.title}</h3>
                   <p className="text-gray-400 mb-6">{type.description}</p>
-                  
+
                   <ul className="space-y-3">
                     {type.features.map((feature, j) => (
                       <li key={j} className="flex items-start gap-3">
@@ -425,10 +431,10 @@ export default function AppsMovilesPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Tecnologías que usamos
+              Tecnologias que usamos
             </h2>
             <p className="text-gray-400">
-              Elegimos la mejor tecnología para tu proyecto
+              Elegimos la mejor tecnologia para tu proyecto
             </p>
           </div>
 
@@ -499,15 +505,15 @@ export default function AppsMovilesPage() {
               <div
                 key={i}
                 className={`relative p-8 rounded-2xl bg-slate-900/50 border transition-all duration-500 ${
-                  pkg.popular 
-                    ? 'border-purple-500 scale-105 shadow-2xl shadow-purple-500/20' 
+                  pkg.popular
+                    ? 'border-purple-500 scale-105 shadow-2xl shadow-purple-500/20'
                     : 'border-white/10 hover:border-white/20'
                 }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <div className={`px-4 py-1 rounded-full bg-gradient-to-r ${pkg.color} text-white text-sm font-semibold`}>
-                      Más Popular
+                      Mas Popular
                     </div>
                   </div>
                 )}
@@ -529,7 +535,7 @@ export default function AppsMovilesPage() {
                 </div>
 
                 <div className="mb-6 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                  <p className="text-xs text-gray-400">⏱️ Tiempo: {pkg.deliveryTime}</p>
+                  <p className="text-xs text-gray-400">Tiempo: {pkg.deliveryTime}</p>
                 </div>
 
                 <ul className="space-y-3 mb-8">
@@ -544,7 +550,7 @@ export default function AppsMovilesPage() {
                 <PricingButton
                   planName={pkg.name}
                   service="apps-moviles"
-                  message={`Hola, quiero cotizar ${pkg.name} de Apps Móviles`}
+                  message={`Hola, quiero cotizar ${pkg.name} de Apps Moviles`}
                   color={pkg.popular ? pkg.color : ''}
                 >
                   {pkg.price === 'Personalizado' ? 'Contactar' : 'Cotizar ahora'}
@@ -587,9 +593,9 @@ export default function AppsMovilesPage() {
       </section>
 
       {/* CTA */}
-      <ContactCTA 
-        title="¿Listo para crear tu app móvil?"
-        description="Agenda una consultoría gratuita y convierte tu idea en una aplicación exitosa."
+      <ContactCTA
+        title="Listo para crear tu app movil?"
+        description="Agenda una consultoria gratuita y convierte tu idea en una aplicacion exitosa."
         primaryText="Cotizar mi app"
       />
     </div>

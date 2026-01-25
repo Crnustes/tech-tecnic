@@ -10,6 +10,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import CookieBanner from "@/components/CookieBanner";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { locales, type Locale } from '@/i18n';
+import { getGlobalSchema } from '@/utils/schema';
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -29,18 +30,19 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  
-  // Validar que el locale sea válido
+
+  // Validate locale
   const isValidLocale = locales.includes(locale as Locale);
   if (!isValidLocale) {
     notFound();
   }
 
-  // Obtener mensajes de traducción
+  // Load translations
   const messages = await getMessages();
 
-  // Determinar el lang attr basado en locale
+  // Lang attribute based on locale
   const langAttr = locale === 'es' ? 'es' : 'en';
+  const schemaData = getGlobalSchema(langAttr);
 
   return (
     <html lang={langAttr} suppressHydrationWarning>
@@ -52,6 +54,9 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NG86LWF');`}
+        </Script>
+        <Script id="schema-org" type="application/ld+json" strategy="beforeInteractive">
+          {JSON.stringify(schemaData)}
         </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-F3PPTK46GT"
@@ -77,7 +82,7 @@ gtag('config', 'G-F3PPTK46GT');`}
             style={{display:'none',visibility:'hidden'}}
           />
         </noscript>
-        
+
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           <main className="min-h-screen">{children}</main>

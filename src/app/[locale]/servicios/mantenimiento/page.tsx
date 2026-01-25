@@ -19,6 +19,7 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -241,6 +242,21 @@ const pageCopy = {
     ctaTitle: 'Listo para proteger tu sitio web?',
     ctaDescription: 'Contrata mantenimiento web profesional y olvidate de preocupaciones tecnicas.',
     ctaButton: 'Contratar mantenimiento',
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      {
+        q: 'Que incluye el mantenimiento web?',
+        a: 'Incluye monitoreo, actualizaciones, backups automaticos y optimizacion continua.',
+      },
+      {
+        q: 'Incluyen seguridad y SSL?',
+        a: 'Si. Mantenemos medidas de seguridad activas y buenas practicas para tu sitio.',
+      },
+      {
+        q: 'Pueden mejorar el rendimiento?',
+        a: 'Si. Optimizamos velocidad y Core Web Vitals como parte del servicio.',
+      },
+    ],
   },
   en: {
     metaTitle: 'Web Maintenance in Bogota | 24/7 Support and Security | Tech Tecnic',
@@ -462,6 +478,21 @@ const pageCopy = {
     ctaTitle: 'Ready to protect your website?',
     ctaDescription: 'Hire professional web maintenance and forget about technical worries.',
     ctaButton: 'Start maintenance',
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'What does web maintenance include?',
+        a: 'It includes monitoring, updates, automated backups, and ongoing optimization.',
+      },
+      {
+        q: 'Do you cover security and SSL?',
+        a: 'Yes. We keep security measures active and follow best practices.',
+      },
+      {
+        q: 'Can you improve performance?',
+        a: 'Yes. We optimize speed and Core Web Vitals as part of the service.',
+      },
+    ],
   },
 };
 
@@ -472,6 +503,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const path = '/servicios/mantenimiento';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
   const path = '/servicios/mantenimiento';
   const canonicalUrl = buildLocalizedUrl(path, locale);
 
@@ -512,6 +546,8 @@ export default async function MantenimientoPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero Section */}
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-500/10 via-transparent to-transparent" />
@@ -760,6 +796,20 @@ export default async function MantenimientoPage({
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.faqTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.faq.map((item) => (
+              <details key={item.q} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
+                <p className="mt-2 text-gray-300">{item.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

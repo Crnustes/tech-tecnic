@@ -6,6 +6,7 @@ import { enabledServices } from '@/config/servicesCatalog';
 import ContactCTA from '@/components/ContactCTA';
 import ServiceCards from '@/components/ServiceCards';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema, getItemListSchema } from '@/utils/schema';
 import { convertPriceString } from '@/utils/pricing';
 
 const slugToTranslationKey: Record<string, string> = {
@@ -56,6 +57,21 @@ const pageCopy = {
         description: 'No te dejamos solo despues del lanzamiento. Te acompanamos en tu crecimiento.',
       },
     ],
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      {
+        q: 'Que servicios ofrece Tech Tecnic?',
+        a: 'Desarrollo web, SEO, automatizacion con IA, integraciones, mantenimiento y apps moviles.',
+      },
+      {
+        q: 'Trabajan solo en Bogota?',
+        a: 'Atendemos Bogota y proyectos en Colombia, Latam y USA.',
+      },
+      {
+        q: 'Como solicito una cotizacion?',
+        a: 'Puedes escribirnos por WhatsApp o usar el formulario de contacto.',
+      },
+    ],
   },
   en: {
     metaTitle: 'Web Development and AI Services | Tech Tecnic Bogota',
@@ -91,6 +107,21 @@ const pageCopy = {
       {
         title: 'Continuous Support',
         description: 'We stay with you after launch and support your growth.',
+      },
+    ],
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'What services does Tech Tecnic offer?',
+        a: 'Web development, SEO, AI automation, integrations, maintenance, and mobile apps.',
+      },
+      {
+        q: 'Do you work only in Bogota?',
+        a: 'We serve Bogota and projects across Colombia, Latam, and the USA.',
+      },
+      {
+        q: 'How can I request a quote?',
+        a: 'You can message us on WhatsApp or use the contact form.',
       },
     ],
   },
@@ -145,9 +176,19 @@ export default async function ServiciosPage({
       price: service.price ? convertPriceString(service.price, locale) : undefined,
     };
   });
+  const schemaData = getItemListSchema(
+    services.map((service) => ({
+      name: service.title,
+      url: buildLocalizedUrl(`/servicios/${service.slug}`, locale),
+    })),
+    locale
+  );
+  const faqSchema = getFaqSchema(copy.faq, locale);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-t_primary/10 via-transparent to-transparent" />
@@ -273,6 +314,20 @@ export default async function ServiciosPage({
 
       {/* Service Cards Section */}
       <ServiceCards />
+
+      <section className="relative py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.faqTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.faq.map((item) => (
+              <details key={item.q} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
+                <p className="mt-2 text-gray-300">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <ContactCTA />

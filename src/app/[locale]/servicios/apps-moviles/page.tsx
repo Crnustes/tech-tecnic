@@ -22,6 +22,7 @@ import {
 import ContactCTA from '@/components/ContactCTA';
 import { convertCOPtoUSD } from '@/utils/pricing';
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo';
+import { getFaqSchema, getServiceSchema } from '@/utils/schema';
 
 const pageCopy = {
   es: {
@@ -207,6 +208,21 @@ const pageCopy = {
       { step: '4', title: 'Testing', description: 'Pruebas exhaustivas en multiples dispositivos.' },
       { step: '5', title: 'Lanzamiento', description: 'Publicacion en App Store y Google Play.' },
       { step: '6', title: 'Soporte', description: 'Actualizaciones, mantenimiento y mejoras continuas.' },
+    ],
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      {
+        q: 'Que tecnologias usan para apps moviles?',
+        a: 'Trabajamos con React Native, Flutter, Swift y Kotlin segun el proyecto.',
+      },
+      {
+        q: 'Incluyen publicacion en tiendas?',
+        a: 'Si. Los planes profesionales incluyen publicacion en App Store y Google Play.',
+      },
+      {
+        q: 'Pueden integrar pagos o geolocalizacion?',
+        a: 'Si. Integramos pagos, mapas y funciones avanzadas como notificaciones push.',
+      },
     ],
     ctaTitle: 'Listo para crear tu app movil?',
     ctaDescription: 'Agenda una consultoria gratuita y convierte tu idea en una aplicacion exitosa.',
@@ -396,6 +412,21 @@ const pageCopy = {
       { step: '5', title: 'Launch', description: 'Publish to App Store and Google Play.' },
       { step: '6', title: 'Support', description: 'Updates, maintenance, and continuous improvements.' },
     ],
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      {
+        q: 'What technologies do you use?',
+        a: 'We work with React Native, Flutter, Swift, and Kotlin depending on the project.',
+      },
+      {
+        q: 'Do you publish to app stores?',
+        a: 'Yes. Professional plans include publishing to the App Store and Google Play.',
+      },
+      {
+        q: 'Can you integrate payments or geolocation?',
+        a: 'Yes. We integrate payments, maps, and advanced features like push notifications.',
+      },
+    ],
     ctaTitle: 'Ready to build your mobile app?',
     ctaDescription: 'Schedule a free consultation and turn your idea into a successful app.',
     ctaButton: 'Quote my app',
@@ -437,6 +468,9 @@ export default async function AppsMovilesPage({
 }) {
   const { locale } = await params;
   const copy = pageCopy[locale];
+  const path = '/servicios/apps-moviles';
+  const schemaData = getServiceSchema(locale, copy.metaTitle, copy.metaDescription, path);
+  const faqSchema = getFaqSchema(copy.faq, locale);
 
   const formatPrice = (priceCOP: number) => {
     const amount = locale === 'es' ? priceCOP : convertCOPtoUSD(priceCOP);
@@ -449,6 +483,8 @@ export default async function AppsMovilesPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="relative pt-20 sm:pt-32 pb-12 sm:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
 
@@ -709,6 +745,20 @@ export default async function AppsMovilesPage({
                   <p className="text-gray-400">{item.description}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">{copy.faqTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.faq.map((item) => (
+              <details key={item.q} className="rounded-xl bg-white/5 border border-white/10 p-4">
+                <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
+                <p className="mt-2 text-gray-300">{item.a}</p>
+              </details>
             ))}
           </div>
         </div>
