@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -90,6 +91,7 @@ gtag('config', 'G-F3PPTK46GT');`}
           <Footer />
           <FloatingWhatsApp />
           <LanguageSwitcher />
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>
