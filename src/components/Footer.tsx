@@ -1,14 +1,12 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, MessageCircle, ArrowUpRight } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { buildLocalizedUrl } from '@/utils/seo';
 
-export default function Footer() {
-  const t = useTranslations();
-  const locale = useLocale();
+export default async function Footer() {
+  const t = await getTranslations();
+  const locale = (await getLocale()) as 'es' | 'en';
   const safeLocale = locale === "en" ? "en" : "es";
   const currentYear = new Date().getFullYear();
 

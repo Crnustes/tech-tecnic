@@ -1,8 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 import { MessageCircle, Mail, ArrowRight } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 interface ContactCTAProps {
   title?: string;
@@ -30,18 +28,13 @@ const pageCopy = {
   },
 };
 
-export default function ContactCTA({
+export default async function ContactCTA({
   title,
   description,
   primaryText,
   secondaryText,
 }: ContactCTAProps) {
-  let locale: 'es' | 'en' = 'es';
-  try {
-    locale = (useLocale() as 'es' | 'en') ?? 'es';
-  } catch {
-    locale = 'es';
-  }
+  const locale = (await getLocale()) as 'es' | 'en';
   const copy = pageCopy[locale] ?? pageCopy.es;
 
   const whatsappMessage = encodeURIComponent(copy.whatsappMessage);

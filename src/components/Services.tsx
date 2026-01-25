@@ -1,10 +1,7 @@
-'use client';
-
-import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Sparkles, Check } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import { enabledServices } from '@/config/servicesCatalog';
 import { buildLocalizedUrl } from '@/utils/seo';
 
@@ -158,31 +155,27 @@ const serviceCopy: Record<string, { es: any; en: any }> = {
   },
 };
 
-export default function Services() {
-  const locale = (useLocale() as 'es' | 'en') ?? 'es';
+export default async function Services() {
+  const locale = (await getLocale()) as 'es' | 'en';
   const copy = pageCopy[locale] ?? pageCopy.es;
 
-  const localizedServices = useMemo(
-    () =>
-      enabledServices.map((service) => {
-        const overrides = serviceCopy[service.id]?.[locale];
-        return {
-          ...service,
-          title: overrides?.title ?? service.title,
-          subtitle: overrides?.subtitle ?? service.subtitle,
-          description: overrides?.description ?? service.description,
-          features: overrides?.features ?? service.features,
-          imageAlt: overrides?.imageAlt ?? service.imageAlt,
-        };
-      }),
-    [locale]
-  );
+  const localizedServices = enabledServices.map((service) => {
+    const overrides = serviceCopy[service.id]?.[locale];
+    return {
+      ...service,
+      title: overrides?.title ?? service.title,
+      subtitle: overrides?.subtitle ?? service.subtitle,
+      description: overrides?.description ?? service.description,
+      features: overrides?.features ?? service.features,
+      imageAlt: overrides?.imageAlt ?? service.imageAlt,
+    };
+  });
 
-  const [activeService, setActiveService] = useState(localizedServices[0]);
+  if (!localizedServices.length) {
+    return null;
+  }
 
-  useEffect(() => {
-    setActiveService((prev) => localizedServices.find((service) => service.id === prev?.id) ?? localizedServices[0]);
-  }, [localizedServices]);
+  const activeService = localizedServices[0];
 
   return (
     <section
@@ -213,12 +206,13 @@ export default function Services() {
         <div className="flex flex-wrap justify-center gap-3 mb-16">
           {localizedServices.map((service) => {
             const Icon = service.icon;
+            const isActive = activeService.id === service.id;
             return (
-              <button
+              <Link
                 key={service.id}
-                onClick={() => setActiveService(service)}
+                href={buildLocalizedUrl(`/servicios/${service.slug}`, locale)}
                 className={`group relative px-6 py-3 rounded-xl transition-all duration-300 ${
-                  activeService?.id === service.id
+                  isActive
                     ? 'bg-gradient-to-r ' + service.color + ' text-white shadow-lg scale-105'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
                 }`}
@@ -228,7 +222,7 @@ export default function Services() {
                   <span className="font-medium hidden sm:inline">{service.title}</span>
                   <span className="font-medium sm:hidden">{service.title.split(' ')[0]}</span>
                 </div>
-              </button>
+              </Link>
             );
           })}
         </div>
@@ -242,8 +236,8 @@ export default function Services() {
                 alt={activeService.imageAlt ?? activeService.title}
                 width={600}
                 height={400}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="w-full h-auto"
-                priority
               />
             </div>
           </div>

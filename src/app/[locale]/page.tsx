@@ -5,7 +5,7 @@ import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
+import ContactCTA from "@/components/ContactCTA";
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from "@/utils/seo";
 
 const pageCopy = {
@@ -86,8 +86,8 @@ export default function Home() {
       <div className="content-visibility-auto">
         <CTA />
       </div>
-      <div className="content-visibility-auto">
-        <Contact />
+      <div id="contacto" className="content-visibility-auto">
+        <ContactCTA />
       </div>
     </>
   );
