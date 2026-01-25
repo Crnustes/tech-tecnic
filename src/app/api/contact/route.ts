@@ -12,6 +12,61 @@ const escapeHtml = (value: string) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
+const serviceSummary = {
+  es: [
+    'Desarrollo web y ecommerce',
+    'SEO y posicionamiento',
+    'IA y automatizacion',
+    'Integraciones y APIs',
+    'Mantenimiento web',
+    'Apps moviles',
+    'Chatbot WhatsApp con IA',
+  ],
+  en: [
+    'Web development and ecommerce',
+    'SEO and positioning',
+    'AI and automation',
+    'Integrations and APIs',
+    'Website maintenance',
+    'Mobile apps',
+    'WhatsApp AI chatbot',
+  ],
+};
+
+const getCustomerEmailCopy = (locale: 'es' | 'en', name: string) => {
+  if (locale === 'en') {
+    return {
+      subject: 'Thanks for contacting Tech Tecnic',
+      title: `Thanks for reaching out, ${name}`,
+      intro: 'We received your message and will reply within 24 business hours.',
+      summaryTitle: 'Service overview',
+      summaryList: serviceSummary.en,
+      nextTitle: 'What happens next',
+      nextList: [
+        'We review your request',
+        'We contact you by this email',
+        'If urgent, reach us on WhatsApp: +57 302 674 2059',
+      ],
+      closing: 'Tech Tecnic team',
+    };
+  }
+
+  return {
+    subject: 'Gracias por contactar a Tech Tecnic',
+    title: `Gracias por escribirnos, ${name}`,
+    intro: 'Recibimos tu mensaje y responderemos en menos de 24 horas habiles.',
+    summaryTitle: 'Resumen de servicios',
+    summaryList: serviceSummary.es,
+    nextTitle: 'Que sigue',
+    nextList: [
+      'Revisamos tu solicitud',
+      'Te contactamos por este correo',
+      'Si es urgente, escribenos por WhatsApp: +57 302 674 2059',
+    ],
+    closing: 'Equipo Tech Tecnic',
+  };
+};
+
 export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => null);
@@ -81,13 +136,69 @@ export async function POST(request: Request) {
       <p>${escapeHtml(cleanMessage).replace(/\n/g, '<br />')}</p>
     `;
 
-    await resend.emails.send({
+    const text = [
+      safeLocale === 'en' ? 'New contact message' : 'Nuevo mensaje de contacto',
+      ...details.map((item) => `${item.label}: ${item.value}`),
+      safeLocale === 'en' ? 'Message:' : 'Mensaje:',
+      cleanMessage,
+    ].join('\n');
+
+    const internalResult = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
       replyTo: cleanEmail,
       subject,
       html,
+      text,
     });
+
+    if (internalResult.error) {
+      throw new Error(internalResult.error.message || 'Resend error');
+    }
+
+    const customerCopy = getCustomerEmailCopy(safeLocale, cleanName);
+    const customerHtml = `
+      <div>
+        <h2>${escapeHtml(customerCopy.title)}</h2>
+        <p>${escapeHtml(customerCopy.intro)}</p>
+        <h3>${escapeHtml(customerCopy.summaryTitle)}</h3>
+        <ul>
+          ${customerCopy.summaryList.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+        </ul>
+        <h3>${escapeHtml(customerCopy.nextTitle)}</h3>
+        <ul>
+          ${customerCopy.nextList.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+        </ul>
+        <p>${escapeHtml(customerCopy.closing)}</p>
+      </div>
+    `;
+
+    const customerText = [
+      customerCopy.title,
+      '',
+      customerCopy.intro,
+      '',
+      customerCopy.summaryTitle,
+      ...customerCopy.summaryList.map((item) => `- ${item}`),
+      '',
+      customerCopy.nextTitle,
+      ...customerCopy.nextList.map((item) => `- ${item}`),
+      '',
+      customerCopy.closing,
+    ].join('\n');
+
+    const customerResult = await resend.emails.send({
+      from: fromEmail,
+      to: cleanEmail,
+      replyTo: toEmail,
+      subject: customerCopy.subject,
+      html: customerHtml,
+      text: customerText,
+    });
+
+    if (customerResult.error) {
+      console.error('Customer email failed:', customerResult.error);
+    }
 
     return NextResponse.json({ success: true, message: 'Sent' }, { status: 200 });
   } catch (error) {
