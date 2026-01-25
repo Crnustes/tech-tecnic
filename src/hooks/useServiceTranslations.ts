@@ -19,6 +19,7 @@ const slugToTranslationKey: Record<string, string> = {
 export function useServiceTranslations(slug: string) {
   const t = useTranslations();
   const locale = useLocale();
+  const safeLocale = locale === "en" ? "en" : "es";
   
   // Obtener la clave de traducción basada en el slug
   const translationKey = slugToTranslationKey[slug] || slug;
@@ -44,9 +45,9 @@ export function useServiceTranslations(slug: string) {
     service,
     priceCOP,
     priceUSD,
-    locale,
+    locale: safeLocale,
     formatPrice: (amount: number) => {
-      if (locale === 'es') {
+      if (safeLocale === 'es') {
         return `$${amount.toLocaleString('es-CO')} COP`;
       } else {
         return `$${amount.toLocaleString('en-US')} USD`;

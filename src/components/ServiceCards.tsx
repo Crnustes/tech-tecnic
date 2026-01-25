@@ -21,6 +21,7 @@ const slugToTranslationKey: Record<string, string> = {
 export default function ServiceCards() {
   const t = useTranslations();
   const locale = useLocale();
+  const safeLocale = locale === "en" ? "en" : "es";
 
   const activeServices = servicesCatalog.filter(service => service.enabled !== false);
 
@@ -41,7 +42,7 @@ export default function ServiceCards() {
           return (
             <Link
               key={service.id}
-              href={buildLocalizedUrl(`/servicios/${service.slug}`, locale)}
+              href={buildLocalizedUrl(`/servicios/${service.slug}`, safeLocale)}
               className="group relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-white/10 overflow-hidden hover:border-t_primary/50 transition-all hover:shadow-2xl hover:shadow-t_primary/20"
             >
               <div className="p-8">
@@ -69,13 +70,13 @@ export default function ServiceCards() {
                 <div className="border-t border-white/10 pt-4">
                   <div className="flex justify-between items-end">
                     <div>
-                      {locale === 'es' ? (
+                      {safeLocale === 'es' ? (
                         <p className="text-sm text-gray-400 mb-1">Desde</p>
                       ) : (
                         <p className="text-sm text-gray-400 mb-1">From</p>
                       )}
                       <p className="text-2xl font-bold text-t_primary">
-                        {locale === 'es' ? (
+                        {safeLocale === 'es' ? (
                           <>
                             ${priceCOP.toLocaleString('es-CO')}
                             <span className="text-sm text-gray-400 ml-1">COP</span>

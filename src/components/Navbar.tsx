@@ -33,7 +33,8 @@ const pageCopy = {
 export default function Navbar() {
   const t = useTranslations();
   const locale = useLocale();
-  const copy = pageCopy[locale as 'es' | 'en'] ?? pageCopy.es;
+  const safeLocale = locale === "en" ? "en" : "es";
+  const copy = pageCopy[safeLocale] ?? pageCopy.es;
   const [megamenuOpen, setMegamenuOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -63,7 +64,7 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-white/10 bg-t_dark/80">
         <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-          <Link href={buildLocalizedUrl('/', locale)} className="relative z-10 flex items-center group">
+          <Link href={buildLocalizedUrl('/', safeLocale)} className="relative z-10 flex items-center group">
             <div className="relative w-40 h-12 transition-transform group-hover:scale-105">
               <Image
                 src="/logo.png"
@@ -77,7 +78,7 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-8">
             <Link
-              href={buildLocalizedUrl('/', locale)}
+              href={buildLocalizedUrl('/', safeLocale)}
               className="text-sm font-medium hover:text-t_accent transition-colors relative group"
             >
               {t('nav.home')}
@@ -110,7 +111,7 @@ export default function Navbar() {
                         {menuServices.map((item) => (
                           <Link
                             key={item.slug}
-                            href={buildLocalizedUrl(item.href, locale)}
+                            href={buildLocalizedUrl(item.href, safeLocale)}
                             className="group relative p-4 rounded-2xl bg-white/5 hover:bg-gradient-to-br hover:from-white/10 hover:to-white/5 transition-all duration-300 border-2 border-white/10 hover:border-t_primary/50"
                             onClick={() => setMegamenuOpen(false)}
                           >
@@ -136,7 +137,7 @@ export default function Navbar() {
                           <p className="text-xs sm:text-sm text-gray-400">{t('nav.tellUsProject')}</p>
                         </div>
                         <Link
-                          href={buildLocalizedUrl('/contacto', locale)}
+                          href={buildLocalizedUrl('/contacto', safeLocale)}
                           className="group flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-t_primary to-t_accent text-white text-sm sm:text-base font-semibold hover:shadow-2xl hover:shadow-t_primary/50 hover:scale-105 transition-all whitespace-nowrap"
                           onClick={() => setMegamenuOpen(false)}
                         >
@@ -153,14 +154,14 @@ export default function Navbar() {
             </div>
 
             <Link
-              href={buildLocalizedUrl('/proyectos', locale)}
+              href={buildLocalizedUrl('/proyectos', safeLocale)}
               className="text-sm font-medium hover:text-t_accent transition-colors relative group"
             >
               {t('nav.projects')}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-t_accent transition-all group-hover:w-full"></span>
             </Link>
             <Link
-              href={buildLocalizedUrl('/blog', locale)}
+              href={buildLocalizedUrl('/blog', safeLocale)}
               className="text-sm font-medium hover:text-t_accent transition-colors relative group"
             >
               {t('nav.blog')}
@@ -168,7 +169,7 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href={buildLocalizedUrl('/contacto', locale)}
+              href={buildLocalizedUrl('/contacto', safeLocale)}
               className="px-6 py-2.5 rounded-full bg-gradient-to-r from-t_primary to-t_accent text-white text-sm font-medium hover:shadow-lg hover:shadow-t_primary/50 transition-all hover:scale-105"
             >
               {t('nav.contact')}
@@ -188,7 +189,7 @@ export default function Navbar() {
           <div className="lg:hidden absolute top-20 left-0 w-full z-40 px-4">
             <div className="rounded-2xl border border-white/10 bg-[#0b1020]/95 backdrop-blur-xl shadow-2xl px-6 py-6 space-y-4 text-white">
               <Link
-                href={buildLocalizedUrl('/', locale)}
+                href={buildLocalizedUrl('/', safeLocale)}
                 className="block py-2 hover:text-t_accent transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
@@ -200,7 +201,7 @@ export default function Navbar() {
                 {menuServices.map((item) => (
                   <Link
                     key={item.slug}
-                    href={buildLocalizedUrl(item.href, locale)}
+                    href={buildLocalizedUrl(item.href, safeLocale)}
                     className="block py-2 pl-4 hover:text-t_accent hover:pl-6 transition-all"
                     onClick={() => setMobileOpen(false)}
                   >
@@ -210,7 +211,7 @@ export default function Navbar() {
               </div>
 
               <Link
-                href={buildLocalizedUrl('/proyectos', locale)}
+                href={buildLocalizedUrl('/proyectos', safeLocale)}
                 className="block py-2 hover:text-t_accent transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
@@ -218,7 +219,7 @@ export default function Navbar() {
               </Link>
 
               <Link
-                href={buildLocalizedUrl('/blog', locale)}
+                href={buildLocalizedUrl('/blog', safeLocale)}
                 className="block py-2 hover:text-t_accent transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
@@ -226,7 +227,7 @@ export default function Navbar() {
               </Link>
 
               <Link
-                href={buildLocalizedUrl('/contacto', locale)}
+                href={buildLocalizedUrl('/contacto', safeLocale)}
                 className="block w-full text-center py-3 mt-4 rounded-full bg-gradient-to-r from-t_primary to-t_accent text-white font-medium"
                 onClick={() => setMobileOpen(false)}
               >
