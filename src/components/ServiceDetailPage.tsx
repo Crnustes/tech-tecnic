@@ -14,6 +14,7 @@ interface ServiceDetailPageProps {
 
 export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
   const { title, subtitle, description, features, service, priceCOP, priceUSD, locale } = useServiceTranslations(slug);
+  const safeLocale = locale === "en" ? "en" : "es";
   const t = useTranslations('serviceDetails');
 
   const benefits = [
@@ -66,7 +67,7 @@ export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
 
         <div className="relative max-w-7xl mx-auto px-6">
           <Link
-            href={buildLocalizedUrl('/servicios', locale)}
+            href={buildLocalizedUrl('/servicios', safeLocale)}
             className="inline-flex items-center gap-2 text-t_primary hover:text-t_accent transition-colors mb-8"
           >
             <ArrowRight className="w-4 h-4 rotate-180" />
