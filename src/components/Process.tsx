@@ -1,7 +1,5 @@
-'use client';
-
 import { MessageSquare, Palette, Code2, TestTube, Rocket, Sparkles } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 const pageCopy = {
   es: {
@@ -118,8 +116,8 @@ const pageCopy = {
 
 const stepIcons = [MessageSquare, Palette, Code2, TestTube, Rocket];
 
-export default function Process() {
-  const locale = (useLocale() as 'es' | 'en') ?? 'es';
+export default async function Process() {
+  const locale = (await getLocale()) as 'es' | 'en';
   const copy = pageCopy[locale] ?? pageCopy.es;
 
   return (

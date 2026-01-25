@@ -1,9 +1,6 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 const pageCopy = {
   es: {
@@ -38,36 +35,16 @@ const pageCopy = {
   },
 };
 
-export default function CTA() {
-  const locale = (useLocale() as 'es' | 'en') ?? 'es';
+export default async function CTA() {
+  const locale = (await getLocale()) as 'es' | 'en';
   const copy = pageCopy[locale] ?? pageCopy.es;
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = document.getElementById('cta-section')?.getBoundingClientRect();
-      if (rect) {
-        setMousePosition({
-          x: ((e.clientX - rect.left) / rect.width) * 100,
-          y: ((e.clientY - rect.top) / rect.height) * 100,
-        });
-      }
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   return (
     <section
       id="cta-section"
       className="relative py-32 overflow-hidden bg-gradient-to-br from-slate-900 via-black to-slate-900"
     >
-      <div
-        className="absolute inset-0 opacity-30 transition-all duration-500"
-        style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(0, 217, 255, 0.2), transparent 50%)`,
-        }}
-      />
+      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_40%,rgba(0,217,255,0.2),transparent_50%)]" />
 
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-t_primary/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-t_accent/20 rounded-full blur-3xl animate-pulse delay-1000" />

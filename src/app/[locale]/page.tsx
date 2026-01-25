@@ -71,12 +71,24 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Services />
-      <Projects />
-      <Process />
-      <Pricing />
-      <CTA />
-      <Contact />
+      <div className="content-visibility-auto">
+        <Services />
+      </div>
+      <div className="content-visibility-auto">
+        <Projects />
+      </div>
+      <div className="content-visibility-auto">
+        <Process />
+      </div>
+      <div className="content-visibility-auto">
+        <Pricing />
+      </div>
+      <div className="content-visibility-auto">
+        <CTA />
+      </div>
+      <div className="content-visibility-auto">
+        <Contact />
+      </div>
     </>
   );
 }

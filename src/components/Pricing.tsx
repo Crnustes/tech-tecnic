@@ -1,8 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 import { Check, Star, Zap, Rocket, Building2, Sparkles } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import { convertCOPtoUSD } from '@/utils/pricing';
 
 const pageCopy = {
@@ -185,8 +183,8 @@ const plans = [
   },
 ];
 
-export default function Pricing() {
-  const locale = (useLocale() as 'es' | 'en') ?? 'es';
+export default async function Pricing() {
+  const locale = (await getLocale()) as 'es' | 'en';
   const copy = pageCopy[locale] ?? pageCopy.es;
 
   const formatPrice = (priceCOP: number) => {

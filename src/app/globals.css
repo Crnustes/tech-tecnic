@@ -67,6 +67,11 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1000px;
+  }
 }
 
 /* Optimize font rendering */

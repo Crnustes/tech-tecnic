@@ -1,34 +1,13 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function Hero() {
-  const t = useTranslations('hero');
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
+export default async function Hero() {
+  const t = await getTranslations('hero');
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-t_dark via-slate-900 to-black">
-      {/* Gradient Background with Mouse Movement */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(0, 217, 255, 0.15), transparent 50%)`,
-        }}
-      />
+      {/* Static Gradient Background */}
+      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_50%_35%,rgba(0,217,255,0.15),transparent_50%)]" />
       
       {/* Animated Gradient Orbs */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-t_primary/20 rounded-full blur-3xl animate-pulse" />
