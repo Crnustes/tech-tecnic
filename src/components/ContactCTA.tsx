@@ -36,7 +36,12 @@ export default function ContactCTA({
   primaryText,
   secondaryText,
 }: ContactCTAProps) {
-  const locale = (useLocale() as 'es' | 'en') ?? 'es';
+  let locale: 'es' | 'en' = 'es';
+  try {
+    locale = (useLocale() as 'es' | 'en') ?? 'es';
+  } catch {
+    locale = 'es';
+  }
   const copy = pageCopy[locale] ?? pageCopy.es;
 
   const whatsappMessage = encodeURIComponent(copy.whatsappMessage);
