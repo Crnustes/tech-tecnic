@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from "@/utils/seo";
 import { getBreadcrumbSchema } from "@/utils/schema";
+import Script from "next/script";
 
 const pageCopy = {
   es: {
@@ -69,6 +70,9 @@ export default async function ContactLayout({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Script id="gtag-ads-conversion-contacto" strategy="afterInteractive">
+        {`if (typeof gtag === 'function') { gtag('event', 'ads_conversion_Contacto_1', {}); }`}
+      </Script>
       {children}
     </>
   );
