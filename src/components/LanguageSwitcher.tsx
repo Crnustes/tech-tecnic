@@ -26,22 +26,22 @@ export default function LanguageSwitcher() {
   const switchLanguage = (newLocale: Locale) => {
     if (newLocale === locale) return;
 
-    let pathWithoutLocale = pathname;
-
-    if (pathname.startsWith('/en/') || pathname === '/en') {
-      pathWithoutLocale = pathname.replace(/^\/en/, '') || '/';
+    const alternate = document.querySelector<HTMLLinkElement>(
+      `link[rel="alternate"][hreflang="${newLocale}"]`
+    );
+    if (alternate?.href) {
+      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+      window.location.href = alternate.href;
+      return;
     }
 
-    if (pathname === '/' || !pathname.startsWith('/en')) {
-      pathWithoutLocale = pathname;
-    }
-
-    let newPath: string;
-    if (newLocale === 'en') {
-      newPath = pathWithoutLocale === '/' ? '/en' : `/en${pathWithoutLocale}`;
-    } else {
-      newPath = pathWithoutLocale;
-    }
+    const localePattern = new RegExp(`^/(${locales.join('|')})(/|$)`);
+    const pathWithoutLocale = pathname.replace(localePattern, '/') || '/';
+    const newPath = newLocale === 'es'
+      ? pathWithoutLocale
+      : pathWithoutLocale === '/'
+        ? '/en'
+        : `/en${pathWithoutLocale}`;
 
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
     window.location.href = newPath;

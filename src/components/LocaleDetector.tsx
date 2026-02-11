@@ -23,16 +23,13 @@ export default function LocaleDetector() {
     if (detectedLocale !== currentLocale) {
       localStorage.setItem('preferred-locale', detectedLocale);
 
-      let newPath: string;
-      if (detectedLocale === defaultLocale) {
-        newPath = pathname.startsWith('/en')
-          ? pathname.replace(/^\/en/, '') || '/'
-          : pathname;
-      } else {
-        newPath = pathname.startsWith('/en')
-          ? pathname
-          : `/en${pathname}`;
-      }
+      const localePattern = new RegExp(`^/(${locales.join('|')})(/|$)`);
+      const pathWithoutLocale = pathname.replace(localePattern, '/') || '/';
+      const newPath = detectedLocale === defaultLocale
+        ? pathWithoutLocale
+        : pathWithoutLocale === '/'
+          ? `/${detectedLocale}`
+          : `/${detectedLocale}${pathWithoutLocale}`;
 
       if (newPath !== pathname) {
         window.location.href = newPath;

@@ -519,6 +519,9 @@ At Tech Tecnic we specialize in local SEO for Colombian businesses. We rank comp
   {
     id: '3',
     slug: 'desarrollo-web-moderno-react-nextjs-2026',
+    localeSlugs: {
+      en: 'modern-web-development-react-nextjs-2026',
+    },
     author: 'Tech Tecnic',
     date: '2025-01-12',
     readTime: 7,
