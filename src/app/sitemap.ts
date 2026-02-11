@@ -7,14 +7,14 @@ import {
   SUPPORTED_LOCALES,
 } from "@/utils/seo";
 
-type ChangeFrequency = "daily" | "weekly" | "monthly" | "yearly";
+type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
 const createLocalizedEntries = (
   path: string,
   lastModified: Date | string,
   changeFrequency: ChangeFrequency,
   priority: number
-) =>
+) : MetadataRoute.Sitemap =>
   SUPPORTED_LOCALES.map((locale) => ({
     url: buildLocalizedUrl(path, locale),
     lastModified,
@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPostsEn = getBlogPosts("en");
   const blogPostsEnById = new Map(blogPostsEn.map((post) => [post.id, post.slug]));
 
-  const blogEntries = blogPostsEs.flatMap((post) => {
+  const blogEntries: MetadataRoute.Sitemap = blogPostsEs.flatMap((post) => {
     const pathEs = `/blog/${post.slug}`;
     const pathEn = `/blog/${blogPostsEnById.get(post.id) ?? post.slug}`;
     const alternates = buildAlternatesForLocales({
@@ -64,7 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return SUPPORTED_LOCALES.map((locale) => ({
       url: buildLocalizedUrl(locale === "es" ? pathEs : pathEn, locale),
       lastModified: post.date,
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.7,
       alternates,
     }));
