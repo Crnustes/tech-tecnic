@@ -47,61 +47,61 @@ export const blogPosts: BlogPost[] = [
     image: 'ia-automation-colombia',
     locales: {
       es: {
-        title: 'IA y Automatizacion: Como Transformar tu Negocio en 2026',
+        title: 'IA y Automatización: Cómo Transformar tu Negocio en 2026',
         excerpt:
-          'Descubre como las empresas colombianas multiplican su productividad con automatizacion e IA. Casos reales y estrategias probadas.',
-        category: 'Tecnologia',
+          'Descubre cómo las empresas colombianas multiplican su productividad con automatización e IA. Casos reales y estrategias probadas.',
+        category: 'Tecnología',
         keywords: [
           'IA Colombia',
-          'automatizacion procesos',
+          'automatización de procesos',
           'inteligencia artificial empresas',
           'chatbots',
-          'flujos automaticos',
+          'flujos automáticos',
         ],
-        imageAlt: 'Automatizacion e IA para empresas colombianas',
+        imageAlt: 'Automatización e IA para empresas colombianas',
         content: `
-# IA y Automatizacion: Transforma tu Negocio en 2026
+# IA y Automatización: Transforma tu Negocio en 2026
 
-En Colombia, las empresas estan descubriendo el poder transformador de la inteligencia artificial y la automatizacion. Ya no es un lujo futurista: es una necesidad competitiva.
+En Colombia, las empresas están descubriendo el poder transformador de la inteligencia artificial y la automatización. Ya no es un lujo futurista: es una necesidad competitiva.
 
-## Por que ahora?
+## ¿Por qué ahora?
 
-En 2026, las empresas que invierten en automatizacion e IA reducen costos operativos hasta un 40% mientras escalan su capacidad sin contratar mas personal.
+En 2026, las empresas que invierten en automatización e IA reducen costos operativos hasta un 40% mientras escalan su capacidad sin contratar más personal.
 
-### Los numeros hablan
+### Los números hablan
 
-- 70% de las empresas colombianas estan considerando automatizar procesos
-- Empresas con IA generan 3x mas revenue por empleado
-- El ROI promedio en automatizacion es de 6 meses
+- 70% de las empresas colombianas están considerando automatizar procesos
+- Empresas con IA generan 3x más revenue por empleado
+- El ROI promedio en automatización es de 6 meses
 
 ## Casos reales: empresas colombianas que ganaron
 
-### Ecommerce en Bogota
-Una tienda online integraba manualmente 200 pedidos diarios. Despues de implementar nuestro chatbot IA:
-- Reduccion de 80% en tiempo de atencion
-- Respuesta automatica 24/7
-- Aumento en conversion del 35%
+### Ecommerce en Bogotá
+Una tienda online integraba manualmente 200 pedidos diarios. Después de implementar nuestro chatbot de IA:
+- Reducción de 80% en tiempo de atención
+- Respuesta automática 24/7
+- Aumento en conversión del 35%
 
-### Agencia de servicios en Medellin
-Con flujos automaticos para cotizaciones:
-- Disminucion de 60% en seguimientos manuales
-- Cierre de ventas mas rapido
+### Agencia de servicios en Medellín
+Con flujos automáticos para cotizaciones:
+- Disminución de 60% en seguimientos manuales
+- Cierre de ventas más rápido
 - Mejor experiencia del cliente
 
-## Tipos de automatizacion que funcionan ahora
+## Tipos de automatización que funcionan ahora
 
-### 1. Chatbots IA
+### 1. Chatbots con IA
 Para atender clientes 24/7 sin personal. Perfecto para:
 - Tiendas online
-- Consultorias
+- Consultorías
 - Agencias de servicios
 - Industria hotelera
 
-### 2. Flujos automaticos
+### 2. Flujos automáticos
 Conecta tus aplicaciones (CRM, email, redes sociales):
-- Captura de leads automatica
+- Captura de leads automática
 - Seguimiento de ventas
-- Gestion de inventario
+- Gestión de inventario
 - Notificaciones inteligentes
 
 ### 3. Procesamiento de documentos
@@ -111,33 +111,33 @@ IA que lee y procesa:
 - Solicitudes de clientes
 - Reportes
 
-## Comenzar es mas simple de lo que crees
+## Comenzar es más simple de lo que crees
 
-No necesitas ser ingeniero. El primer paso es identificar el proceso mas tedioso en tu empresa que:
-- Consume mas tiempo
+No necesitas ser ingeniero. El primer paso es identificar el proceso más tedioso en tu empresa que:
+- Consume más tiempo
 - Es repetitivo
 - Genera errores
-- Podria mejorar la experiencia del cliente
+- Podría mejorar la experiencia del cliente
 
-## Proximos pasos
+## Próximos pasos
 
-1. Diagnostico: identifica 3 procesos para automatizar
+1. Diagnóstico: identifica 3 procesos para automatizar
 2. Prototipos: prueba con IA sin compromiso
-3. Implementacion: escalamos juntos
+3. Implementación: escalamos juntos
 
-## Que esperar despues?
+## ¿Qué esperar después?
 
-Con automatizacion e IA bien implementadas:
+Con automatización e IA bien implementadas:
 - Decisiones basadas en datos reales
 - ROI visible en 3-6 meses
-- Tu equipo enfocado en tareas estrategicas
+- Tu equipo enfocado en tareas estratégicas
 - Escalabilidad sin limitar crecimiento
 
-La pregunta no es si automatizar. Es cuando empezar.
+La pregunta no es si automatizar. Es cuándo empezar.
 
 ---
 
-Tu empresa esta lista para el futuro? En Tech Tecnic implementamos IA y automatizacion a medida para empresas colombianas. Agenda una consultoria gratuita.
+¿Tu empresa está lista para el futuro? En Tech Tecnic implementamos IA y automatización a medida para empresas colombianas. Agenda una consultoría gratuita.
         `,
       },
       en: {
@@ -249,69 +249,66 @@ Is your company ready for the future? At Tech Tecnic we implement tailored AI an
     image: 'seo-local-colombia',
     locales: {
       es: {
-        title: 'SEO Local 2026: Como Dominar Google en tu Ciudad',
+        title: 'SEO Local 2026: Cómo Dominar Google en tu Ciudad',
         excerpt:
-          'Guia practica de SEO local para negocios en Colombia. Aparece en el top 3 de busquedas locales y atrae clientes de tu zona.',
+          'Guía práctica de SEO local para negocios en Colombia. Aparece en el top 3 de búsquedas locales y atrae clientes de tu zona.',
         category: 'Marketing Digital',
         keywords: [
           'SEO local Colombia',
           'Google My Business',
           'posicionamiento local',
-          'busquedas locales',
-          'negocios Bogota',
+          'búsquedas locales',
+          'negocios Bogotá',
         ],
         imageAlt: 'Estrategia SEO local para negocios en Colombia',
         content: `
-          localeSlugs: {
-            en: 'modern-web-development-react-nextjs-2026',
-          },
 # SEO Local 2026: Domina Google en tu Ciudad
 
-El 76% de busquedas en movil buscan algo local. Si tu negocio no aparece en las primeras 3 posiciones de Google para tu ciudad, pierdes clientes todos los dias.
+El 76% de búsquedas en móvil buscan algo local. Si tu negocio no aparece en las primeras 3 posiciones de Google para tu ciudad, pierdes clientes todos los días.
 
 ## La realidad del SEO local en Colombia
 
-### Quien gana en busquedas locales
+### Quién gana en búsquedas locales
 
-1. Negocios con Google My Business optimizado: 3x mas clics
-2. Negocios con resenas recientes: 2x mas confianza
+1. Negocios con Google My Business optimizado: 3x más clics
+2. Negocios con reseñas recientes: 2x más confianza
 3. Negocios con contenido local: aparecen en el top 3
 
 ## 5 pasos para dominar SEO local en tu ciudad
 
-### Paso 1: Optimizar Google My Business (critico)
+### Paso 1: Optimizar Google My Business (crítico)
 
-Si no haces nada mas, haz esto:
+Si no haces nada más, haz esto:
 - Foto de perfil profesional
-- Descripcion con palabras clave locales
+- Descripción con palabras clave locales
 - Horario actualizado
-- Telefono verificado
-- Categoria correcta (muy importante)
+- Teléfono verificado
+- Categoría correcta (muy importante)
 - 10+ fotos de calidad
 
-Ejemplo para una consultoria en Bogota:
-"Consultoria empresarial en Bogota especializada en transformacion digital, IA y automatizacion. Atendemos empresas en Bogota, Cundinamarca y toda Colombia."
+Ejemplo para una consultoría en Bogotá:
+"Consultoría empresarial en Bogotá especializada en transformación digital, IA y automatización. Atendemos empresas en Bogotá, Cundinamarca y toda Colombia."
 
-### Paso 2: Conseguir resenas en Google
+### Paso 2: Conseguir reseñas en Google
 
-Objetivo: 30 resenas en 90 dias
+Objetivo: 30 reseñas en 90 días
 
-Tacticas que funcionan:
-- Email a clientes: "Nos encantaria tu opinion en Google"
+Tácticas que funcionan:
+- Email a clientes: "Nos encantaría tu opinión en Google"
 - WhatsApp directo con link
 - QR en factura/propuesta
-- Incentivos (descuento si dejas resena)
+- Incentivos (descuento si dejas reseña)
 
-Impacto real: cada resena nueva = +15% en clics
+Impacto real: cada reseña nueva = +15% en clics
 
 ### Paso 3: Contenido optimizado localmente
 
-Crear articulos para busquedas locales:
-- "Servicios de diseno web en Bogota"
-- "Consultoria IA para empresas en Medellin"
+Crear artículos para búsquedas locales:
+- "Servicios de diseño web en Bogotá"
+- "Consultoría IA para empresas en Medellín"
 - "Agencia de marketing digital en Cali"
 
-No es contenido generico. Es contenido local con:
+No es contenido genérico. Es contenido local con:
 - Datos locales
 - Casos de empresas de tu ciudad
 - Referencia a barrios o zonas
@@ -322,32 +319,32 @@ No es contenido generico. Es contenido local con:
 Aparecer en directorios locales:
 - Google Maps
 - Facebook/Instagram
-- Paginas Amarillas
+- Páginas Amarillas
 - Directorios de industria
 - Mapas de negocios
 
-Consistencia es clave: mismo nombre, telefono, direccion en todos lados.
+Consistencia es clave: mismo nombre, teléfono, dirección en todos lados.
 
-### Paso 5: Senales de localizacion
+### Paso 5: Señales de localización
 
-Codigo tecnico que le dice a Google tu ubicacion:
+Código técnico que le dice a Google tu ubicación:
 - Schema markup para negocios
-- Ubicacion en footer del sitio
-- Telefono local visible
-- Direccion completa
+- Ubicación en footer del sitio
+- Teléfono local visible
+- Dirección completa
 - Mapa embebido
 
-## Busquedas locales mas valiosas por ciudad
+## Búsquedas locales más valiosas por ciudad
 
-### Bogota
-- "agencia de marketing digital en Bogota"
-- "consultoria empresarial Chapinero"
-- "desarrollo web Bogota startup"
+### Bogotá
+- "agencia de marketing digital en Bogotá"
+- "consultoría empresarial Chapinero"
+- "desarrollo web Bogotá startup"
 
-### Medellin
-- "servicios de IA Medellin"
-- "automatizacion procesos Medellin"
-- "consultoria digital Laureles"
+### Medellín
+- "servicios de IA Medellín"
+- "automatización de procesos Medellín"
+- "consultoría digital Laureles"
 
 ### Cali
 - "agencia digital Cali"
@@ -356,32 +353,32 @@ Codigo tecnico que le dice a Google tu ubicacion:
 ## Errores que destruyen tu SEO local
 
 - Google My Business desactualizado
-- Telefono incorrecto en diferentes lugares
-- Resenas negativas sin respuesta
+- Teléfono incorrecto en diferentes lugares
+- Reseñas negativas sin respuesta
 - Fotos borrosas o antiguas
-- Categoria incorrecta
+- Categoría incorrecta
 - Horario con errores
 
-## Inversion vs retorno
+## Inversión vs retorno
 
 Un negocio local optimizado en SEO:
-- Inversion inicial: $500-1000 USD
+- Inversión inicial: $500-1000 USD
 - Tiempo: 4 semanas
 - Resultado: +50% en llamadas de clientes locales
 - ROI: 10-20x en 6 meses
 
 ## Checklist SEO local (haz esto esta semana)
 
-- Audit de Google My Business
+- Auditoría de Google My Business
 - Agregar 5 fotos nuevas y de calidad
-- Pedir 10 resenas a clientes felices
+- Pedir 10 reseñas a clientes felices
 - Revisar que datos sean consistentes en la web
-- Crear contenido para 2 busquedas locales clave
+- Crear contenido para 2 búsquedas locales clave
 - Configurar schema markup local
 
 ---
 
-En Tech Tecnic nos especializamos en SEO local para empresas en Colombia. Somos expertos en posicionar negocios en las primeras posiciones de Google Maps. Quieres una auditoria gratis?
+En Tech Tecnic nos especializamos en SEO local para empresas en Colombia. Somos expertos en posicionar negocios en las primeras posiciones de Google Maps. ¿Quieres una auditoría gratuita?
         `,
       },
       en: {
@@ -531,13 +528,13 @@ At Tech Tecnic we specialize in local SEO for Colombian businesses. We rank comp
       es: {
         title: 'Desarrollo Web Moderno 2026: React, Next.js y Tendencias',
         excerpt:
-          'Que hace que un sitio web moderno en 2026 venda mas. Tecnologia, diseno y UX que generan resultados comprobados.',
+          'Qué hace que un sitio web moderno en 2026 venda más. Tecnología, diseño y UX que generan resultados comprobados.',
         category: 'Desarrollo Web',
         keywords: [
           'desarrollo web moderno',
           'Next.js',
           'React',
-          'diseno web responsivo',
+          'diseño web responsivo',
           'UX web',
           'sitio web profesional',
         ],
@@ -545,15 +542,15 @@ At Tech Tecnic we specialize in local SEO for Colombian businesses. We rank comp
         content: `
 # Desarrollo Web Moderno 2026: React, Next.js y Tendencias
 
-Tu sitio web es tu vendedor 24/7. Si esta lento, desorganizado o no convierte, pierdes dinero cada dia.
+Tu sitio web es tu vendedor 24/7. Si está lento, desorganizado o no convierte, pierdes dinero cada día.
 
-## Que cambio en desarrollo web
+## Qué cambió en desarrollo web
 
 ### 2020
 - WordPress lento
 - Servidores propios
-- Codigo antiguo
-- Poca personalizacion
+- Código antiguo
+- Poca personalización
 
 ### 2026
 - Frameworks modernos (React, Next.js)
@@ -563,7 +560,7 @@ Tu sitio web es tu vendedor 24/7. Si esta lento, desorganizado o no convierte, p
 
 ## Las bases de un sitio web que vende
 
-### 1. Velocidad (critico)
+### 1. Velocidad (crítico)
 
 Cada 1 segundo de demora = 10% menos conversiones.
 
@@ -572,12 +569,12 @@ Sitios antiguos: 3-5 segundos
 
 Herramienta para medir: Google PageSpeed Insights
 
-### 2. Responsive (movil primero)
+### 2. Responsive (móvil primero)
 
-80% de tu trafico viene de movil en 2026.
+80% de tu tráfico viene de móvil en 2026.
 
 Un sitio moderno se adapta perfectamente a:
-- Telefonos (320px)
+- Teléfonos (320px)
 - Tablets (768px)
 - Escritorio (1920px)
 - TV (2560px+)
@@ -585,125 +582,125 @@ Un sitio moderno se adapta perfectamente a:
 ### 3. SEO integrado
 
 Google penaliza sitios sin:
-- Titulos optimizados
-- Meta descripciones
+- Títulos optimizados
+- Metadescripciones
 - URLs limpias
 - Sitemap
-- Structured data
+- Datos estructurados
 
 Ventaja de Next.js: SEO listo desde el inicio
 
 ### 4. Conversiones claras
 
 Un buen sitio web moderno tiene:
-- CTA clara en cada seccion
-- Formularios simples (maximo 3 campos)
-- Numeros y pruebas sociales
-- Navegacion intuitiva
-- Llamadas a la accion visibles
+- CTA clara en cada sección
+- Formularios simples (máximo 3 campos)
+- Números y pruebas sociales
+- Navegación intuitiva
+- Llamadas a la acción visibles
 
-## Tecnologias modernas que funcionan
+## Tecnologías modernas que funcionan
 
 ### Next.js (lo que usamos en Tech Tecnic)
 
 - Velocidad extrema (server-side rendering)
 - SEO perfecto de caja
-- Facil de mantener
+- Fácil de mantener
 - Escalable infinitamente
 - Deploy en 1 clic con Vercel
 
 ### React
 
-- UI interactiva sin recargar pagina
+- UI interactiva sin recargar página
 - Reutilizable (componentes)
 - Comunidad gigante
-- Muchas librerias especializadas
+- Muchas librerías especializadas
 
 ### Tailwind CSS
 
-- Diseno moderno sin escribir CSS complejo
+- Diseño moderno sin escribir CSS complejo
 - Componentes reutilizables
-- Responsivo automatico
-- 100x mas rapido que CSS tradicional
+- Responsivo automático
+- 100x más rápido que CSS tradicional
 
-## Tendencias de diseno 2026
+## Tendencias de diseño 2026
 
 ### Dark mode
-- Diseno oscuro elegante
+- Diseño oscuro elegante
 - Menos cansancio visual
-- +15% mas engagement
+- +15% más engagement
 
 ### Minimalismo
-- Menos es mas
+- Menos es más
 - Enfoque en contenido
-- Carga mas rapido
+- Carga más rápido
 
 ### Microinteracciones
 - Animaciones suaves
-- Retroalimentacion visual
+- Retroalimentación visual
 - Experiencia memorable
 
 ### IA en la web
 - Chatbots inteligentes
 - Recomendaciones personalizadas
-- Busqueda mejorada
+- Búsqueda mejorada
 
-## Antes vs despues: un caso real
+## Antes vs después: un caso real
 
-### Tienda online Bogota - antes
+### Tienda online Bogotá - antes
 - WordPress lento (4 segundos)
 - Tasa de rebote: 65%
-- Conversion: 1.2%
+- Conversión: 1.2%
 - $2000 USD en anuncios = $200 en ventas
 
-### Tienda online Bogota - despues (Next.js)
+### Tienda online Bogotá - después (Next.js)
 - Velocidad: 0.8 segundos
 - Tasa de rebote: 25%
-- Conversion: 4.5%
+- Conversión: 4.5%
 - $2000 USD en anuncios = $900 en ventas
 
 Resultado: +350% en ROI sin cambiar presupuesto de ads
 
-## Checklist: tu sitio es moderno?
+## Checklist: ¿tu sitio es moderno?
 
 - Carga en <2 segundos
-- Se ve perfecto en movil
+- Se ve perfecto en móvil
 - Tiene Google Analytics 4
 - Tiene Google Tag Manager
 - Sitemap en Google Search Console
 - 100/100 en Lighthouse (Google)
 - Certificado SSL (https://)
-- CTA clara en cada pagina
+- CTA clara en cada página
 - Formularios simples
-- Integracion con CRM
+- Integración con CRM
 
-## Cuando reconstruir tu sitio
+## Cuándo reconstruir tu sitio
 
 Reconstruye si:
 - Tu sitio tarda >2 segundos
 - No convierte (tasa <1%)
 - No es responsive
 - No tiene GA4 y GTM
-- Es mas antiguo que 3 anos
-- Esta en WordPress antiguo
+- Es más antiguo que 3 años
+- Está en WordPress antiguo
 
 No reconstruyas si:
 - Ya tiene todo lo anterior
 - Convierte bien (>3%)
-- Carga rapido
+- Carga rápido
 - Se ve profesional
 
-## Inversion en desarrollo web moderno
+## Inversión en desarrollo web moderno
 
-- Startup o pequeno negocio: $3000-8000 USD
+- Startup o pequeño negocio: $3000-8000 USD
 - Empresa mediana: $8000-20000 USD
 - Empresa grande: $20000+ USD
 
-ROI tipico: 5-15x en el primer ano
+ROI típico: 5-15x en el primer año
 
 ---
 
-En Tech Tecnic construimos sitios web modernos con Next.js y React. Velocidad garantizada, SEO integrado, conversiones optimizadas. Hablamos de tu proyecto?
+En Tech Tecnic construimos sitios web modernos con Next.js y React. Velocidad garantizada, SEO integrado, conversiones optimizadas. ¿Hablamos de tu proyecto?
         `,
       },
       en: {
@@ -831,13 +828,13 @@ A strong modern site includes:
 ### Online store Bogota - before
 - Slow WordPress (4 seconds)
 - Bounce rate: 65%
-- Conversion: 1.2%
+- Conversión: 1.2%
 - $2000 USD in ads = $200 in sales
 
 ### Online store Bogota - after (Next.js)
 - Speed: 0.8 seconds
 - Bounce rate: 25%
-- Conversion: 4.5%
+- Conversión: 4.5%
 - $2000 USD in ads = $900 in sales
 
 Result: +350% ROI without changing ad budget
@@ -900,61 +897,61 @@ At Tech Tecnic we build modern websites with Next.js and React. Guaranteed speed
     imageExt: 'webp',
     locales: {
       es: {
-        title: 'Cuanto cuesta una pagina web en Colombia en 2026: precios reales en Bogota y Medellin',
+        title: 'Cuánto cuesta una página web en Colombia en 2026: precios reales en Bogotá y Medellín',
         excerpt:
-          'Guia directa con rangos de precios por tipo de sitio, que incluye una cotizacion profesional y como comparar agencias en Bogota y Medellin sin perder tiempo.',
+          'Guía directa con rangos de precios por tipo de sitio, que incluye una cotización profesional y cómo comparar agencias en Bogotá y Medellín sin perder tiempo.',
         category: 'Desarrollo Web',
         keywords: [
-          'cuanto cuesta una pagina web en Colombia',
-          'precio pagina web Bogota',
-          'precio pagina web Medellin',
-          'cotizar pagina web',
+          'cuánto cuesta una página web en Colombia',
+          'precio página web Bogotá',
+          'precio página web Medellín',
+          'cotizar página web',
           'costo ecommerce Colombia',
         ],
-        imageAlt: 'Guia de precios de paginas web en Colombia 2026',
+        imageAlt: 'Guía de precios de páginas web en Colombia 2026',
         content: `
-# Cuanto cuesta una pagina web en Colombia en 2026
+# Cuánto cuesta una página web en Colombia en 2026
 
-Si llegaste aqui es porque quieres una respuesta clara y sin humo. El precio de una pagina web en Colombia depende del tipo de sitio, el alcance real, la calidad del contenido, el nivel de SEO y las integraciones que necesitas. En Bogota y Medellin la competencia es alta, pero eso no significa pagar de mas si sabes comparar.
+Si llegaste aquí es porque quieres una respuesta clara y sin humo. El precio de una página web en Colombia depende del tipo de sitio, el alcance real, la calidad del contenido, el nivel de SEO y las integraciones que necesitas. En Bogotá y Medellín la competencia es alta, pero eso no significa pagar de más si sabes comparar.
 
-Esta guia es directa y consultiva. Te doy rangos reales, explico que cambia el precio y te dejo un checklist para cotizar en 15 minutos.
+Esta guía es directa y consultiva. Te doy rangos reales, explico qué cambia el precio y te dejo un checklist para cotizar en 15 minutos.
 
-## Que determina el precio de una pagina web en Colombia
+## Qué determina el precio de una página web en Colombia
 
-El precio no es solo diseno. Se define por 5 factores concretos:
+El precio no es solo diseño. Se define por 5 factores concretos:
 
 - Tipo de sitio y alcance (landing, corporativa, ecommerce, a medida)
-- Contenido y estructura (numero de secciones, copy, fotos, video)
-- SEO y analitica (on-page, velocidad, tracking, etiquetas)
+- Contenido y estructura (número de secciones, copy, fotos, video)
+- SEO y analítica (on-page, velocidad, tracking, etiquetas)
 - Integraciones (WhatsApp, CRM, pagos, reservas, inventario)
-- Nivel de soporte y garantia (mantenimiento, capacitacion, cambios)
+- Nivel de soporte y garantía (mantenimiento, capacitación, cambios)
 
-Si el proveedor no te habla de estos puntos, probablemente la cotizacion es incompleta.
+Si el proveedor no te habla de estos puntos, probablemente la cotización es incompleta.
 
 ## Rangos de precios reales por tipo de web (2026)
 
-Estos rangos son referenciales para Bogota y Medellin. Sirven para detectar ofertas demasiado bajas o propuestas infladas sin entregables.
+Estos rangos son referenciales para Bogotá y Medellín. Sirven para detectar ofertas demasiado bajas o propuestas infladas sin entregables.
 
-### Landing page (1 pagina, foco en conversion)
+### Landing page (1 página, foco en conversión)
 
-- Basica: 1.5 a 3.5 millones COP
+- Básica: 1.5 a 3.5 millones COP
 - Pro: 3.5 a 6 millones COP
 
-Incluye: secciones clave, formulario, WhatsApp, velocidad optimizada, SEO basico.
+Incluye: secciones clave, formulario, WhatsApp, velocidad optimizada, SEO básico.
 
 ### Web corporativa (5 a 12 secciones)
 
-- Basica: 3 a 6 millones COP
+- Básica: 3 a 6 millones COP
 - Pro: 6 a 12 millones COP
 
-Incluye: arquitectura de informacion, copy orientado a conversion, SEO on-page, analitica.
+Incluye: arquitectura de información, copy orientado a conversión, SEO on-page, analítica.
 
-### Ecommerce (catalogo, carrito, pagos)
+### Ecommerce (catálogo, carrito, pagos)
 
-- Basico: 7 a 15 millones COP
+- Básico: 7 a 15 millones COP
 - Pro: 15 a 35 millones COP
 
-Incluye: catalogo, filtros, pasarela de pago, email transaccional, integraciones logisticas.
+Incluye: catálogo, filtros, pasarela de pago, email transaccional, integraciones logísticas.
 
 ### Web a medida (funcionalidad personalizada)
 
@@ -962,41 +959,41 @@ Incluye: catalogo, filtros, pasarela de pago, email transaccional, integraciones
 
 Incluye: desarrollo a medida, integraciones avanzadas, performance alto, seguridad y escalabilidad.
 
-## CMS vs desarrollo a medida: cuando pagar mas si vale la pena
+## CMS vs desarrollo a medida: cuándo pagar más si vale la pena
 
-WordPress o Shopify reduce tiempos cuando el alcance es estandar. Pero si necesitas integraciones complejas, automatizaciones o rendimiento extremo, un desarrollo a medida se vuelve mas rentable a mediano plazo.
+WordPress o Shopify reduce tiempos cuando el alcance es estándar. Pero si necesitas integraciones complejas, automatizaciones o rendimiento extremo, un desarrollo a medida se vuelve más rentable a mediano plazo.
 
-La clave es esta: si tu web es el motor de ventas, la estabilidad y la velocidad importan mas que ahorrar 1 o 2 millones en el inicio.
+La clave es esta: si tu web es el motor de ventas, la estabilidad y la velocidad importan más que ahorrar 1 o 2 millones al inicio.
 
-## Que debe incluir una cotizacion profesional (entregables claros)
+## Qué debe incluir una cotización profesional (entregables claros)
 
-Una buena cotizacion se lee como un plan de trabajo, no como un numero suelto. Exige estos puntos:
+Una buena cotización se lee como un plan de trabajo, no como un número suelto. Exige estos puntos:
 
 - Alcance por secciones y funcionalidades
 - Cronograma con fases y fechas
-- Stack o CMS propuesto y justificacion
-- SEO on-page minimo (titulos, meta, estructura H1-H2)
-- Analitica (GA4, GTM, eventos basicos)
-- Optimizacion de velocidad y mobile
-- Capacitacion y entrega de accesos
-- Criterios de aceptacion y garantia
+- Stack o CMS propuesto y justificación
+- SEO on-page mínimo (títulos, meta, estructura H1-H2)
+- Analítica (GA4, GTM, eventos básicos)
+- Optimización de velocidad y mobile
+- Capacitación y entrega de accesos
+- Criterios de aceptación y garantía
 
-Si falta esto, no compares precios, compara vacios.
+Si falta esto, no compares precios, compara vacíos.
 
-## Diferencias reales por ciudad (Bogota vs Medellin)
+## Diferencias reales por ciudad (Bogotá vs Medellín)
 
-### Bogota
+### Bogotá
 
-Mas competencia y clientes corporativos. El enfoque debe ser conversion, tiempos de respuesta y claridad en el proceso. Las empresas valoran reportes, SLA y soporte formal.
+Más competencia y clientes corporativos. El enfoque debe ser conversión, tiempos de respuesta y claridad en el proceso. Las empresas valoran reportes, SLA y soporte formal.
 
-### Medellin
+### Medellín
 
-Mayor volumen de ecommerce y empresas digitales. Se prioriza automatizacion, integraciones y velocidad. Aqui funciona muy bien mostrar casos reales y resultados medibles.
+Mayor volumen de ecommerce y empresas digitales. Se prioriza automatización, integraciones y velocidad. Aquí funciona muy bien mostrar casos reales y resultados medibles.
 
-## Errores tipicos al contratar una web (y como evitarlos)
+## Errores típicos al contratar una web (y cómo evitarlos)
 
 - Cotizar sin alcance escrito: termina en costos ocultos.
-- Elegir solo por precio: lo barato sale caro si no hay SEO ni analitica.
+- Elegir solo por precio: lo barato sale caro si no hay SEO ni analítica.
 - No pedir acceso a dominio y hosting: quedas atado al proveedor.
 - No validar tiempos: promesas irreales suelen indicar baja calidad.
 
@@ -1004,19 +1001,19 @@ Mayor volumen de ecommerce y empresas digitales. Se prioriza automatizacion, int
 
 1. Define objetivo principal (ventas, leads, reservas, info)
 2. Lista secciones necesarias y funcionalidades
-3. Reune branding, logos y referencias
+3. Reúne branding, logos y referencias
 4. Define si necesitas ecommerce o solo formularios
 5. Pide entregables claros y fechas
-6. Exige SEO basico y analitica
+6. Exige SEO básico y analítica
 7. Solicita mantenimiento y soporte posterior
 
-## Como comparar 3 agencias sin perder tiempo
+## Cómo comparar 3 agencias sin perder tiempo
 
-Comparar por precio es el error mas comun. Compara por entregables y resultados esperados. Si un proveedor te da un plan de trabajo y el otro solo un numero, ya sabes cual es el serio.
+Comparar por precio es el error más común. Compara por entregables y resultados esperados. Si un proveedor te da un plan de trabajo y el otro solo un número, ya sabes cuál es el serio.
 
 ## CTA directo
 
-Si quieres una cotizacion clara, con entregables y tiempos reales, podemos ayudarte. Mira nuestros [servicios de desarrollo web](/servicios/desarrollo-web) o escribe directo por [contacto](/contacto). En Tech Tecnic trabajamos con empresas en Bogota y Medellin con un enfoque en conversion, performance y SEO real.
+Si quieres una cotización clara, con entregables y tiempos reales, podemos ayudarte. Mira nuestros [servicios de desarrollo web](/servicios/desarrollo-web) o escribe directo por [contacto](/contacto). En Tech Tecnic trabajamos con empresas en Bogotá y Medellín con un enfoque en conversión, performance y SEO real.
         `,
       },
       en: {
@@ -1155,70 +1152,70 @@ If you want a clear quote with real deliverables and timelines, we can help. Che
     imageExt: 'webp',
     locales: {
       es: {
-        title: 'Chatbot de WhatsApp con IA en Colombia: guia 2026 para vender y atender 24/7',
+        title: 'Chatbot de WhatsApp con IA en Colombia: guía 2026 para vender y atender 24/7',
         excerpt:
-          'Como implementar un chatbot de WhatsApp con IA en Bogota y Medellin: casos por sector, integraciones clave, riesgos y un roadmap real de 30 dias.',
-        category: 'Automatizacion IA',
+          'Cómo implementar un chatbot de WhatsApp con IA en Bogotá y Medellín: casos por sector, integraciones clave, riesgos y un roadmap real de 30 días.',
+        category: 'Automatización IA',
         keywords: [
           'chatbot whatsapp ia colombia',
-          'automatizacion whatsapp bogota',
+          'automatización whatsapp bogotá',
           'chatbot para ventas whatsapp',
           'integrar whatsapp con crm',
-          'chatbot whatsapp medellin',
+          'chatbot whatsapp medellín',
         ],
         imageAlt: 'Chatbot de WhatsApp con IA para empresas en Colombia',
         content: `
-# Chatbot de WhatsApp con IA en Colombia: guia 2026
+# Chatbot de WhatsApp con IA en Colombia: guía 2026
 
-Un chatbot de WhatsApp con IA no es un juguete. Es un sistema para captar leads, responder en segundos y filtrar conversaciones para que tu equipo cierre ventas. En Bogota y Medellin, donde el cliente quiere respuesta inmediata, es una ventaja directa.
+Un chatbot de WhatsApp con IA no es un juguete. Es un sistema para captar leads, responder en segundos y filtrar conversaciones para que tu equipo cierre ventas. En Bogotá y Medellín, donde el cliente quiere respuesta inmediata, es una ventaja directa.
 
-Esta guia es consultiva y practica. Te explico que es, donde si funciona, riesgos reales y como implementar en 30 dias sin improvisar.
+Esta guía es consultiva y práctica. Te explico qué es, dónde sí funciona, riesgos reales y cómo implementar en 30 días sin improvisar.
 
-## Que es un chatbot de WhatsApp con IA (y que no es)
+## Qué es un chatbot de WhatsApp con IA (y qué no es)
 
-Es un flujo automatizado con IA que responde, clasifica y enruta conversaciones. No reemplaza a un humano en ventas complejas, pero si reduce tiempos y filtra leads de baja calidad.
+Es un flujo automatizado con IA que responde, clasifica y enruta conversaciones. No reemplaza a un humano en ventas complejas, pero sí reduce tiempos y filtra leads de baja calidad.
 
 No es un bot que inventa respuestas. Un buen bot trabaja con base de conocimiento controlada y reglas de salida a humano.
 
-## Casos de uso que si generan ingresos (por sector)
+## Casos de uso que sí generan ingresos (por sector)
 
 ### Salud
 
 - Agendamiento de citas
-- Recordatorios automaticos
-- Triage basico y preguntas frecuentes
+- Recordatorios automáticos
+- Triage básico y preguntas frecuentes
 
 ### Servicios profesionales
 
-- Calificacion de leads
-- Cotizaciones rapidas
-- Envio de documentos y seguimiento
+- Calificación de leads
+- Cotizaciones rápidas
+- Envío de documentos y seguimiento
 
 ### Ecommerce
 
 - Estado de pedidos
-- Catalogo y productos
-- Pagos y soporte post venta
+- Catálogo y productos
+- Pagos y soporte posventa
 
-Si tu negocio recibe mas de 20 consultas diarias por WhatsApp, un bot ya es rentable.
+Si tu negocio recibe más de 20 consultas diarias por WhatsApp, un bot ya es rentable.
 
-## Integraciones clave (stack tipico)
+## Integraciones clave (stack típico)
 
-La IA sola no genera ROI si no se conecta al negocio. Lo que mas valor aporta:
+La IA sola no genera ROI si no se conecta al negocio. Lo que más valor aporta:
 
 - CRM (HubSpot, Zoho, Kommo) para registrar y calificar leads
-- Google Sheets o Airtable para reportes rapidos
+- Google Sheets o Airtable para reportes rápidos
 - Calendario para agendar citas
 - Pasarela de pago o links de pago
 - Email marketing para seguimiento
 
-La regla es simple: cada conversacion debe generar un dato accionable.
+La regla es simple: cada conversación debe generar un dato accionable.
 
-## Riesgos reales y como evitarlos
+## Riesgos reales y cómo evitarlos
 
 ### Privacidad y datos
 
-No se debe entrenar con datos sensibles sin control. Define politicas y limita el contenido que el bot puede usar.
+No se debe entrenar con datos sensibles sin control. Define políticas y limita el contenido que el bot puede usar.
 
 ### Alucinaciones
 
@@ -1226,42 +1223,42 @@ Se evita con base de conocimiento cerrada, respuestas aprobadas y fallback a hum
 
 ### Tono de marca
 
-La IA debe hablar como tu negocio. Se requiere guion y pruebas, no copiar y pegar prompts.
+La IA debe hablar como tu negocio. Se requiere guión y pruebas, no copiar y pegar prompts.
 
-## Roadmap de implementacion en 30 dias
+## Roadmap de implementación en 30 días
 
-Un plan realista evita frustracion:
+Un plan realista evita frustración:
 
-1. Semana 1: diagnostico de flujos y objetivos
+1. Semana 1: diagnóstico de flujos y objetivos
 2. Semana 2: base de conocimiento y guiones
 3. Semana 3: integraciones y pruebas internas
 4. Semana 4: piloto, ajustes y lanzamiento
 
 Si intentas lanzar en 48 horas, terminas con un bot que responde mal y quema leads.
 
-## Cuanto cuesta un chatbot de WhatsApp con IA en Colombia
+## Cuánto cuesta un chatbot de WhatsApp con IA en Colombia
 
 El costo depende de integraciones y volumen. Rangos orientativos:
 
-- MVP basico: 2 a 5 millones COP
-- Implementacion profesional: 6 a 15 millones COP
-- Ecosistema avanzado con CRM y analitica: 15 millones COP en adelante
+- MVP básico: 2 a 5 millones COP
+- Implementación profesional: 6 a 15 millones COP
+- Ecosistema avanzado con CRM y analítica: 15 millones COP en adelante
 
 El retorno real se mide por: costo por lead, tasa de respuesta, ahorro de horas y cierre de ventas.
 
-## Como medir ROI (metricas que importan)
+## Cómo medir ROI (métricas que importan)
 
 - Tiempo promedio de respuesta
 - Leads calificados por semana
-- Conversion de chat a venta
+- Conversión de chat a venta
 - Ahorro de horas del equipo
 - Valor de vida del cliente generado
 
-Si no mides esto, solo estas enviando mensajes.
+Si no mides esto, solo estás enviando mensajes.
 
 ## CTA directo
 
-Si quieres implementar un chatbot de WhatsApp con IA en Bogota o Medellin, podemos ayudarte con un diagnostico real y un plan de 30 dias. Revisa nuestro [servicio de chatbot para WhatsApp](/servicios/chatbot-wp-ia) o escribe por [contacto](/contacto). En Tech Tecnic construimos sistemas que venden, no solo bots que responden.
+Si quieres implementar un chatbot de WhatsApp con IA en Bogotá o Medellín, podemos ayudarte con un diagnóstico real y un plan de 30 días. Revisa nuestro [servicio de chatbot para WhatsApp](/servicios/chatbot-wp-ia) o escribe por [contacto](/contacto). En Tech Tecnic construimos sistemas que venden, no solo bots que responden.
         `,
       },
       en: {
