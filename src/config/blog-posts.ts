@@ -915,9 +915,9 @@ At Tech Tecnic we build modern websites with Next.js and React. Guaranteed speed
         content: `
 # Cuánto cuesta una página web en Colombia en 2026
 
-Si llegaste aquí es porque quieres una respuesta clara y sin humo. El precio de una página web en Colombia depende del tipo de sitio, el alcance real, la calidad del contenido, el nivel de SEO y las integraciones que necesitas. En Bogotá y Medellín la competencia es alta, pero eso no significa pagar de más si sabes comparar.
+Si llegaste aquí es porque quieres una respuesta clara y sin humo. Para pequeñas empresas y emprendimientos, el precio de una página web en Colombia debe ser accesible sin sacrificar resultados. En Bogotá y Medellín hay opciones reales si comparas por entregables y no solo por nombre de agencia.
 
-Esta guía es directa y consultiva. Te doy rangos reales, explico qué cambia el precio y te dejo un checklist para cotizar en 15 minutos.
+Esta guía es directa y práctica para pymes. Te doy rangos más bajos y realistas, explico qué cambia el precio y te dejo un checklist para cotizar en 15 minutos.
 
 ## Qué determina el precio de una página web en Colombia
 
@@ -931,34 +931,34 @@ El precio no es solo diseño. Se define por 5 factores concretos:
 
 Si el proveedor no te habla de estos puntos, probablemente la cotización es incompleta.
 
-## Rangos de precios reales por tipo de web (2026)
+## Rangos de precios para pequeñas empresas (2026)
 
-Estos rangos son referenciales para Bogotá y Medellín. Sirven para detectar ofertas demasiado bajas o propuestas infladas sin entregables.
+Estos rangos son referenciales para Bogotá y Medellín y están pensados para negocios pequeños que quieren una web que venda, sin pagar valores de empresa grande.
 
 ### Landing page (1 página, foco en conversión)
 
-- Básica: 1.5 a 3.5 millones COP
-- Pro: 3.5 a 6 millones COP
+- Básica: 0.8 a 1.8 millones COP
+- Pro: 1.8 a 3.5 millones COP
 
 Incluye: secciones clave, formulario, WhatsApp, velocidad optimizada, SEO básico.
 
-### Web corporativa (5 a 12 secciones)
+### Web corporativa (5 a 10 secciones)
 
-- Básica: 3 a 6 millones COP
-- Pro: 6 a 12 millones COP
+- Básica: 2 a 4 millones COP
+- Pro: 4 a 7 millones COP
 
 Incluye: arquitectura de información, copy orientado a conversión, SEO on-page, analítica.
 
 ### Ecommerce (catálogo, carrito, pagos)
 
-- Básico: 7 a 15 millones COP
-- Pro: 15 a 35 millones COP
+- Básico: 4 a 8 millones COP
+- Pro: 8 a 15 millones COP
 
 Incluye: catálogo, filtros, pasarela de pago, email transaccional, integraciones logísticas.
 
 ### Web a medida (funcionalidad personalizada)
 
-- Desde 20 millones COP en adelante
+- Desde 12 millones COP en adelante
 
 Incluye: desarrollo a medida, integraciones avanzadas, performance alto, seguridad y escalabilidad.
 
@@ -966,7 +966,7 @@ Incluye: desarrollo a medida, integraciones avanzadas, performance alto, segurid
 
 WordPress o Shopify reduce tiempos cuando el alcance es estándar. Pero si necesitas integraciones complejas, automatizaciones o rendimiento extremo, un desarrollo a medida se vuelve más rentable a mediano plazo.
 
-La clave es esta: si tu web es el motor de ventas, la estabilidad y la velocidad importan más que ahorrar 1 o 2 millones al inicio.
+La clave es esta: si tu web es el motor de ventas, la estabilidad y la velocidad importan más que ahorrar 1 o 2 millones al inicio. Para pymes, el objetivo es lanzar rápido y escalar cuando haya tracción.
 
 ## Qué debe incluir una cotización profesional (entregables claros)
 
@@ -987,11 +987,11 @@ Si falta esto, no compares precios, compara vacíos.
 
 ### Bogotá
 
-Más competencia y clientes corporativos. El enfoque debe ser conversión, tiempos de respuesta y claridad en el proceso. Las empresas valoran reportes, SLA y soporte formal.
+Más competencia y clientes corporativos. Para pymes, el enfoque debe ser conversión, tiempos de respuesta y claridad en el proceso.
 
 ### Medellín
 
-Mayor volumen de ecommerce y empresas digitales. Se prioriza automatización, integraciones y velocidad. Aquí funciona muy bien mostrar casos reales y resultados medibles.
+Mayor volumen de ecommerce y empresas digitales. Se prioriza automatización, integraciones y velocidad. Aquí funciona muy bien mostrar resultados con presupuestos realistas.
 
 ## Errores típicos al contratar una web (y cómo evitarlos)
 
@@ -1016,7 +1016,7 @@ Comparar por precio es el error más común. Compara por entregables y resultado
 
 ## CTA directo
 
-Si quieres una cotización clara, con entregables y tiempos reales, podemos ayudarte. Mira nuestros [servicios de desarrollo web](/servicios/desarrollo-web) o escribe directo por [contacto](/contacto). En Tech Tecnic trabajamos con empresas en Bogotá y Medellín con un enfoque en conversión, performance y SEO real.
+Si quieres una cotización clara y accesible para tu pequeña empresa, podemos ayudarte. Mira nuestros [servicios de desarrollo web](/servicios/desarrollo-web) o escribe directo por [contacto](/contacto). En Tech Tecnic trabajamos con pymes en Bogotá y Medellín con un enfoque en conversión, performance y SEO real.
         `,
       },
       en: {
