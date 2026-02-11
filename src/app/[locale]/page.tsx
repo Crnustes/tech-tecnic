@@ -6,7 +6,12 @@ import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import Projects from "@/components/Projects";
 import ContactCTA from "@/components/ContactCTA";
-import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from "@/utils/seo";
+import {
+  buildAlternates,
+  buildLocalizedUrl,
+  SUPPORTED_LOCALES,
+  type SupportedLocale,
+} from "@/utils/seo";
 
 const pageCopy = {
   es: {
@@ -42,12 +47,17 @@ const pageCopy = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: SupportedLocale }>;
+  params: Promise<{ locale?: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const copy = pageCopy[locale];
+  const resolvedLocale: SupportedLocale = SUPPORTED_LOCALES.includes(
+    locale as SupportedLocale
+  )
+    ? (locale as SupportedLocale)
+    : "es";
+  const copy = pageCopy[resolvedLocale];
   const path = "/";
-  const canonicalUrl = buildLocalizedUrl(path, locale);
+  const canonicalUrl = buildLocalizedUrl(path, resolvedLocale);
 
   return {
     title: copy.metaTitle,
@@ -58,7 +68,7 @@ export async function generateMetadata({
       description: copy.metaDescription,
       type: "website",
       url: canonicalUrl,
-      locale: locale === "es" ? "es_CO" : "en_US",
+      locale: resolvedLocale === "es" ? "es_CO" : "en_US",
     },
     alternates: {
       canonical: canonicalUrl,
