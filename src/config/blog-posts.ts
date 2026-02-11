@@ -12,7 +12,9 @@ export interface BlogPostLocaleData {
 export interface BlogPost {
   id: string
   slug: string
+  localeSlugs?: Partial<Record<BlogLocale, string>>
   image: string
+  imageExt?: string
   author: string
   date: string
   readTime: number
@@ -24,6 +26,7 @@ export interface LocalizedBlogPost extends BlogPostLocaleData {
   id: string
   slug: string
   image: string
+  imageExt?: string
   author: string
   date: string
   readTime: number
@@ -34,6 +37,9 @@ export const blogPosts: BlogPost[] = [
   {
     id: '1',
     slug: 'ia-automatizacion-transformar-negocio-2026',
+    localeSlugs: {
+      en: 'ai-automation-transform-business-2026',
+    },
     author: 'Tech Tecnic',
     date: '2026-01-14',
     readTime: 8,
@@ -233,6 +239,9 @@ Is your company ready for the future? At Tech Tecnic we implement tailored AI an
   {
     id: '2',
     slug: 'seo-local-domina-google-zona-bogota-medellin',
+    localeSlugs: {
+      en: 'local-seo-dominate-google-bogota-medellin',
+    },
     author: 'Tech Tecnic',
     date: '2026-01-13',
     readTime: 10,
@@ -253,6 +262,9 @@ Is your company ready for the future? At Tech Tecnic we implement tailored AI an
         ],
         imageAlt: 'Estrategia SEO local para negocios en Colombia',
         content: `
+          localeSlugs: {
+            en: 'modern-web-development-react-nextjs-2026',
+          },
 # SEO Local 2026: Domina Google en tu Ciudad
 
 El 76% de busquedas en movil buscan algo local. Si tu negocio no aparece en las primeras 3 posiciones de Google para tu ciudad, pierdes clientes todos los dias.
@@ -874,13 +886,504 @@ At Tech Tecnic we build modern websites with Next.js and React. Guaranteed speed
       },
     },
   },
+  {
+    id: '4',
+    slug: 'cuanto-cuesta-pagina-web-colombia-bogota-medellin-2026',
+    localeSlugs: {
+      en: 'website-cost-colombia-bogota-medellin-2026',
+    },
+    author: 'Tech Tecnic',
+    date: '2026-02-10',
+    readTime: 12,
+    featured: false,
+    image: 'precio-pagina-web-colombia-2026',
+    imageExt: 'webp',
+    locales: {
+      es: {
+        title: 'Cuanto cuesta una pagina web en Colombia en 2026: precios reales en Bogota y Medellin',
+        excerpt:
+          'Guia directa con rangos de precios por tipo de sitio, que incluye una cotizacion profesional y como comparar agencias en Bogota y Medellin sin perder tiempo.',
+        category: 'Desarrollo Web',
+        keywords: [
+          'cuanto cuesta una pagina web en Colombia',
+          'precio pagina web Bogota',
+          'precio pagina web Medellin',
+          'cotizar pagina web',
+          'costo ecommerce Colombia',
+        ],
+        imageAlt: 'Guia de precios de paginas web en Colombia 2026',
+        content: `
+# Cuanto cuesta una pagina web en Colombia en 2026
+
+Si llegaste aqui es porque quieres una respuesta clara y sin humo. El precio de una pagina web en Colombia depende del tipo de sitio, el alcance real, la calidad del contenido, el nivel de SEO y las integraciones que necesitas. En Bogota y Medellin la competencia es alta, pero eso no significa pagar de mas si sabes comparar.
+
+Esta guia es directa y consultiva. Te doy rangos reales, explico que cambia el precio y te dejo un checklist para cotizar en 15 minutos.
+
+## Que determina el precio de una pagina web en Colombia
+
+El precio no es solo diseno. Se define por 5 factores concretos:
+
+- Tipo de sitio y alcance (landing, corporativa, ecommerce, a medida)
+- Contenido y estructura (numero de secciones, copy, fotos, video)
+- SEO y analitica (on-page, velocidad, tracking, etiquetas)
+- Integraciones (WhatsApp, CRM, pagos, reservas, inventario)
+- Nivel de soporte y garantia (mantenimiento, capacitacion, cambios)
+
+Si el proveedor no te habla de estos puntos, probablemente la cotizacion es incompleta.
+
+## Rangos de precios reales por tipo de web (2026)
+
+Estos rangos son referenciales para Bogota y Medellin. Sirven para detectar ofertas demasiado bajas o propuestas infladas sin entregables.
+
+### Landing page (1 pagina, foco en conversion)
+
+- Basica: 1.5 a 3.5 millones COP
+- Pro: 3.5 a 6 millones COP
+
+Incluye: secciones clave, formulario, WhatsApp, velocidad optimizada, SEO basico.
+
+### Web corporativa (5 a 12 secciones)
+
+- Basica: 3 a 6 millones COP
+- Pro: 6 a 12 millones COP
+
+Incluye: arquitectura de informacion, copy orientado a conversion, SEO on-page, analitica.
+
+### Ecommerce (catalogo, carrito, pagos)
+
+- Basico: 7 a 15 millones COP
+- Pro: 15 a 35 millones COP
+
+Incluye: catalogo, filtros, pasarela de pago, email transaccional, integraciones logisticas.
+
+### Web a medida (funcionalidad personalizada)
+
+- Desde 20 millones COP en adelante
+
+Incluye: desarrollo a medida, integraciones avanzadas, performance alto, seguridad y escalabilidad.
+
+## CMS vs desarrollo a medida: cuando pagar mas si vale la pena
+
+WordPress o Shopify reduce tiempos cuando el alcance es estandar. Pero si necesitas integraciones complejas, automatizaciones o rendimiento extremo, un desarrollo a medida se vuelve mas rentable a mediano plazo.
+
+La clave es esta: si tu web es el motor de ventas, la estabilidad y la velocidad importan mas que ahorrar 1 o 2 millones en el inicio.
+
+## Que debe incluir una cotizacion profesional (entregables claros)
+
+Una buena cotizacion se lee como un plan de trabajo, no como un numero suelto. Exige estos puntos:
+
+- Alcance por secciones y funcionalidades
+- Cronograma con fases y fechas
+- Stack o CMS propuesto y justificacion
+- SEO on-page minimo (titulos, meta, estructura H1-H2)
+- Analitica (GA4, GTM, eventos basicos)
+- Optimizacion de velocidad y mobile
+- Capacitacion y entrega de accesos
+- Criterios de aceptacion y garantia
+
+Si falta esto, no compares precios, compara vacios.
+
+## Diferencias reales por ciudad (Bogota vs Medellin)
+
+### Bogota
+
+Mas competencia y clientes corporativos. El enfoque debe ser conversion, tiempos de respuesta y claridad en el proceso. Las empresas valoran reportes, SLA y soporte formal.
+
+### Medellin
+
+Mayor volumen de ecommerce y empresas digitales. Se prioriza automatizacion, integraciones y velocidad. Aqui funciona muy bien mostrar casos reales y resultados medibles.
+
+## Errores tipicos al contratar una web (y como evitarlos)
+
+- Cotizar sin alcance escrito: termina en costos ocultos.
+- Elegir solo por precio: lo barato sale caro si no hay SEO ni analitica.
+- No pedir acceso a dominio y hosting: quedas atado al proveedor.
+- No validar tiempos: promesas irreales suelen indicar baja calidad.
+
+## Checklist para cotizar en 15 minutos
+
+1. Define objetivo principal (ventas, leads, reservas, info)
+2. Lista secciones necesarias y funcionalidades
+3. Reune branding, logos y referencias
+4. Define si necesitas ecommerce o solo formularios
+5. Pide entregables claros y fechas
+6. Exige SEO basico y analitica
+7. Solicita mantenimiento y soporte posterior
+
+## Como comparar 3 agencias sin perder tiempo
+
+Comparar por precio es el error mas comun. Compara por entregables y resultados esperados. Si un proveedor te da un plan de trabajo y el otro solo un numero, ya sabes cual es el serio.
+
+## CTA directo
+
+Si quieres una cotizacion clara, con entregables y tiempos reales, podemos ayudarte. Mira nuestros [servicios de desarrollo web](/servicios/desarrollo-web) o escribe directo por [contacto](/contacto). En Tech Tecnic trabajamos con empresas en Bogota y Medellin con un enfoque en conversion, performance y SEO real.
+        `,
+      },
+      en: {
+        title: 'How much does a website cost in Colombia in 2026? Real prices in Bogota and Medellin',
+        excerpt:
+          'A direct guide with real price ranges, what a professional quote must include, and how to compare agencies in Bogota and Medellin without wasting time.',
+        category: 'Web Development',
+        keywords: [
+          'how much does a website cost in Colombia',
+          'website price Bogota',
+          'website price Medellin',
+          'website quote Colombia',
+          'ecommerce cost Colombia',
+        ],
+        imageAlt: 'Website pricing guide for Colombia 2026',
+        content: `
+# How much does a website cost in Colombia in 2026
+
+If you are here, you want a clear answer. Website pricing in Colombia depends on scope, content quality, SEO, and integrations. Bogota and Medellin are competitive markets, but you can avoid overpaying if you compare offers correctly.
+
+This guide is direct and consultative. You get real ranges, the variables that move the price, and a 15 minute checklist to request quotes.
+
+## What defines the price of a website in Colombia
+
+Pricing is not only design. It is defined by 5 factors:
+
+- Site type and scope (landing, corporate, ecommerce, custom)
+- Content and structure (sections, copywriting, photography, video)
+- SEO and analytics (on-page, speed, tracking)
+- Integrations (WhatsApp, CRM, payments, bookings)
+- Support and warranty (maintenance, training, revisions)
+
+If a proposal ignores these points, the number is incomplete.
+
+## Real price ranges by site type (2026)
+
+These ranges are realistic for Bogota and Medellin and help you filter low quality offers or inflated proposals.
+
+### Landing page (single page, conversion focus)
+
+- Basic: 1.5 to 3.5 million COP
+- Pro: 3.5 to 6 million COP
+
+Includes: key sections, form, WhatsApp, optimized speed, basic SEO.
+
+### Corporate website (5 to 12 sections)
+
+- Basic: 3 to 6 million COP
+- Pro: 6 to 12 million COP
+
+Includes: information architecture, conversion focused copy, on-page SEO, analytics.
+
+### Ecommerce (catalog, cart, payments)
+
+- Basic: 7 to 15 million COP
+- Pro: 15 to 35 million COP
+
+Includes: catalog, filters, payment gateway, transactional email, logistics integrations.
+
+### Custom development (tailored functionality)
+
+- From 20 million COP and up
+
+Includes: custom development, advanced integrations, high performance, security and scalability.
+
+## CMS vs custom development: when higher cost is worth it
+
+WordPress or Shopify reduce time when the scope is standard. But if you need complex integrations, automation, or extreme performance, custom development is more profitable in the long run.
+
+If your site is a sales engine, stability and speed matter more than saving a couple million upfront.
+
+## What a professional quote must include
+
+A good quote reads like a project plan, not just a number. Ask for these points:
+
+- Scope per section and features
+- Timeline with phases and dates
+- Proposed stack or CMS with justification
+- Minimum on-page SEO (titles, meta, H1-H2 structure)
+- Analytics (GA4, GTM, basic events)
+- Speed and mobile optimization
+- Training and access handover
+- Acceptance criteria and warranty
+
+If those are missing, you are not comparing equal offers.
+
+## Real differences by city (Bogota vs Medellin)
+
+### Bogota
+
+More corporate clients and competition. The focus is conversion, response times, and a clear process. Businesses value reporting and formal support.
+
+### Medellin
+
+More ecommerce and digital companies. Automation, integrations, and speed are prioritized. Case studies and measurable results make a difference here.
+
+## Common mistakes when hiring a website (and how to avoid them)
+
+- Quoting without a written scope leads to hidden costs.
+- Choosing only by price ignores SEO and analytics.
+- Not requesting domain and hosting access creates vendor lock in.
+- Unrealistic timelines often signal low quality.
+
+## 15 minute checklist to request quotes
+
+1. Define your main goal (sales, leads, bookings, information)
+2. List sections and required features
+3. Gather brand assets and references
+4. Decide if you need ecommerce or only forms
+5. Ask for clear deliverables and dates
+6. Require basic SEO and analytics
+7. Ask about maintenance and support
+
+## How to compare 3 agencies without wasting time
+
+Comparing only price is the most common mistake. Compare deliverables and expected outcomes. If one provider gives you a plan and the other gives only a number, the decision is obvious.
+
+## Direct CTA
+
+If you want a clear quote with real deliverables and timelines, we can help. Check our [web development services](/servicios/desarrollo-web) or reach us via [contact](/contacto). At Tech Tecnic we work with companies in Bogota and Medellin with a focus on conversion, performance, and real SEO.
+        `,
+      },
+    },
+  },
+  {
+    id: '5',
+    slug: 'chatbot-whatsapp-ia-colombia-bogota-medellin',
+    localeSlugs: {
+      en: 'whatsapp-ai-chatbot-colombia-bogota-medellin',
+    },
+    author: 'Tech Tecnic',
+    date: '2026-02-08',
+    readTime: 13,
+    featured: false,
+    image: 'chatbot-whatsapp-ia-colombia',
+    imageExt: 'webp',
+    locales: {
+      es: {
+        title: 'Chatbot de WhatsApp con IA en Colombia: guia 2026 para vender y atender 24/7',
+        excerpt:
+          'Como implementar un chatbot de WhatsApp con IA en Bogota y Medellin: casos por sector, integraciones clave, riesgos y un roadmap real de 30 dias.',
+        category: 'Automatizacion IA',
+        keywords: [
+          'chatbot whatsapp ia colombia',
+          'automatizacion whatsapp bogota',
+          'chatbot para ventas whatsapp',
+          'integrar whatsapp con crm',
+          'chatbot whatsapp medellin',
+        ],
+        imageAlt: 'Chatbot de WhatsApp con IA para empresas en Colombia',
+        content: `
+# Chatbot de WhatsApp con IA en Colombia: guia 2026
+
+Un chatbot de WhatsApp con IA no es un juguete. Es un sistema para captar leads, responder en segundos y filtrar conversaciones para que tu equipo cierre ventas. En Bogota y Medellin, donde el cliente quiere respuesta inmediata, es una ventaja directa.
+
+Esta guia es consultiva y practica. Te explico que es, donde si funciona, riesgos reales y como implementar en 30 dias sin improvisar.
+
+## Que es un chatbot de WhatsApp con IA (y que no es)
+
+Es un flujo automatizado con IA que responde, clasifica y enruta conversaciones. No reemplaza a un humano en ventas complejas, pero si reduce tiempos y filtra leads de baja calidad.
+
+No es un bot que inventa respuestas. Un buen bot trabaja con base de conocimiento controlada y reglas de salida a humano.
+
+## Casos de uso que si generan ingresos (por sector)
+
+### Salud
+
+- Agendamiento de citas
+- Recordatorios automaticos
+- Triage basico y preguntas frecuentes
+
+### Servicios profesionales
+
+- Calificacion de leads
+- Cotizaciones rapidas
+- Envio de documentos y seguimiento
+
+### Ecommerce
+
+- Estado de pedidos
+- Catalogo y productos
+- Pagos y soporte post venta
+
+Si tu negocio recibe mas de 20 consultas diarias por WhatsApp, un bot ya es rentable.
+
+## Integraciones clave (stack tipico)
+
+La IA sola no genera ROI si no se conecta al negocio. Lo que mas valor aporta:
+
+- CRM (HubSpot, Zoho, Kommo) para registrar y calificar leads
+- Google Sheets o Airtable para reportes rapidos
+- Calendario para agendar citas
+- Pasarela de pago o links de pago
+- Email marketing para seguimiento
+
+La regla es simple: cada conversacion debe generar un dato accionable.
+
+## Riesgos reales y como evitarlos
+
+### Privacidad y datos
+
+No se debe entrenar con datos sensibles sin control. Define politicas y limita el contenido que el bot puede usar.
+
+### Alucinaciones
+
+Se evita con base de conocimiento cerrada, respuestas aprobadas y fallback a humano.
+
+### Tono de marca
+
+La IA debe hablar como tu negocio. Se requiere guion y pruebas, no copiar y pegar prompts.
+
+## Roadmap de implementacion en 30 dias
+
+Un plan realista evita frustracion:
+
+1. Semana 1: diagnostico de flujos y objetivos
+2. Semana 2: base de conocimiento y guiones
+3. Semana 3: integraciones y pruebas internas
+4. Semana 4: piloto, ajustes y lanzamiento
+
+Si intentas lanzar en 48 horas, terminas con un bot que responde mal y quema leads.
+
+## Cuanto cuesta un chatbot de WhatsApp con IA en Colombia
+
+El costo depende de integraciones y volumen. Rangos orientativos:
+
+- MVP basico: 2 a 5 millones COP
+- Implementacion profesional: 6 a 15 millones COP
+- Ecosistema avanzado con CRM y analitica: 15 millones COP en adelante
+
+El retorno real se mide por: costo por lead, tasa de respuesta, ahorro de horas y cierre de ventas.
+
+## Como medir ROI (metricas que importan)
+
+- Tiempo promedio de respuesta
+- Leads calificados por semana
+- Conversion de chat a venta
+- Ahorro de horas del equipo
+- Valor de vida del cliente generado
+
+Si no mides esto, solo estas enviando mensajes.
+
+## CTA directo
+
+Si quieres implementar un chatbot de WhatsApp con IA en Bogota o Medellin, podemos ayudarte con un diagnostico real y un plan de 30 dias. Revisa nuestro [servicio de chatbot para WhatsApp](/servicios/chatbot-wp-ia) o escribe por [contacto](/contacto). En Tech Tecnic construimos sistemas que venden, no solo bots que responden.
+        `,
+      },
+      en: {
+        title: 'WhatsApp AI chatbot in Colombia: 2026 guide to sell and support 24/7',
+        excerpt:
+          'How to implement a WhatsApp AI chatbot in Bogota and Medellin: sector use cases, key integrations, risks, and a realistic 30 day roadmap.',
+        category: 'AI Automation',
+        keywords: [
+          'whatsapp ai chatbot colombia',
+          'whatsapp automation bogota',
+          'whatsapp sales chatbot',
+          'integrate whatsapp with crm',
+          'whatsapp chatbot medellin',
+        ],
+        imageAlt: 'WhatsApp AI chatbot for businesses in Colombia',
+        content: `
+# WhatsApp AI chatbot in Colombia: 2026 guide
+
+A WhatsApp AI chatbot is not a toy. It is a system to capture leads, respond in seconds, and route conversations so your team can close sales. In Bogota and Medellin, where customers expect instant replies, it is a direct advantage.
+
+This guide is consultative and practical. You will see what it is, where it actually works, real risks, and how to implement in 30 days without improvising.
+
+## What a WhatsApp AI chatbot is (and is not)
+
+It is an automated flow with AI that replies, qualifies, and routes conversations. It does not replace humans for complex sales, but it reduces response time and filters low quality leads.
+
+It is not a bot that invents answers. A proper bot works with a controlled knowledge base and clear handoff rules.
+
+## Use cases that generate revenue (by sector)
+
+### Healthcare
+
+- Appointment booking
+- Automated reminders
+- Basic triage and FAQs
+
+### Professional services
+
+- Lead qualification
+- Quick quotes
+- Document delivery and follow ups
+
+### Ecommerce
+
+- Order status
+- Product catalog
+- Payments and post sale support
+
+If your business receives more than 20 WhatsApp inquiries per day, a bot is already profitable.
+
+## Key integrations (typical stack)
+
+AI alone does not create ROI if it is disconnected from the business. The most valuable integrations:
+
+- CRM (HubSpot, Zoho, Kommo) to register and qualify leads
+- Google Sheets or Airtable for fast reporting
+- Calendar for bookings
+- Payment gateway or payment links
+- Email marketing for follow up
+
+The rule is simple: every conversation must produce actionable data.
+
+## Real risks and how to avoid them
+
+### Privacy and data
+
+Do not train on sensitive data without control. Define policies and limit what the bot can use.
+
+### Hallucinations
+
+Prevent them with a closed knowledge base, approved answers, and human fallback.
+
+### Brand tone
+
+The AI must speak like your business. It needs scripts and testing, not random prompts.
+
+## 30 day implementation roadmap
+
+A realistic plan avoids frustration:
+
+1. Week 1: flow diagnosis and objectives
+2. Week 2: knowledge base and scripts
+3. Week 3: integrations and internal testing
+4. Week 4: pilot, adjustments, launch
+
+If you try to launch in 48 hours, you get a bot that answers poorly and burns leads.
+
+## How much a WhatsApp AI chatbot costs in Colombia
+
+Pricing depends on integrations and volume. Realistic ranges:
+
+- Basic MVP: 2 to 5 million COP
+- Professional implementation: 6 to 15 million COP
+- Advanced ecosystem with CRM and analytics: 15 million COP and up
+
+Real ROI is measured by: cost per lead, response time, hours saved, and sales closed.
+
+## How to measure ROI (metrics that matter)
+
+- Average response time
+- Qualified leads per week
+- Chat to sale conversion
+- Hours saved by the team
+- Customer lifetime value generated
+
+If you do not measure this, you are only sending messages.
+
+## Direct CTA
+
+If you want to implement a WhatsApp AI chatbot in Bogota or Medellin, we can help with a real diagnosis and a 30 day plan. See our [WhatsApp chatbot service](/servicios/chatbot-wp-ia) or reach out via [contact](/contacto). At Tech Tecnic we build systems that sell, not just bots that reply.
+        `,
+      },
+    },
+  },
 ]
 
 export const getBlogPosts = (locale: BlogLocale): LocalizedBlogPost[] =>
   blogPosts.map(post => ({
     id: post.id,
-    slug: post.slug,
+    slug: post.localeSlugs?.[locale] ?? post.slug,
     image: post.image,
+    imageExt: post.imageExt,
     author: post.author,
     date: post.date,
     readTime: post.readTime,

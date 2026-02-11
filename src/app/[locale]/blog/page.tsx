@@ -174,7 +174,7 @@ export default async function BlogPage({
 
                 <div className="relative h-64 md:h-full min-h-80 rounded-xl overflow-hidden group/image">
                   <Image
-                    src={`/images/blog/${featuredPost.image}.jpg`}
+                    src={`/images/blog/${featuredPost.image}.${featuredPost.imageExt ?? 'jpg'}`}
                     alt={featuredPost.imageAlt}
                     fill
                     className="object-cover group-hover/image:scale-110 transition-transform duration-500"
@@ -204,7 +204,7 @@ export default async function BlogPage({
                 <div className="relative h-full flex flex-col bg-t_dark/40 rounded-xl overflow-hidden">
                   <div className="relative h-56 overflow-hidden bg-gradient-to-br from-t_primary/20 to-t_accent/10">
                     <Image
-                      src={`/images/blog/${post.image}.jpg`}
+                      src={`/images/blog/${post.image}.${post.imageExt ?? 'jpg'}`}
                       alt={post.imageAlt}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"

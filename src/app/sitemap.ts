@@ -1,6 +1,11 @@
 import { MetadataRoute } from "next";
-import { blogPosts } from "@/config/blog-posts";
-import { buildAlternates, buildLocalizedUrl, SUPPORTED_LOCALES } from "@/utils/seo";
+import { getBlogPosts } from "@/config/blog-posts";
+import {
+  buildAlternates,
+  buildAlternatesForLocales,
+  buildLocalizedUrl,
+  SUPPORTED_LOCALES,
+} from "@/utils/seo";
 
 type ChangeFrequency = "daily" | "weekly" | "monthly" | "yearly";
 
@@ -44,9 +49,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     createLocalizedEntries(entry.path, currentDate, entry.changeFrequency, entry.priority)
   );
 
-  const blogEntries = blogPosts.flatMap((post) =>
-    createLocalizedEntries(`/blog/${post.slug}`, post.date, "monthly", 0.7)
-  );
+  const blogPostsEs = getBlogPosts("es");
+  const blogPostsEn = getBlogPosts("en");
+  const blogPostsEnById = new Map(blogPostsEn.map((post) => [post.id, post.slug]));
+
+  const blogEntries = blogPostsEs.flatMap((post) => {
+    const pathEs = `/blog/${post.slug}`;
+    const pathEn = `/blog/${blogPostsEnById.get(post.id) ?? post.slug}`;
+    const alternates = buildAlternatesForLocales({
+      es: pathEs,
+      en: pathEn,
+    });
+
+    return SUPPORTED_LOCALES.map((locale) => ({
+      url: buildLocalizedUrl(locale === "es" ? pathEs : pathEn, locale),
+      lastModified: post.date,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates,
+    }));
+  });
 
   return [...staticEntries, ...blogEntries];
 }

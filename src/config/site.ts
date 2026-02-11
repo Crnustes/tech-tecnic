@@ -15,7 +15,7 @@ export const siteConfig: SiteConfig = {
   tagline: "Innovacion digital con proposito",
   description:
     "Agencia de desarrollo web, IA y automatizacion. Disenamos experiencias digitales modernas y eficientes.",
-  phone: "+57 302 674 2059",
+  phone: "+57 333 715 1064",
   email: "contacto@techtecnic.com",
   address: "Bogota, Colombia",
   socials,

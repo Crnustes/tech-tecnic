@@ -29,3 +29,14 @@ export const buildAlternates = (path: string) => ({
     "x-default": buildLocalizedUrl(path, "es"),
   },
 });
+
+export const buildAlternatesForLocales = (paths: {
+  es: string;
+  en: string;
+}) => ({
+  languages: {
+    es: buildLocalizedUrl(paths.es, "es"),
+    en: buildLocalizedUrl(paths.en, "en"),
+    "x-default": buildLocalizedUrl(paths.es, "es"),
+  },
+});

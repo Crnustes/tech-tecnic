@@ -10,6 +10,21 @@ const getLocaleDescription = (locale: SupportedLocale) =>
 const getSameAs = () =>
   Object.values(socials).filter((value) => value.startsWith('http'));
 
+const getOpeningHoursSpecification = () => [
+  {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '18:00',
+  },
+  {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: 'Saturday',
+    opens: '08:00',
+    closes: '12:00',
+  },
+];
+
 export const getOrganizationSchema = (locale: SupportedLocale) => ({
   '@type': 'ProfessionalService',
   name: siteConfig.name,
@@ -25,6 +40,7 @@ export const getOrganizationSchema = (locale: SupportedLocale) => ({
     addressRegion: 'Cundinamarca',
     addressCountry: 'CO',
   },
+  openingHoursSpecification: getOpeningHoursSpecification(),
   areaServed: [
     { '@type': 'Country', name: 'Colombia' },
     { '@type': 'Country', name: 'United States' },
@@ -130,4 +146,46 @@ export const getBreadcrumbSchema = (
     name: item.name,
     item: item.url,
   })),
+});
+
+export const getBlogPostSchema = (
+  locale: SupportedLocale,
+  post: {
+    title: string;
+    excerpt: string;
+    image: string;
+    imageExt?: string;
+    date: string;
+    author?: string;
+    keywords?: string[];
+  },
+  url: string
+) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.excerpt,
+  image: [`${SITE_URL}/images/blog/${post.image}.${post.imageExt ?? 'jpg'}`],
+  datePublished: post.date,
+  dateModified: post.date,
+  inLanguage: locale === 'es' ? 'es-CO' : 'en-US',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': url,
+  },
+  author: {
+    '@type': 'Organization',
+    name: post.author || siteConfig.name,
+    url: SITE_URL,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: SITE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/logo.png`,
+    },
+  },
+  keywords: post.keywords && post.keywords.length ? post.keywords.join(', ') : undefined,
 });

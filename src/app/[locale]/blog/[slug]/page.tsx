@@ -3,14 +3,61 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import { getBlogPosts } from '@/config/blog-posts'
-import { buildAlternates, buildLocalizedUrl, type SupportedLocale } from '@/utils/seo'
-import { getBreadcrumbSchema } from '@/utils/schema'
+import {
+  buildAlternates,
+  buildAlternatesForLocales,
+  buildLocalizedUrl,
+  SUPPORTED_LOCALES,
+  type SupportedLocale,
+} from '@/utils/seo'
+import { getBlogPostSchema, getBreadcrumbSchema } from '@/utils/schema'
 
 interface PageProps {
   params: Promise<{
     locale: SupportedLocale
     slug: string
   }>
+}
+
+const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
+
+const renderWithLinks = (text: string, locale: SupportedLocale) => {
+  linkRegex.lastIndex = 0
+  const nodes: Array<string | JSX.Element> = []
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+  let linkIndex = 0
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index))
+    }
+
+    const label = match[1]
+    const href = match[2]
+    const isInternal = href.startsWith('/')
+    const isExternal = /^https?:\/\//.test(href)
+    const url = isInternal ? buildLocalizedUrl(href, locale) : href
+
+    nodes.push(
+      <a
+        key={`link-${linkIndex++}`}
+        href={url}
+        className="text-t_primary underline underline-offset-4 hover:text-t_accent transition-colors"
+        {...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+      >
+        {label}
+      </a>
+    )
+
+    lastIndex = match.index + match[0].length
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex))
+  }
+
+  return nodes
 }
 
 const pageCopy = {
@@ -75,6 +122,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const path = `/blog/${post.slug}`
   const canonicalUrl = buildLocalizedUrl(path, locale)
+  const slugEs = getBlogPosts('es').find(p => p.id === post.id)?.slug ?? post.slug
+  const slugEn = getBlogPosts('en').find(p => p.id === post.id)?.slug ?? post.slug
+  const localizedAlternates = buildAlternatesForLocales({
+    es: `/blog/${slugEs}`,
+    en: `/blog/${slugEn}`,
+  })
 
   return {
     title: `${post.title} | ${copy.titleSuffix}`,
@@ -87,7 +140,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       url: canonicalUrl,
       publishedTime: post.date,
-      images: [`/images/blog/${post.image}.jpg`],
+      images: [
+        {
+          url: `/images/blog/${post.image}.${post.imageExt ?? 'jpg'}`,
+          alt: post.imageAlt,
+        },
+      ],
       siteName: 'Tech Tecnic',
       locale: locale === 'es' ? 'es_CO' : 'en_US',
     },
@@ -95,19 +153,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [`/images/blog/${post.image}.jpg`],
+      images: [`/images/blog/${post.image}.${post.imageExt ?? 'jpg'}`],
     },
     alternates: {
       canonical: canonicalUrl,
-      ...buildAlternates(path),
+      ...localizedAlternates,
     },
   }
 }
 
 export function generateStaticParams() {
-  return getBlogPosts('es').map(post => ({
-    slug: post.slug,
-  }))
+  return SUPPORTED_LOCALES.flatMap(locale =>
+    getBlogPosts(locale).map(post => ({
+      locale,
+      slug: post.slug,
+    }))
+  )
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -131,6 +192,19 @@ export default async function BlogPostPage({ params }: PageProps) {
     ],
     locale
   )
+  const blogPostSchema = getBlogPostSchema(
+    locale,
+    {
+      title: post.title,
+      excerpt: post.excerpt,
+      image: post.image,
+      imageExt: post.imageExt,
+      date: post.date,
+      author: post.author,
+      keywords: post.keywords,
+    },
+    canonicalUrl
+  )
   const relatedPosts = blogPosts
     .filter(p => p.id !== post.id && p.category === post.category)
     .slice(0, 3)
@@ -138,6 +212,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <main className="bg-gradient-to-b from-t_dark via-slate-900/20 to-black text-white min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }} />
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-t_primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-t_accent/10 rounded-full blur-3xl" />
@@ -204,7 +279,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="max-w-5xl mx-auto">
           <div className="relative w-full h-96 md:h-[500px] rounded-2xl overflow-hidden group">
             <Image
-              src={`/images/blog/${post.image}.jpg`}
+              src={`/images/blog/${post.image}.${post.imageExt ?? 'jpg'}`}
               alt={post.imageAlt}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -255,7 +330,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                         <span className="mt-1 flex-shrink-0 w-5 h-5 flex items-center justify-center rounded-full bg-t_primary/20 text-t_primary">
                           o
                         </span>
-                        <span>{item.replace(/^-\s/, '')}</span>
+                        <span>{renderWithLinks(item.replace(/^-\s/, ''), locale)}</span>
                       </li>
                     ))}
                   </ul>
@@ -271,7 +346,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                         <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-gradient-to-r from-t_primary to-t_accent text-t_dark font-bold text-sm">
                           {i + 1}
                         </span>
-                        <span>{item.replace(/^\d+\.\s/, '')}</span>
+                        <span>{renderWithLinks(item.replace(/^\d+\.\s/, ''), locale)}</span>
                       </li>
                     ))}
                   </ol>
@@ -280,7 +355,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
               return (
                 <p key={idx} className="leading-8">
-                  {paragraph}
+                  {renderWithLinks(paragraph, locale)}
                 </p>
               )
             })}
@@ -329,7 +404,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <div className="relative h-full flex flex-col bg-t_dark/40 rounded-xl overflow-hidden">
                       <div className="relative h-48 overflow-hidden bg-gradient-to-br from-t_primary/20 to-t_accent/10">
                         <Image
-                          src={`/images/blog/${relatedPost.image}.jpg`}
+                          src={`/images/blog/${relatedPost.image}.${relatedPost.imageExt ?? 'jpg'}`}
                           alt={relatedPost.imageAlt}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -401,52 +476,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </section>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: post.title,
-            description: post.excerpt,
-            image: `https://techtecnic.com/images/blog/${post.image}.jpg`,
-            datePublished: post.date,
-            dateModified: post.date,
-            author: {
-              '@type': 'Organization',
-              name: 'Tech Tecnic',
-              url: 'https://techtecnic.com',
-              logo: {
-                '@type': 'ImageObject',
-                url: 'https://techtecnic.com/logo.png',
-              },
-            },
-            publisher: {
-              '@type': 'Organization',
-              name: 'Tech Tecnic',
-              url: 'https://techtecnic.com',
-              logo: {
-                '@type': 'ImageObject',
-                url: 'https://techtecnic.com/logo.png',
-              },
-            },
-            mainEntityOfPage: {
-              '@type': 'WebPage',
-              '@id': canonicalUrl,
-            },
-            keywords: post.keywords.join(', '),
-            articleSection: post.category,
-            inLanguage: locale === 'es' ? 'es-CO' : 'en-US',
-            provider: {
-              '@type': 'Organization',
-              name: copy.providerName,
-              description: copy.providerDescription,
-              areaServed: copy.providerAreas,
-              serviceType: copy.providerServices,
-            },
-          }),
-        }}
-      />
     </main>
   )
 }
