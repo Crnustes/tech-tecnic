@@ -21,9 +21,9 @@ interface PageProps {
 
 const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g
 
-const renderWithLinks = (text: string, locale: SupportedLocale) => {
+const renderWithLinks = (text: string, locale: SupportedLocale): React.ReactNode[] => {
   linkRegex.lastIndex = 0
-  const nodes: Array<string | JSX.Element> = []
+  const nodes: React.ReactNode[] = []
   let lastIndex = 0
   let match: RegExpExecArray | null
   let linkIndex = 0
